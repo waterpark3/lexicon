@@ -17,8 +17,8 @@
             theme: {
                 extend: {
                     colors: {
-                        paper: '#efefef',
-                        'paper-sub': '#e2e2e2',
+                        paper: '#f5f5f4',
+                        'paper-sub': '#e7e7e5',
                         ink: '#1A1817',
                         'ink-muted': '#6E6A63',
                         'ink-light': '#A39E96',
@@ -34,7 +34,7 @@
 
     <style>
         body {
-            background-color: #efefef;
+            background-color: #f5f5f4;
             color: #1A1817;
             font-family: 'Zen Old Mincho', serif;
             word-break: break-all;
@@ -45,10 +45,10 @@
             width: 4px;
         }
         ::-webkit-scrollbar-track {
-            background: #efefef;
+            background: #f5f5f4;
         }
         ::-webkit-scrollbar-thumb {
-            background: #cccccc;
+            background: #d4d4d2;
         }
     </style>
 </head>
@@ -226,9 +226,9 @@
         <!-- 劇団紹介 (Troupe) -->
         <section id="troupe" class="max-w-xl mx-auto text-center space-y-6 pt-8 pb-10">
             
-            <!-- 劇団アイコン写真のみ配置 -->
+            <!-- 劇団アイコン写真（内側の白背景・余白を削除してすっきり丸型表示） -->
             <div class="flex flex-col items-center justify-center">
-                <div class="w-20 h-20 sm:w-24 sm:h-24 rounded-full overflow-hidden border border-ink/15 p-0.5 bg-white shadow-sm flex items-center justify-center">
+                <div class="w-20 h-20 sm:w-24 sm:h-24 rounded-full overflow-hidden shadow-sm flex items-center justify-center">
                     <img src="./icon.JPG" data-base-name="icon" alt="Louis-room Icon" class="w-full h-full object-cover rounded-full block" onerror="tryNextExtension(this, 'troupe-icon-fallback', 'block')">
                     <div id="troupe-icon-fallback" class="w-full h-full rounded-full bg-paper-sub flex items-center justify-center" style="display: none;">
                         <span class="font-garamond text-xs text-ink-light">Louis</span>
