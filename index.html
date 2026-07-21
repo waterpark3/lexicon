@@ -56,14 +56,26 @@
 </head>
 <body class="min-h-screen flex flex-col justify-between selection:bg-ink selection:text-paper">
 
-    <!-- 画像読み込みエラー時の表示制御用スクリプト -->
+    <!-- 万が一ファイル名が異なる場合のフォールバック処理 -->
     <script>
-        function handleImgError(imgEl, fallbackId, displayType) {
-            imgEl.style.display = 'none';
-            if (fallbackId) {
-                const fallbackEl = document.getElementById(fallbackId);
-                if (fallbackEl) {
-                    fallbackEl.style.display = displayType || 'block';
+        function tryNextExtension(imgEl, fallbackId, displayType) {
+            const extPatterns = [
+                '.JPG', '.jpg', '.png', '.jpeg', '.PNG', '.JPEG', '.png.JPG'
+            ];
+            let currentIdx = parseInt(imgEl.getAttribute('data-ext-idx') || '0');
+            
+            currentIdx++;
+            if (currentIdx < extPatterns.length) {
+                imgEl.setAttribute('data-ext-idx', currentIdx);
+                const baseName = imgEl.getAttribute('data-base-name');
+                imgEl.src = './' + baseName + extPatterns[currentIdx];
+            } else {
+                imgEl.style.display = 'none';
+                if (fallbackId) {
+                    const fallbackEl = document.getElementById(fallbackId);
+                    if (fallbackEl) {
+                        fallbackEl.style.display = displayType || 'block';
+                    }
                 }
             }
         }
@@ -73,7 +85,7 @@
     <header class="w-full border-b border-ink/10 py-6 px-6 sm:px-12 bg-paper/80 backdrop-blur-sm sticky top-0 z-30">
         <div class="max-w-4xl mx-auto flex items-center justify-between">
             <a href="#" class="inline-flex items-center">
-                <img src="./logo.png" alt="Louis-room" class="h-7 sm:h-8 w-auto object-contain mix-blend-multiply opacity-90" onerror="handleImgError(this, 'header-logo-fallback', 'inline-block')">
+                <img src="./logo.JPG" data-base-name="logo" alt="Louis-room" class="h-7 sm:h-8 w-auto object-contain mix-blend-multiply opacity-90" onerror="tryNextExtension(this, 'header-logo-fallback', 'inline-block')">
                 <span id="header-logo-fallback" class="font-garamond text-xl font-light tracking-widest text-ink whitespace-nowrap" style="display: none;">Louis-room</span>
             </a>
 
@@ -91,17 +103,16 @@
         <!-- ヒーローセクション：ビジュアル・タイトル・導線 -->
         <section class="space-y-10">
             
-            <!-- メインビジュアル (flyer.png) -->
+            <!-- メインビジュアル -->
             <div class="w-full border border-ink/10 p-2 sm:p-3 bg-white/50 min-h-[280px] flex items-center justify-center">
-                <img src="./flyer.png" alt="Lexicon メインビジュアル" class="w-full h-auto object-cover max-h-[640px] block" onerror="handleImgError(this, 'flyer-fallback', 'flex')">
+                <img src="./flyer.JPG" data-base-name="flyer" alt="Lexicon メインビジュアル" class="w-full h-auto object-cover max-h-[640px] block" onerror="tryNextExtension(this, 'flyer-fallback', 'flex')">
                 
-                <!-- 画像未配置時のプレースホルダー (ローカル/プレビュー用) -->
+                <!-- 画像未配置時のプレースホルダー -->
                 <div id="flyer-fallback" class="w-full py-16 px-8 flex-col items-center justify-center text-center border border-dashed border-ink/20 bg-paper-sub/30" style="display: none;">
                     <svg class="w-10 h-10 text-ink-light mb-3 stroke-1" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                         <path stroke-linecap="round" stroke-linejoin="round" d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253" />
                     </svg>
                     <p class="font-garamond text-xs text-ink-muted tracking-widest uppercase">Lexicon — Main Visual</p>
-                    <p class="font-mincho text-[10px] text-ink-light mt-1">（※公開時に flyer.png を配置すると画像が表示されます）</p>
                 </div>
             </div>
 
@@ -157,7 +168,7 @@
                         <div class="border-l-2 border-ink/20 pl-4 py-1 space-y-2 text-xs">
                             <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-1">
                                 <span class="text-ink-muted">10月11日（日）</span>
-                                <span>① 14:00　／　② 18:00</span>
+                                <span>① 14:00　／年 ② 18:00</span>
                             </div>
                             <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-1">
                                 <span class="text-ink-muted">10月12日（月・祝）</span>
@@ -217,19 +228,19 @@
         <!-- 劇団紹介 (Troupe) -->
         <section id="troupe" class="max-w-xl mx-auto text-center space-y-6 pt-8 pb-10">
             
-            <!-- 劇団アイコン写真 (icon.png) & 劇団ロゴ (logo.png) -->
+            <!-- 劇団アイコン写真 & 劇団ロゴ -->
             <div class="flex flex-col items-center justify-center space-y-3">
                 <!-- アイコン写真 -->
                 <div class="w-16 h-16 rounded-full overflow-hidden border border-ink/15 p-0.5 bg-white shadow-sm flex items-center justify-center">
-                    <img src="./icon.png" alt="Louis-room Icon" class="w-full h-full object-cover rounded-full block" onerror="handleImgError(this, 'troupe-icon-fallback', 'block')">
+                    <img src="./icon.JPG" data-base-name="icon" alt="Louis-room Icon" class="w-full h-full object-cover rounded-full block" onerror="tryNextExtension(this, 'troupe-icon-fallback', 'block')">
                     <div id="troupe-icon-fallback" class="w-full h-full rounded-full bg-paper-sub flex items-center justify-center" style="display: none;">
                         <span class="font-garamond text-[10px] text-ink-light">Louis</span>
                     </div>
                 </div>
 
                 <!-- 劇団ロゴ -->
-                <div class="flex items-center justify-center">
-                    <img src="./logo.png" alt="Louis-room" class="h-7 w-auto object-contain mix-blend-multiply opacity-90" onerror="handleImgError(this, 'troupe-text-fallback', 'block')">
+                <div class="flex items-center justify-center w-full">
+                    <img src="./logo.JPG" data-base-name="logo" alt="Louis-room" class="h-7 w-auto object-contain mix-blend-multiply opacity-90" onerror="tryNextExtension(this, 'troupe-text-fallback', 'block')">
                     <p id="troupe-text-fallback" class="font-garamond text-xl font-light tracking-widest text-ink whitespace-nowrap" style="display: none;">Louis-room</p>
                 </div>
             </div>
