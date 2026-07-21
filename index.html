@@ -12,14 +12,14 @@
     
     <style>
         /* ========================================================
-           ★ ここを1箇所変更するだけでサイト全体の色が変わります ★
+           サイト基本カラー定義（ここで一括変更が可能です）
            ======================================================== */
         :root {
-            --bg-color: #f7f5f0;       /* ←★ 静謐な生成り色・オフホワイト */
-            --text-color: #1a1918;     /* ←★ 墨黒（大見出し・ボタンテキスト用） */
-            --label-color: #785e5b;    /* ←★ 項目名・説明文・ナビ共通カラー（茜ココア） */
-            --text-muted: #4e4a46;     /* ←★ 補足注釈・住所用（濃く見やすいチャコールグレー） */
-            --item-line: #dcd5ce;      /* ←★ 項目間の区切り線（上品で視認性の高いグレージュ） */
+            --bg-color: #f7f5f0;     /* 背景色：静謐な生成り色 */
+            --text-color: #1a1918;   /* メイン文字色：墨黒 */
+            --label-color: #785e5b;  /* 項目名・説明文・ナビ共通カラー（茜ココア） */
+            --text-muted: #4e4a46;   /* 補足注釈・住所：チャコールグレー */
+            --item-line: #dcd5ce;    /* 項目間区切り線：エレガントなグレージュ */
         }
 
         body {
@@ -29,7 +29,7 @@
             word-break: break-all;
         }
 
-        /* 額装のように静かに引き立てる柔らかい影 */
+        /* 柔らかい影（アクセント用） */
         .subtle-shadow {
             box-shadow: 0 12px 30px -8px rgba(26, 25, 24, 0.1), 0 4px 10px -4px rgba(26, 25, 24, 0.04);
         }
@@ -75,12 +75,10 @@
 </head>
 <body class="min-h-screen flex flex-col justify-between selection:bg-ink selection:text-paper bg-paper overflow-x-hidden">
 
-    <!-- 画像読み込みフォールバック処理 -->
+    <!-- 画像フォールバック読み込みスクリプト -->
     <script>
         function tryNextExtension(imgEl, fallbackId, displayType) {
-            const extPatterns = [
-                '.JPG', '.jpg', '.png', '.jpeg', '.PNG', '.JPEG', '.png.JPG'
-            ];
+            const extPatterns = ['.JPG', '.jpg', '.png', '.jpeg', '.PNG', '.JPEG', '.png.JPG'];
             let currentIdx = parseInt(imgEl.getAttribute('data-ext-idx') || '0');
             
             currentIdx++;
@@ -100,14 +98,15 @@
         }
     </script>
 
-    <!-- ヘッダー -->
+    <!-- ==========================================
+         ヘッダー
+         ========================================== -->
     <header class="w-full border-b border-item-line py-5 px-6 sm:px-12 bg-paper/90 backdrop-blur-sm sticky top-0 z-30">
         <div class="max-w-4xl mx-auto flex items-center justify-between">
             <a href="#" class="font-garamond text-xl sm:text-2xl font-light tracking-widest text-ink hover:opacity-75 transition-opacity">
                 Louis-room
             </a>
 
-            <!-- ナビゲーション -->
             <nav class="flex items-center space-x-6 sm:space-x-8 text-xs font-mincho tracking-[0.15em] sm:tracking-[0.2em] text-ink-label">
                 <a href="#info" class="hover:text-ink transition-colors">公演情報</a>
                 <a href="#contact" class="hover:text-ink transition-colors">お問い合わせ</a>
@@ -115,17 +114,19 @@
         </div>
     </header>
 
-    <!-- メインコンテンツ -->
-    <main class="flex-grow max-w-4xl w-full mx-auto px-6 sm:px-12 py-8 sm:py-12 space-y-16 sm:space-y-20">
+    <!-- ==========================================
+         メインコンテンツ
+         ========================================== -->
+    <main class="flex-grow max-w-4xl w-full mx-auto px-6 sm:px-12 py-8 sm:py-12 space-y-10 sm:space-y-12">
 
-        <!-- ヒーローセクション：ビジュアル・タイトル・直接予約ボタン -->
+        <!-- 1. ヒーローセクション（ビジュアル・タイトル・予約ボタン） -->
         <section class="space-y-6">
             
             <!-- メインビジュアル -->
             <div class="w-full flex items-center justify-center">
                 <img src="./flyer.JPG" data-base-name="flyer" alt="Lexicon メインビジュアル" class="w-full h-auto object-cover max-h-[640px] block subtle-shadow rounded-sm" onerror="tryNextExtension(this, 'flyer-fallback', 'flex')">
                 
-                <!-- 画像未配置時のプレースホルダー -->
+                <!-- フォールバックプレースホルダー -->
                 <div id="flyer-fallback" class="w-full py-16 px-8 flex-col items-center justify-center text-center border border-dashed border-ink/20 bg-paper-sub" style="display: none;">
                     <svg class="w-10 h-10 text-ink-label mb-3 stroke-1" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                         <path stroke-linecap="round" stroke-linejoin="round" d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253" />
@@ -134,7 +135,7 @@
                 </div>
             </div>
 
-            <!-- タイトルと外部予約サイトへの直接ボタン -->
+            <!-- タイトル & 予約リンクボタン -->
             <div class="pt-2 flex flex-col sm:flex-row justify-between items-center sm:items-end gap-5 text-center sm:text-left">
                 <div>
                     <h1 class="text-5xl sm:text-6xl font-garamond font-light tracking-wide text-ink">
@@ -157,14 +158,13 @@
 
         </section>
 
-        <!-- 公演情報 (Information) -->
-        <section id="info" class="space-y-6 pt-2">
+        <!-- 2. 公演情報セクション -->
+        <section id="info" class="space-y-6 pt-4">
             <div class="text-center sm:text-left">
                 <span class="text-[10px] font-garamond uppercase tracking-[0.35em] text-ink-label block">Information</span>
                 <h2 class="text-xl sm:text-2xl font-mincho tracking-[0.2em] text-ink mt-0.5">公演情報</h2>
             </div>
 
-            <!-- 項目間の区切り線（border-item-line） -->
             <div class="font-mincho pt-2 space-y-5">
                 
                 <!-- 演目名 -->
@@ -187,7 +187,7 @@
                     </span>
                 </div>
 
-                <!-- 日程 & タイムテーブル -->
+                <!-- 日時 -->
                 <div class="grid grid-cols-1 sm:grid-cols-4 gap-1.5 sm:gap-4 items-start pb-5 border-b border-item-line">
                     <span class="text-xs sm:text-sm text-ink-label font-medium tracking-wider sm:col-span-1 pt-0.5">
                         日時
@@ -200,7 +200,7 @@
                         <div class="border-l-2 border-ink-label/30 pl-4 py-1.5 space-y-2 text-xs sm:text-sm">
                             <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-1">
                                 <span class="text-ink-label font-medium">10月11日（日）</span>
-                                <span class="font-bold">14:00　／18:00</span>
+                                <span class="font-bold">14:00　／　18:00</span>
                             </div>
                             <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-1">
                                 <span class="text-ink-label font-medium">10月12日（月・祝）</span>
@@ -231,7 +231,7 @@
                 </div>
 
                 <!-- 料金 -->
-                <div class="grid grid-cols-1 sm:grid-cols-4 gap-1.5 sm:gap-4 items-baseline pt-1">
+                <div class="grid grid-cols-1 sm:grid-cols-4 gap-1.5 sm:gap-4 items-baseline pb-5 border-b border-item-line">
                     <span class="text-xs sm:text-sm text-ink-label font-medium tracking-wider sm:col-span-1">
                         料金
                     </span>
@@ -243,7 +243,7 @@
             </div>
         </section>
 
-        <!-- お問い合わせ (Contact) -->
+        <!-- 3. お問い合わせセクション -->
         <section id="contact" class="max-w-xl mx-auto text-center space-y-4 pt-2">
             <div>
                 <span class="text-[10px] font-garamond uppercase tracking-[0.35em] text-ink-label block">Contact</span>
@@ -251,7 +251,6 @@
             </div>
 
             <div class="space-y-3 font-mincho text-xs sm:text-sm text-ink-label pt-2 overflow-x-auto">
-                <!-- メールアドレス -->
                 <div class="flex items-center justify-center gap-2 whitespace-nowrap">
                     <span class="font-medium">メール：</span>
                     <a href="mailto:louisroom.drama@gmail.com" class="font-garamond text-sm sm:text-base text-ink underline underline-offset-4 hover:opacity-75 transition-opacity">
@@ -259,7 +258,6 @@
                     </a>
                 </div>
 
-                <!-- 公式X -->
                 <div class="flex items-center justify-center gap-2 whitespace-nowrap pt-1">
                     <span class="font-medium">公式 X：</span>
                     <span class="text-ink font-medium">準備中（開設後にお知らせいたします）</span>
@@ -267,27 +265,28 @@
             </div>
         </section>
 
-        <!-- 劇団紹介 (Troupe) -->
-        <section id="troupe" class="max-w-xl mx-auto text-center space-y-3 pt-4 pb-4">
-            
-            <div class="flex flex-col items-center justify-center">
-                <div class="w-20 h-20 sm:w-24 sm:h-24 rounded-full overflow-hidden icon-shadow flex items-center justify-center">
+        <!-- 4. 劇団紹介セクション -->
+        <section id="troupe" class="max-w-xl mx-auto pt-2 pb-4">
+            <div class="flex flex-row items-center justify-center gap-4 sm:gap-6">
+                <div class="w-16 h-16 sm:w-20 sm:h-20 shrink-0 rounded-full overflow-hidden icon-shadow flex items-center justify-center">
                     <img src="./icon.JPG" data-base-name="icon" alt="Louis-room Icon" class="w-full h-full object-cover rounded-full block" onerror="tryNextExtension(this, 'troupe-icon-fallback', 'block')">
                     <div id="troupe-icon-fallback" class="w-full h-full rounded-full bg-paper-sub flex items-center justify-center" style="display: none;">
                         <span class="font-garamond text-xs text-ink-label">Louis</span>
                     </div>
                 </div>
-            </div>
 
-            <p class="text-xs font-mincho text-ink-label leading-loose">
-                演劇脚本『Lexicon』の上演を目的に組織された有志演劇団体。<br>
-                京都大学の学生劇団である「劇団ケッペキ」の元/現団員により構成される。
-            </p>
+                <p class="text-xs sm:text-sm font-mincho text-ink-label leading-relaxed sm:leading-loose text-left">
+                    演劇脚本『Lexicon』の上演を目的に組織された有志演劇団体。<br class="hidden sm:inline">
+                    京都大学の学生劇団である「劇団ケッペキ」の元/現団員により構成される。
+                </p>
+            </div>
         </section>
 
     </main>
 
-    <!-- フッター -->
+    <!-- ==========================================
+         フッター
+         ========================================== -->
     <footer class="border-t border-item-line py-4 bg-paper">
     </footer>
 
