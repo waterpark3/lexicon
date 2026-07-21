@@ -263,3 +263,261 @@
 </html>
 
 
+<!DOCTYPE html>
+<html lang="ja" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lexicon｜Louis-room</title>
+    
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=EB+Garamond:ital,wght@0,400..600;1,400..600&family=Zen+Old+Mincho:wght@400;500;700&display=swap" rel="stylesheet">
+    
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        paper: '#FAF8F5',
+                        'paper-sub': '#F2EEE7',
+                        ink: '#1A1817',
+                        'ink-muted': '#6E6A63',
+                        'ink-light': '#A39E96',
+                    },
+                    fontFamily: {
+                        garamond: ['"EB Garamond"', 'serif'],
+                        mincho: ['"Zen Old Mincho"', 'serif'],
+                    }
+                }
+            }
+        }
+    </script>
+
+    <style>
+        body {
+            background-color: #FAF8F5;
+            color: #1A1817;
+            font-family: 'Zen Old Mincho', serif;
+            word-break: break-all;
+            background-image: radial-gradient(#1a1817 0.2px, transparent 0.2px);
+            background-size: 28px 28px;
+        }
+
+        /* カスタムスクロールバー */
+        ::-webkit-scrollbar {
+            width: 4px;
+        }
+        ::-webkit-scrollbar-track {
+            background: #FAF8F5;
+        }
+        ::-webkit-scrollbar-thumb {
+            background: #D8D3C9;
+        }
+    </style>
+</head>
+<body class="min-h-screen flex flex-col justify-between selection:bg-ink selection:text-paper">
+
+    <!-- ファイル拡張子判別スクリプト -->
+    <script>
+        function tryNextExtension(imgEl, fallbackId, displayType) {
+            const extPatterns = [
+                '.JPG', '.jpg', '.png', '.jpeg', '.PNG', '.JPEG', '.png.JPG'
+            ];
+            let currentIdx = parseInt(imgEl.getAttribute('data-ext-idx') || '0');
+            
+            currentIdx++;
+            if (currentIdx < extPatterns.length) {
+                imgEl.setAttribute('data-ext-idx', currentIdx);
+                const baseName = imgEl.getAttribute('data-base-name');
+                imgEl.src = './' + baseName + extPatterns[currentIdx];
+            } else {
+                imgEl.style.display = 'none';
+                if (fallbackId) {
+                    const fallbackEl = document.getElementById(fallbackId);
+                    if (fallbackEl) {
+                        fallbackEl.style.display = displayType || 'block';
+                    }
+                }
+            }
+        }
+    </script>
+
+    <!-- ヘッダー -->
+    <header class="w-full border-b border-ink/10 py-6 px-6 sm:px-12 bg-paper/80 backdrop-blur-sm sticky top-0 z-30">
+        <div class="max-w-4xl mx-auto flex items-center justify-between">
+            <a href="#" class="inline-flex items-center">
+                <img src="./logo.JPG" data-base-name="logo" alt="Louis-room" class="h-7 sm:h-8 w-auto object-contain mix-blend-multiply opacity-90" onerror="tryNextExtension(this, 'header-logo-fallback', 'inline-block')">
+                <span id="header-logo-fallback" class="font-garamond text-xl font-light tracking-widest text-ink whitespace-nowrap" style="display: none;">Louis-room</span>
+            </a>
+
+            <nav class="flex items-center space-x-6 text-xs font-mincho tracking-widest text-ink-muted">
+                <a href="#info" class="hover:text-ink transition-colors">公演情報</a>
+                <a href="#reserve" class="hover:text-ink transition-colors">ご予約</a>
+                <a href="#troupe" class="hover:text-ink transition-colors">劇団</a>
+            </nav>
+        </div>
+    </header>
+
+    <!-- メインコンテンツ -->
+    <main class="flex-grow max-w-4xl w-full mx-auto px-6 sm:px-12 py-12 sm:py-20 space-y-20 sm:space-y-28">
+
+        <!-- ヒーローセクション：ビジュアル・タイトル・導線 -->
+        <section class="space-y-10">
+            
+            <!-- メインビジュアル（枠線をなくしたシンプルな配置） -->
+            <div class="w-full flex items-center justify-center">
+                <img src="./flyer.JPG" data-base-name="flyer" alt="Lexicon メインビジュアル" class="w-full h-auto object-cover max-h-[640px] block" onerror="tryNextExtension(this, 'flyer-fallback', 'flex')">
+                
+                <!-- 画像未配置時のプレースホルダー -->
+                <div id="flyer-fallback" class="w-full py-16 px-8 flex-col items-center justify-center text-center border border-dashed border-ink/20 bg-paper-sub/30" style="display: none;">
+                    <svg class="w-10 h-10 text-ink-light mb-3 stroke-1" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                        <path stroke-linecap="round" stroke-linejoin="round" d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253" />
+                    </svg>
+                    <p class="font-garamond text-xs text-ink-muted tracking-widest uppercase">Lexicon — Main Visual</p>
+                </div>
+            </div>
+
+            <!-- タイトルと予約への導線 -->
+            <div class="pt-6 border-t border-ink/10 flex flex-col sm:flex-row justify-between items-center sm:items-end gap-6 text-center sm:text-left">
+                <div>
+                    <h1 class="text-5xl sm:text-6xl font-garamond font-light tracking-wide text-ink">
+                        Lexicon
+                    </h1>
+                    <p class="text-xs font-mincho text-ink-muted tracking-[0.25em] mt-2">
+                        主催：ルイルーム（Louis-room）
+                    </p>
+                </div>
+
+                <div>
+                    <a href="#reserve" class="inline-block px-8 py-3.5 bg-ink text-paper text-xs font-mincho tracking-[0.25em] hover:bg-ink-muted transition-colors duration-300">
+                        ご予約はこちら
+                    </a>
+                </div>
+            </div>
+
+        </section>
+
+        <!-- 公演情報 (Information) -->
+        <section id="info" class="space-y-8 pt-4">
+            <div class="text-center sm:text-left">
+                <span class="text-[10px] font-garamond uppercase tracking-[0.3em] text-ink-light">Information</span>
+                <h2 class="text-xl sm:text-2xl font-mincho tracking-[0.2em] text-ink mt-1">公演情報</h2>
+            </div>
+
+            <div class="space-y-8 font-mincho text-xs sm:text-sm border-t border-b border-ink/10 py-10">
+                
+                <!-- 演目名 -->
+                <div class="grid grid-cols-1 sm:grid-cols-4 gap-2">
+                    <span class="text-ink-muted tracking-widest sm:col-span-1">作品タイトル</span>
+                    <span class="sm:col-span-3 text-ink tracking-wider font-semibold">『Lexicon』</span>
+                </div>
+
+                <!-- 主催 -->
+                <div class="grid grid-cols-1 sm:grid-cols-4 gap-2">
+                    <span class="text-ink-muted tracking-widest sm:col-span-1">主催</span>
+                    <span class="sm:col-span-3 text-ink tracking-wider">
+                        ルイルーム（Louis-room）
+                    </span>
+                </div>
+
+                <!-- 日程 & タイムテーブル -->
+                <div class="grid grid-cols-1 sm:grid-cols-4 gap-2">
+                    <span class="text-ink-muted tracking-widest sm:col-span-1">日時</span>
+                    <div class="sm:col-span-3 text-ink tracking-wider space-y-4">
+                        <p class="font-semibold text-ink">2026年 10月11日（日）〜 10月12日（月・祝）</p>
+                        
+                        <div class="border-l-2 border-ink/20 pl-4 py-1 space-y-2 text-xs">
+                            <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-1">
+                                <span class="text-ink-muted">10月11日（日）</span>
+                                <span>① 14:00　／　② 18:00</span>
+                            </div>
+                            <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-1">
+                                <span class="text-ink-muted">10月12日（月・祝）</span>
+                                <span>③ 14:00　／　④ 18:00</span>
+                            </div>
+                        </div>
+
+                        <p class="text-[11px] text-ink-muted leading-relaxed pt-1">
+                            ・受付開始・開場は、開演の30分前です。<br>
+                            ・上演時間：約40分
+                        </p>
+                    </div>
+                </div>
+
+                <!-- 会場 -->
+                <div class="grid grid-cols-1 sm:grid-cols-4 gap-2">
+                    <span class="text-ink-muted tracking-widest sm:col-span-1">会場</span>
+                    <span class="sm:col-span-3 text-ink tracking-wider leading-relaxed">
+                        <span class="font-semibold">京都市立芸術大学 映像スタジオ</span><br>
+                        <span class="text-xs text-ink-muted">〒600-8601 京都市下京区崇仁高瀬町57-1</span>
+                    </span>
+                </div>
+
+                <!-- 料金 -->
+                <div class="grid grid-cols-1 sm:grid-cols-4 gap-2">
+                    <span class="text-ink-muted tracking-widest sm:col-span-1">料金</span>
+                    <span class="sm:col-span-3 text-ink tracking-wider">
+                        無料
+                    </span>
+                </div>
+
+            </div>
+        </section>
+
+        <!-- ご予約 (Reservation) -->
+        <section id="reserve" class="max-w-xl mx-auto text-center space-y-6 pt-4">
+            <div>
+                <span class="text-[10px] font-garamond uppercase tracking-[0.3em] text-ink-light">Reservation</span>
+                <h2 class="text-xl sm:text-2xl font-mincho tracking-[0.2em] text-ink mt-1">チケットご予約</h2>
+            </div>
+            
+            <p class="text-xs font-mincho text-ink-muted leading-relaxed">
+                ご予約は外部フォーム（フォームメーラー）にて承っております。<br>
+                以下のボタンよりお進みの上、お手続きください。
+            </p>
+
+            <div class="pt-2">
+                <a href="https://www.form-mailer.jp/" target="_blank" rel="noopener noreferrer" class="inline-flex items-center justify-center gap-3 px-10 py-4 bg-ink text-paper text-xs font-mincho tracking-[0.25em] hover:bg-ink-muted transition-colors duration-300">
+                    <span>フォームメーラーで予約する</span>
+                    <svg class="w-3.5 h-3.5 stroke-current" fill="none" viewBox="0 0 24 24">
+                        <path d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                    </svg>
+                </a>
+            </div>
+        </section>
+
+        <!-- 劇団紹介 (Troupe) -->
+        <section id="troupe" class="max-w-xl mx-auto text-center space-y-6 pt-8 pb-10">
+            
+            <!-- 劇団アイコン写真のみ配置（下の重複ロゴは削除） -->
+            <div class="flex flex-col items-center justify-center">
+                <div class="w-20 h-20 sm:w-24 sm:h-24 rounded-full overflow-hidden border border-ink/15 p-0.5 bg-white shadow-sm flex items-center justify-center">
+                    <img src="./icon.JPG" data-base-name="icon" alt="Louis-room Icon" class="w-full h-full object-cover rounded-full block" onerror="tryNextExtension(this, 'troupe-icon-fallback', 'block')">
+                    <div id="troupe-icon-fallback" class="w-full h-full rounded-full bg-paper-sub flex items-center justify-center" style="display: none;">
+                        <span class="font-garamond text-xs text-ink-light">Louis</span>
+                    </div>
+                </div>
+            </div>
+
+            <p class="text-xs font-mincho text-ink-muted leading-loose">
+                演劇脚本『Lexicon』の上演を目的に組織された有志演劇団体。<br>
+                京都大学の学生劇団である「劇団ケッペキ」の元/現団員により構成される。
+            </p>
+        </section>
+
+    </main>
+
+    <!-- フッター -->
+    <footer class="border-t border-ink/10 py-8 text-center bg-paper">
+        <p class="font-garamond text-sm font-light tracking-widest text-ink">Lexicon</p>
+        <p class="text-[10px] font-mincho text-ink-muted tracking-widest mt-1">&copy; Louis-room. All Rights Reserved.</p>
+    </footer>
+
+</body>
+</html>
+
+
