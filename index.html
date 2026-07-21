@@ -15,10 +15,11 @@
            ★ ここを1箇所変更するだけでサイト全体の色が変わります ★
            ======================================================== */
         :root {
-            --bg-color: #f7f5f0;     /* ←★ 静謐な生成り色・オフホワイト */
-            --text-color: #1a1918;   /* ←★ 墨黒（大見出し・ボタンテキスト用） */
-            --label-color: #785e5b;  /* ←★ 項目名・説明文・ナビ共通カラー（茜ココア） */
-            --text-muted: #4e4a46;   /* ←★ 補足注釈・住所用（濃く見やすいチャコールグレー） */
+            --bg-color: #f7f5f0;       /* ←★ 静謐な生成り色・オフホワイト */
+            --text-color: #1a1918;     /* ←★ 墨黒（大見出し・ボタンテキスト用） */
+            --label-color: #785e5b;    /* ←★ 項目名・説明文・ナビ共通カラー（茜ココア） */
+            --text-muted: #4e4a46;     /* ←★ 補足注釈・住所用（濃く見やすいチャコールグレー） */
+            --item-line: #dcd5ce;      /* ←★ 項目間の区切り線（上品で視認性の高いグレージュ） */
         }
 
         body {
@@ -61,6 +62,7 @@
                         ink: 'var(--text-color)',
                         'ink-label': 'var(--label-color)',
                         'ink-muted': 'var(--text-muted)',
+                        'item-line': 'var(--item-line)',
                     },
                     fontFamily: {
                         garamond: ['"EB Garamond"', 'serif'],
@@ -71,7 +73,7 @@
         }
     </script>
 </head>
-<body class="min-h-screen flex flex-col justify-between selection:bg-ink selection:text-paper bg-paper">
+<body class="min-h-screen flex flex-col justify-between selection:bg-ink selection:text-paper bg-paper overflow-x-hidden">
 
     <!-- 画像読み込みフォールバック処理 -->
     <script>
@@ -99,7 +101,7 @@
     </script>
 
     <!-- ヘッダー -->
-    <header class="w-full border-b border-ink/10 py-5 px-6 sm:px-12 bg-paper/90 backdrop-blur-sm sticky top-0 z-30">
+    <header class="w-full border-b border-item-line py-5 px-6 sm:px-12 bg-paper/90 backdrop-blur-sm sticky top-0 z-30">
         <div class="max-w-4xl mx-auto flex items-center justify-between">
             <a href="#" class="font-garamond text-xl sm:text-2xl font-light tracking-widest text-ink hover:opacity-75 transition-opacity">
                 Louis-room
@@ -114,10 +116,10 @@
     </header>
 
     <!-- メインコンテンツ -->
-    <main class="flex-grow max-w-4xl w-full mx-auto px-6 sm:px-12 py-8 sm:py-10 space-y-8 sm:space-y-10">
+    <main class="flex-grow max-w-4xl w-full mx-auto px-6 sm:px-12 py-8 sm:py-12 space-y-16 sm:space-y-20">
 
         <!-- ヒーローセクション：ビジュアル・タイトル・直接予約ボタン -->
-        <section class="space-y-6 pb-6 sm:pb-8 border-b border-ink/10">
+        <section class="space-y-6">
             
             <!-- メインビジュアル -->
             <div class="w-full flex items-center justify-center">
@@ -156,16 +158,17 @@
         </section>
 
         <!-- 公演情報 (Information) -->
-        <section id="info" class="space-y-6 pt-2 pb-8 border-b border-ink/10">
+        <section id="info" class="space-y-6 pt-2">
             <div class="text-center sm:text-left">
                 <span class="text-[10px] font-garamond uppercase tracking-[0.35em] text-ink-label block">Information</span>
                 <h2 class="text-xl sm:text-2xl font-mincho tracking-[0.2em] text-ink mt-0.5">公演情報</h2>
             </div>
 
-            <div class="space-y-6 font-mincho pt-2">
+            <!-- 項目間の区切り線（border-item-line） -->
+            <div class="font-mincho pt-2 space-y-5">
                 
                 <!-- 演目名 -->
-                <div class="grid grid-cols-1 sm:grid-cols-4 gap-1.5 sm:gap-4 items-baseline">
+                <div class="grid grid-cols-1 sm:grid-cols-4 gap-1.5 sm:gap-4 items-baseline pb-5 border-b border-item-line">
                     <span class="text-xs sm:text-sm text-ink-label font-medium tracking-wider sm:col-span-1">
                         作品タイトル
                     </span>
@@ -175,7 +178,7 @@
                 </div>
 
                 <!-- 主催 -->
-                <div class="grid grid-cols-1 sm:grid-cols-4 gap-1.5 sm:gap-4 items-baseline">
+                <div class="grid grid-cols-1 sm:grid-cols-4 gap-1.5 sm:gap-4 items-baseline pb-5 border-b border-item-line">
                     <span class="text-xs sm:text-sm text-ink-label font-medium tracking-wider sm:col-span-1">
                         主催
                     </span>
@@ -185,7 +188,7 @@
                 </div>
 
                 <!-- 日程 & タイムテーブル -->
-                <div class="grid grid-cols-1 sm:grid-cols-4 gap-1.5 sm:gap-4 items-start">
+                <div class="grid grid-cols-1 sm:grid-cols-4 gap-1.5 sm:gap-4 items-start pb-5 border-b border-item-line">
                     <span class="text-xs sm:text-sm text-ink-label font-medium tracking-wider sm:col-span-1 pt-0.5">
                         日時
                     </span>
@@ -197,7 +200,7 @@
                         <div class="border-l-2 border-ink-label/30 pl-4 py-1.5 space-y-2 text-xs sm:text-sm">
                             <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-1">
                                 <span class="text-ink-label font-medium">10月11日（日）</span>
-                                <span class="font-bold">14:00　／　18:00</span>
+                                <span class="font-bold">14:00　／18:00</span>
                             </div>
                             <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-1">
                                 <span class="text-ink-label font-medium">10月12日（月・祝）</span>
@@ -205,7 +208,6 @@
                             </div>
                         </div>
 
-                        <!-- 濃く読みやすくなった注釈テキスト（text-ink-muted） -->
                         <p class="text-xs text-ink-muted leading-relaxed pt-1">
                             ・受付開始・開場は、開演の30分前です。<br>
                             ・上演時間：約40分
@@ -214,7 +216,7 @@
                 </div>
 
                 <!-- 会場 -->
-                <div class="grid grid-cols-1 sm:grid-cols-4 gap-1.5 sm:gap-4 items-start">
+                <div class="grid grid-cols-1 sm:grid-cols-4 gap-1.5 sm:gap-4 items-start pb-5 border-b border-item-line">
                     <span class="text-xs sm:text-sm text-ink-label font-medium tracking-wider sm:col-span-1 pt-0.5">
                         会場
                     </span>
@@ -222,7 +224,6 @@
                         <span class="text-sm sm:text-base font-bold block tracking-wider">
                             京都市立芸術大学 映像スタジオ
                         </span>
-                        <!-- 濃く読みやすくなった住所テキスト（text-ink-muted） -->
                         <span class="text-xs text-ink-muted block leading-relaxed">
                             〒600-8601 京都市下京区崇仁高瀬町57-1
                         </span>
@@ -230,7 +231,7 @@
                 </div>
 
                 <!-- 料金 -->
-                <div class="grid grid-cols-1 sm:grid-cols-4 gap-1.5 sm:gap-4 items-baseline">
+                <div class="grid grid-cols-1 sm:grid-cols-4 gap-1.5 sm:gap-4 items-baseline pt-1">
                     <span class="text-xs sm:text-sm text-ink-label font-medium tracking-wider sm:col-span-1">
                         料金
                     </span>
@@ -287,7 +288,7 @@
     </main>
 
     <!-- フッター -->
-    <footer class="border-t border-ink/10 py-4 bg-paper">
+    <footer class="border-t border-item-line py-4 bg-paper">
     </footer>
 
 </body>
