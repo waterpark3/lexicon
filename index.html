@@ -40,6 +40,15 @@
             word-break: break-all;
         }
 
+        /* 画像を背景から際立たせるシャドウ */
+        .image-shadow {
+            box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.12), 0 8px 10px -6px rgba(0, 0, 0, 0.08);
+        }
+
+        .icon-shadow {
+            box-shadow: 0 6px 18px -2px rgba(0, 0, 0, 0.15);
+        }
+
         /* カスタムスクロールバー */
         ::-webkit-scrollbar {
             width: 4px;
@@ -80,11 +89,10 @@
     </script>
 
     <!-- ヘッダー -->
-    <header class="w-full border-b border-ink/10 py-6 px-6 sm:px-12 bg-paper/90 backdrop-blur-sm sticky top-0 z-30">
+    <header class="w-full border-b border-ink/10 py-5 px-6 sm:px-12 bg-paper/90 backdrop-blur-sm sticky top-0 z-30">
         <div class="max-w-4xl mx-auto flex items-center justify-between">
-            <a href="#" class="inline-flex items-center">
-                <img src="./logo.JPG" data-base-name="logo" alt="Louis-room" class="h-7 sm:h-8 w-auto object-contain opacity-90" onerror="tryNextExtension(this, 'header-logo-fallback', 'inline-block')">
-                <span id="header-logo-fallback" class="font-garamond text-xl font-light tracking-widest text-ink whitespace-nowrap" style="display: none;">Louis-room</span>
+            <a href="#" class="font-garamond text-xl sm:text-2xl font-light tracking-wide text-ink hover:opacity-80 transition-opacity">
+                Louis-room
             </a>
 
             <nav class="flex items-center space-x-6 text-xs font-mincho tracking-widest text-ink-muted">
@@ -96,14 +104,14 @@
     </header>
 
     <!-- メインコンテンツ -->
-    <main class="flex-grow max-w-4xl w-full mx-auto px-6 sm:px-12 py-12 sm:py-20 space-y-20 sm:space-y-28">
+    <main class="flex-grow max-w-4xl w-full mx-auto px-6 sm:px-12 py-8 sm:py-14 space-y-10 sm:space-y-14">
 
         <!-- ヒーローセクション：ビジュアル・タイトル・導線 -->
-        <section class="space-y-10">
+        <section class="space-y-8">
             
-            <!-- メインビジュアル（元画像の発色で表示） -->
+            <!-- メインビジュアル（背景から浮き上がる影を追加） -->
             <div class="w-full flex items-center justify-center">
-                <img src="./flyer.JPG" data-base-name="flyer" alt="Lexicon メインビジュアル" class="w-full h-auto object-cover max-h-[640px] block shadow-sm" onerror="tryNextExtension(this, 'flyer-fallback', 'flex')">
+                <img src="./flyer.JPG" data-base-name="flyer" alt="Lexicon メインビジュアル" class="w-full h-auto object-cover max-h-[640px] block image-shadow rounded-sm" onerror="tryNextExtension(this, 'flyer-fallback', 'flex')">
                 
                 <!-- 画像未配置時のプレースホルダー -->
                 <div id="flyer-fallback" class="w-full py-16 px-8 flex-col items-center justify-center text-center border border-dashed border-ink/20 bg-paper-sub/30" style="display: none;">
@@ -115,7 +123,7 @@
             </div>
 
             <!-- タイトルと予約への導線 -->
-            <div class="pt-6 border-t border-ink/10 flex flex-col sm:flex-row justify-between items-center sm:items-end gap-6 text-center sm:text-left">
+            <div class="pt-4 border-t border-ink/10 flex flex-col sm:flex-row justify-between items-center sm:items-end gap-6 text-center sm:text-left">
                 <div>
                     <h1 class="text-5xl sm:text-6xl font-garamond font-light tracking-wide text-ink">
                         Lexicon
@@ -135,13 +143,13 @@
         </section>
 
         <!-- 公演情報 (Information) -->
-        <section id="info" class="space-y-8 pt-4">
+        <section id="info" class="space-y-6">
             <div class="text-center sm:text-left">
                 <span class="text-[10px] font-garamond uppercase tracking-[0.3em] text-ink-light">Information</span>
                 <h2 class="text-xl sm:text-2xl font-mincho tracking-[0.2em] text-ink mt-1">公演情報</h2>
             </div>
 
-            <div class="space-y-8 font-mincho text-xs sm:text-sm border-t border-b border-ink/10 py-10">
+            <div class="space-y-6 font-mincho text-xs sm:text-sm border-t border-b border-ink/10 py-8">
                 
                 <!-- 演目名 -->
                 <div class="grid grid-cols-1 sm:grid-cols-4 gap-2">
@@ -160,7 +168,7 @@
                 <!-- 日程 & タイムテーブル -->
                 <div class="grid grid-cols-1 sm:grid-cols-4 gap-2">
                     <span class="text-ink-muted tracking-widest sm:col-span-1">日時</span>
-                    <div class="sm:col-span-3 text-ink tracking-wider space-y-4">
+                    <div class="sm:col-span-3 text-ink tracking-wider space-y-3">
                         <p class="font-semibold text-ink">2026年 10月11日（日）〜 10月12日（月・祝）</p>
                         
                         <div class="border-l-2 border-ink/20 pl-4 py-1 space-y-2 text-xs">
@@ -202,10 +210,10 @@
         </section>
 
         <!-- ご予約 (Reservation) -->
-        <section id="reserve" class="max-w-xl mx-auto text-center space-y-6 pt-4">
+        <section id="reserve" class="max-w-xl mx-auto text-center space-y-4">
             <div>
                 <span class="text-[10px] font-garamond uppercase tracking-[0.3em] text-ink-light">Reservation</span>
-                <h2 class="text-xl sm:text-2xl font-mincho tracking-[0.2em] text-ink mt-1">チケットご予約</h2>
+                <h2 class="text-xl sm:text-2xl font-mincho tracking-[0.2em] text-ink mt-0.5">チケットご予約</h2>
             </div>
             
             <p class="text-xs font-mincho text-ink-muted leading-relaxed">
@@ -213,8 +221,8 @@
                 以下のボタンよりお進みの上、お手続きください。
             </p>
 
-            <div class="pt-2">
-                <a href="https://www.form-mailer.jp/" target="_blank" rel="noopener noreferrer" class="inline-flex items-center justify-center gap-3 px-10 py-4 bg-ink text-paper text-xs font-mincho tracking-[0.25em] hover:bg-ink-muted transition-colors duration-300">
+            <div class="pt-1">
+                <a href="https://www.form-mailer.jp/" target="_blank" rel="noopener noreferrer" class="inline-flex items-center justify-center gap-3 px-10 py-3.5 bg-ink text-paper text-xs font-mincho tracking-[0.25em] hover:bg-ink-muted transition-colors duration-300">
                     <span>フォームメーラーで予約する</span>
                     <svg class="w-3.5 h-3.5 stroke-current" fill="none" viewBox="0 0 24 24">
                         <path d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
@@ -224,11 +232,11 @@
         </section>
 
         <!-- 劇団紹介 (Troupe) -->
-        <section id="troupe" class="max-w-xl mx-auto text-center space-y-6 pt-8 pb-10">
+        <section id="troupe" class="max-w-xl mx-auto text-center space-y-4 pb-4">
             
-            <!-- 劇団アイコン写真（内側の白背景・余白を削除してすっきり丸型表示） -->
+            <!-- 劇団アイコン（背景からくっきりと独立させる円形ドロップシャドウを追加） -->
             <div class="flex flex-col items-center justify-center">
-                <div class="w-20 h-20 sm:w-24 sm:h-24 rounded-full overflow-hidden shadow-sm flex items-center justify-center">
+                <div class="w-20 h-20 sm:w-24 sm:h-24 rounded-full overflow-hidden icon-shadow flex items-center justify-center">
                     <img src="./icon.JPG" data-base-name="icon" alt="Louis-room Icon" class="w-full h-full object-cover rounded-full block" onerror="tryNextExtension(this, 'troupe-icon-fallback', 'block')">
                     <div id="troupe-icon-fallback" class="w-full h-full rounded-full bg-paper-sub flex items-center justify-center" style="display: none;">
                         <span class="font-garamond text-xs text-ink-light">Louis</span>
@@ -245,7 +253,7 @@
     </main>
 
     <!-- フッター -->
-    <footer class="border-t border-ink/10 py-8 text-center bg-paper">
+    <footer class="border-t border-ink/10 py-6 text-center bg-paper">
         <p class="font-garamond text-sm font-light tracking-widest text-ink">Lexicon</p>
         <p class="text-[10px] font-mincho text-ink-muted tracking-widest mt-1">&copy; Louis-room. All Rights Reserved.</p>
     </footer>
