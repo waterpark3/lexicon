@@ -17,8 +17,8 @@
             theme: {
                 extend: {
                     colors: {
-                        paper: '#FAF8F5',
-                        'paper-sub': '#F2EEE7',
+                        paper: '#efefef',
+                        'paper-sub': '#e2e2e2',
                         ink: '#1A1817',
                         'ink-muted': '#6E6A63',
                         'ink-light': '#A39E96',
@@ -34,12 +34,10 @@
 
     <style>
         body {
-            background-color: #FAF8F5;
+            background-color: #efefef;
             color: #1A1817;
             font-family: 'Zen Old Mincho', serif;
             word-break: break-all;
-            background-image: radial-gradient(#1a1817 0.2px, transparent 0.2px);
-            background-size: 28px 28px;
         }
 
         /* カスタムスクロールバー */
@@ -47,14 +45,14 @@
             width: 4px;
         }
         ::-webkit-scrollbar-track {
-            background: #FAF8F5;
+            background: #efefef;
         }
         ::-webkit-scrollbar-thumb {
-            background: #D8D3C9;
+            background: #cccccc;
         }
     </style>
 </head>
-<body class="min-h-screen flex flex-col justify-between selection:bg-ink selection:text-paper">
+<body class="min-h-screen flex flex-col justify-between selection:bg-ink selection:text-paper bg-paper">
 
     <!-- 万が一ファイル名が異なる場合のフォールバック処理 -->
     <script>
@@ -82,7 +80,7 @@
     </script>
 
     <!-- ヘッダー -->
-    <header class="w-full border-b border-ink/10 py-6 px-6 sm:px-12 bg-paper/80 backdrop-blur-sm sticky top-0 z-30">
+    <header class="w-full border-b border-ink/10 py-6 px-6 sm:px-12 bg-paper/90 backdrop-blur-sm sticky top-0 z-30">
         <div class="max-w-4xl mx-auto flex items-center justify-between">
             <a href="#" class="inline-flex items-center">
                 <img src="./logo.JPG" data-base-name="logo" alt="Louis-room" class="h-7 sm:h-8 w-auto object-contain mix-blend-multiply opacity-90" onerror="tryNextExtension(this, 'header-logo-fallback', 'inline-block')">
@@ -103,9 +101,9 @@
         <!-- ヒーローセクション：ビジュアル・タイトル・導線 -->
         <section class="space-y-10">
             
-            <!-- メインビジュアル（枠線なし） -->
+            <!-- メインビジュアル（シームレスに配置） -->
             <div class="w-full flex items-center justify-center">
-                <img src="./flyer.JPG" data-base-name="flyer" alt="Lexicon メインビジュアル" class="w-full h-auto object-cover max-h-[640px] block" onerror="tryNextExtension(this, 'flyer-fallback', 'flex')">
+                <img src="./flyer.JPG" data-base-name="flyer" alt="Lexicon メインビジュアル" class="w-full h-auto object-cover max-h-[640px] block mix-blend-multiply" onerror="tryNextExtension(this, 'flyer-fallback', 'flex')">
                 
                 <!-- 画像未配置時のプレースホルダー -->
                 <div id="flyer-fallback" class="w-full py-16 px-8 flex-col items-center justify-center text-center border border-dashed border-ink/20 bg-paper-sub/30" style="display: none;">
@@ -230,8 +228,8 @@
             
             <!-- 劇団アイコン写真のみ配置 -->
             <div class="flex flex-col items-center justify-center">
-                <div class="w-20 h-20 sm:w-24 sm:h-24 rounded-full overflow-hidden border border-ink/15 p-0.5 bg-white shadow-sm flex items-center justify-center">
-                    <img src="./icon.JPG" data-base-name="icon" alt="Louis-room Icon" class="w-full h-full object-cover rounded-full block" onerror="tryNextExtension(this, 'troupe-icon-fallback', 'block')">
+                <div class="w-20 h-20 sm:w-24 sm:h-24 rounded-full overflow-hidden border border-ink/15 p-0.5 bg-white/80 shadow-sm flex items-center justify-center">
+                    <img src="./icon.JPG" data-base-name="icon" alt="Louis-room Icon" class="w-full h-full object-cover rounded-full block mix-blend-multiply" onerror="tryNextExtension(this, 'troupe-icon-fallback', 'block')">
                     <div id="troupe-icon-fallback" class="w-full h-full rounded-full bg-paper-sub flex items-center justify-center" style="display: none;">
                         <span class="font-garamond text-xs text-ink-light">Louis</span>
                     </div>
