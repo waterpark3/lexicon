@@ -18,6 +18,7 @@
             --bg-color: #f7f5f0;     /* ←★ 静謐な生成り色・オフホワイト */
             --text-color: #1a1918;   /* ←★ 墨黒（大見出し・ボタンテキスト用） */
             --label-color: #785e5b;  /* ←★ 項目名・説明文・ナビ共通カラー（茜ココア） */
+            --text-muted: #4e4a46;   /* ←★ 補足注釈・住所用（濃く見やすいチャコールグレー） */
         }
 
         body {
@@ -59,6 +60,7 @@
                         'paper-sub': 'rgba(26, 25, 24, 0.04)',
                         ink: 'var(--text-color)',
                         'ink-label': 'var(--label-color)',
+                        'ink-muted': 'var(--text-muted)',
                     },
                     fontFamily: {
                         garamond: ['"EB Garamond"', 'serif'],
@@ -103,20 +105,19 @@
                 Louis-room
             </a>
 
-            <!-- ナビゲーションの色を項目カラー（text-ink-label）に変更 -->
-            <nav class="flex items-center space-x-6 sm:space-x-8 text-xs font-mincho tracking-[0.2em] text-ink-label">
+            <!-- ナビゲーション -->
+            <nav class="flex items-center space-x-6 sm:space-x-8 text-xs font-mincho tracking-[0.15em] sm:tracking-[0.2em] text-ink-label">
                 <a href="#info" class="hover:text-ink transition-colors">公演情報</a>
-                <a href="#reserve" class="hover:text-ink transition-colors">ご予約</a>
-                <a href="#troupe" class="hover:text-ink transition-colors">劇団</a>
+                <a href="#contact" class="hover:text-ink transition-colors">お問い合わせ</a>
             </nav>
         </div>
     </header>
 
     <!-- メインコンテンツ -->
-    <main class="flex-grow max-w-4xl w-full mx-auto px-6 sm:px-12 py-8 sm:py-12 space-y-10 sm:space-y-12">
+    <main class="flex-grow max-w-4xl w-full mx-auto px-6 sm:px-12 py-8 sm:py-10 space-y-8 sm:space-y-10">
 
-        <!-- ヒーローセクション：ビジュアル・タイトル・導線 -->
-        <section class="space-y-8">
+        <!-- ヒーローセクション：ビジュアル・タイトル・直接予約ボタン -->
+        <section class="space-y-6 pb-6 sm:pb-8 border-b border-ink/10">
             
             <!-- メインビジュアル -->
             <div class="w-full flex items-center justify-center">
@@ -131,8 +132,8 @@
                 </div>
             </div>
 
-            <!-- タイトルと予約への導線 -->
-            <div class="pt-4 border-t border-ink/10 flex flex-col sm:flex-row justify-between items-center sm:items-end gap-6 text-center sm:text-left">
+            <!-- タイトルと外部予約サイトへの直接ボタン -->
+            <div class="pt-2 flex flex-col sm:flex-row justify-between items-center sm:items-end gap-5 text-center sm:text-left">
                 <div>
                     <h1 class="text-5xl sm:text-6xl font-garamond font-light tracking-wide text-ink">
                         Lexicon
@@ -143,8 +144,11 @@
                 </div>
 
                 <div>
-                    <a href="#reserve" class="inline-block px-8 py-3.5 bg-ink text-paper text-xs font-mincho tracking-[0.25em] hover:bg-ink-label transition-colors duration-300">
-                        ご予約はこちら
+                    <a href="https://www.form-mailer.jp/" target="_blank" rel="noopener noreferrer" class="inline-flex items-center justify-center gap-2.5 px-8 py-3.5 bg-ink text-paper text-xs font-mincho tracking-[0.25em] hover:bg-ink-label transition-colors duration-300">
+                        <span>ご予約はこちら</span>
+                        <svg class="w-3.5 h-3.5 stroke-current opacity-80" fill="none" viewBox="0 0 24 24">
+                            <path d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                        </svg>
                     </a>
                 </div>
             </div>
@@ -152,16 +156,16 @@
         </section>
 
         <!-- 公演情報 (Information) -->
-        <section id="info" class="space-y-6">
+        <section id="info" class="space-y-6 pt-2 pb-8 border-b border-ink/10">
             <div class="text-center sm:text-left">
                 <span class="text-[10px] font-garamond uppercase tracking-[0.35em] text-ink-label block">Information</span>
                 <h2 class="text-xl sm:text-2xl font-mincho tracking-[0.2em] text-ink mt-0.5">公演情報</h2>
             </div>
 
-            <div class="space-y-6 font-mincho border-t border-b border-ink/10 py-8">
+            <div class="space-y-6 font-mincho pt-2">
                 
                 <!-- 演目名 -->
-                <div class="grid grid-cols-1 sm:grid-cols-4 gap-1.5 sm:gap-4 items-baseline pb-5 border-b border-ink/5">
+                <div class="grid grid-cols-1 sm:grid-cols-4 gap-1.5 sm:gap-4 items-baseline">
                     <span class="text-xs sm:text-sm text-ink-label font-medium tracking-wider sm:col-span-1">
                         作品タイトル
                     </span>
@@ -171,7 +175,7 @@
                 </div>
 
                 <!-- 主催 -->
-                <div class="grid grid-cols-1 sm:grid-cols-4 gap-1.5 sm:gap-4 items-baseline pb-5 border-b border-ink/5">
+                <div class="grid grid-cols-1 sm:grid-cols-4 gap-1.5 sm:gap-4 items-baseline">
                     <span class="text-xs sm:text-sm text-ink-label font-medium tracking-wider sm:col-span-1">
                         主催
                     </span>
@@ -181,7 +185,7 @@
                 </div>
 
                 <!-- 日程 & タイムテーブル -->
-                <div class="grid grid-cols-1 sm:grid-cols-4 gap-1.5 sm:gap-4 items-start pb-5 border-b border-ink/5">
+                <div class="grid grid-cols-1 sm:grid-cols-4 gap-1.5 sm:gap-4 items-start">
                     <span class="text-xs sm:text-sm text-ink-label font-medium tracking-wider sm:col-span-1 pt-0.5">
                         日時
                     </span>
@@ -197,12 +201,12 @@
                             </div>
                             <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-1">
                                 <span class="text-ink-label font-medium">10月12日（月・祝）</span>
-                                <span class="font-bold">14:00　／　18:00</span>
+                                <span class="font-bold">14:00　／18:00</span>
                             </div>
                         </div>
 
-                        <!-- 注釈テキストも項目カラー（text-ink-label）に変更 -->
-                        <p class="text-xs text-ink-label leading-relaxed pt-1">
+                        <!-- 濃く読みやすくなった注釈テキスト（text-ink-muted） -->
+                        <p class="text-xs text-ink-muted leading-relaxed pt-1">
                             ・受付開始・開場は、開演の30分前です。<br>
                             ・上演時間：約40分
                         </p>
@@ -210,7 +214,7 @@
                 </div>
 
                 <!-- 会場 -->
-                <div class="grid grid-cols-1 sm:grid-cols-4 gap-1.5 sm:gap-4 items-start pb-5 border-b border-ink/5">
+                <div class="grid grid-cols-1 sm:grid-cols-4 gap-1.5 sm:gap-4 items-start">
                     <span class="text-xs sm:text-sm text-ink-label font-medium tracking-wider sm:col-span-1 pt-0.5">
                         会場
                     </span>
@@ -218,8 +222,8 @@
                         <span class="text-sm sm:text-base font-bold block tracking-wider">
                             京都市立芸術大学 映像スタジオ
                         </span>
-                        <!-- 住所テキストも項目カラー（text-ink-label）に変更 -->
-                        <span class="text-xs text-ink-label block leading-relaxed">
+                        <!-- 濃く読みやすくなった住所テキスト（text-ink-muted） -->
+                        <span class="text-xs text-ink-muted block leading-relaxed">
                             〒600-8601 京都市下京区崇仁高瀬町57-1
                         </span>
                     </div>
@@ -238,31 +242,32 @@
             </div>
         </section>
 
-        <!-- ご予約 (Reservation) — 上下の間隔をコンパクトに調整 -->
-        <section id="reserve" class="max-w-xl mx-auto text-center space-y-3 pt-2">
+        <!-- お問い合わせ (Contact) -->
+        <section id="contact" class="max-w-xl mx-auto text-center space-y-4 pt-2">
             <div>
-                <span class="text-[10px] font-garamond uppercase tracking-[0.35em] text-ink-label block">Reservation</span>
-                <h2 class="text-xl sm:text-2xl font-mincho tracking-[0.2em] text-ink mt-0.5">チケットご予約</h2>
+                <span class="text-[10px] font-garamond uppercase tracking-[0.35em] text-ink-label block">Contact</span>
+                <h2 class="text-xl sm:text-2xl font-mincho tracking-[0.2em] text-ink mt-0.5">お問い合わせ</h2>
             </div>
-            
-            <!-- 予約案内文の色を項目カラー（text-ink-label）に変更 -->
-            <p class="text-xs font-mincho text-ink-label leading-relaxed">
-                ご予約は外部フォーム（フォームメーラー）にて承っております。<br>
-                以下のボタンよりお進みの上、お手続きください。
-            </p>
 
-            <div class="pt-2">
-                <a href="https://www.form-mailer.jp/" target="_blank" rel="noopener noreferrer" class="inline-flex items-center justify-center gap-3 px-10 py-3.5 bg-ink text-paper text-xs font-mincho tracking-[0.25em] hover:bg-ink-label transition-colors duration-300">
-                    <span>フォームメーラーで予約する</span>
-                    <svg class="w-3.5 h-3.5 stroke-current opacity-80" fill="none" viewBox="0 0 24 24">
-                        <path d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
-                    </svg>
-                </a>
+            <div class="space-y-3 font-mincho text-xs sm:text-sm text-ink-label pt-2 overflow-x-auto">
+                <!-- メールアドレス -->
+                <div class="flex items-center justify-center gap-2 whitespace-nowrap">
+                    <span class="font-medium">メール：</span>
+                    <a href="mailto:louisroom.drama@gmail.com" class="font-garamond text-sm sm:text-base text-ink underline underline-offset-4 hover:opacity-75 transition-opacity">
+                        louisroom.drama@gmail.com
+                    </a>
+                </div>
+
+                <!-- 公式X -->
+                <div class="flex items-center justify-center gap-2 whitespace-nowrap pt-1">
+                    <span class="font-medium">公式 X：</span>
+                    <span class="text-ink font-medium">準備中（開設後にお知らせいたします）</span>
+                </div>
             </div>
         </section>
 
-        <!-- 劇団紹介 (Troupe) — 上の間隔を詰めてスッキリ化 -->
-        <section id="troupe" class="max-w-xl mx-auto text-center space-y-3 pt-2 pb-4">
+        <!-- 劇団紹介 (Troupe) -->
+        <section id="troupe" class="max-w-xl mx-auto text-center space-y-3 pt-4 pb-4">
             
             <div class="flex flex-col items-center justify-center">
                 <div class="w-20 h-20 sm:w-24 sm:h-24 rounded-full overflow-hidden icon-shadow flex items-center justify-center">
@@ -273,7 +278,6 @@
                 </div>
             </div>
 
-            <!-- 劇団紹介文の色を項目カラー（text-ink-label）に変更 -->
             <p class="text-xs font-mincho text-ink-label leading-loose">
                 演劇脚本『Lexicon』の上演を目的に組織された有志演劇団体。<br>
                 京都大学の学生劇団である「劇団ケッペキ」の元/現団員により構成される。
@@ -288,5 +292,4 @@
 
 </body>
 </html>
-
 
