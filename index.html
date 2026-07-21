@@ -17,8 +17,8 @@
             theme: {
                 extend: {
                     colors: {
-                        paper: '#e0e0e0',
-                        'paper-sub': '#d4d4d4',
+                        paper: '#efefef',
+                        'paper-sub': '#e2e2e2',
                         ink: '#1A1817',
                         'ink-muted': '#6E6A63',
                         'ink-light': '#A39E96',
@@ -34,7 +34,7 @@
 
     <style>
         body {
-            background-color: #e0e0e0;
+            background-color: #efefef;
             color: #1A1817;
             font-family: 'Zen Old Mincho', serif;
             word-break: break-all;
@@ -45,10 +45,10 @@
             width: 4px;
         }
         ::-webkit-scrollbar-track {
-            background: #e0e0e0;
+            background: #efefef;
         }
         ::-webkit-scrollbar-thumb {
-            background: #bbbbbb;
+            background: #cccccc;
         }
     </style>
 </head>
@@ -83,7 +83,7 @@
     <header class="w-full border-b border-ink/10 py-6 px-6 sm:px-12 bg-paper/90 backdrop-blur-sm sticky top-0 z-30">
         <div class="max-w-4xl mx-auto flex items-center justify-between">
             <a href="#" class="inline-flex items-center">
-                <img src="./logo.JPG" data-base-name="logo" alt="Louis-room" class="h-7 sm:h-8 w-auto object-contain mix-blend-multiply opacity-90" onerror="tryNextExtension(this, 'header-logo-fallback', 'inline-block')">
+                <img src="./logo.JPG" data-base-name="logo" alt="Louis-room" class="h-7 sm:h-8 w-auto object-contain opacity-90" onerror="tryNextExtension(this, 'header-logo-fallback', 'inline-block')">
                 <span id="header-logo-fallback" class="font-garamond text-xl font-light tracking-widest text-ink whitespace-nowrap" style="display: none;">Louis-room</span>
             </a>
 
@@ -101,7 +101,7 @@
         <!-- ヒーローセクション：ビジュアル・タイトル・導線 -->
         <section class="space-y-10">
             
-            <!-- メインビジュアル（写真本来の発色と明度で表示） -->
+            <!-- メインビジュアル（元画像の発色で表示） -->
             <div class="w-full flex items-center justify-center">
                 <img src="./flyer.JPG" data-base-name="flyer" alt="Lexicon メインビジュアル" class="w-full h-auto object-cover max-h-[640px] block shadow-sm" onerror="tryNextExtension(this, 'flyer-fallback', 'flex')">
                 
