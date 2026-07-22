@@ -134,6 +134,8 @@
             --text-muted: #4e4a46;      /* 補足注釈・住所：チャコールグレー */
             --text-charcoal: #595552;   /* 紹介文用：灰色がかった柔らかなシックグレー */
             --item-line: #dcd5ce;       /* 項目間区切り線：エレガントなグレージュ */
+            --btn-bg: #e8e4dc;          /* ボタン用柔らかな薄グレー */
+            --btn-bg-hover: #ded8ce;    /* ボタンホバー時薄グレー */
         }
 
         html.scroll-smooth {
@@ -299,6 +301,8 @@
         .border-ink-label\/30 { border-color: rgba(120, 94, 91, 0.3); }
         .rounded-full { border-radius: 9999px; }
         .rounded-sm { border-radius: 0.125rem; }
+        .rounded-lg { border-radius: 0.5rem; }
+        .rounded-xl { border-radius: 0.75rem; }
 
         /* ---------- 背景・文字色 ---------- */
         .bg-ink { background-color: var(--text-color); }
@@ -424,7 +428,7 @@
             font-family: "Noto Serif JP", "Shippori Mincho", serif;
         }
 
-        /* 縦書きビューアー本体（縦幅を1/10延長：68.25vh→75vh, 630px→693px, 420px→462px） */
+        /* 縦書きビューアー本体 */
         .scroll-container {
             display: block;
             overflow-x: auto;
@@ -655,7 +659,6 @@
             .sm\:tracking-\[0\.6em\] { letter-spacing: 0.6em; }
             .sm\:w-20 { width: 5rem; }
 
-            /* PC時の高さ（70vh→77vh, 682px→750px） */
             .scroll-container {
                 height: 77vh;
                 max-height: 750px;
@@ -932,9 +935,9 @@
              脚本試し読みセクション
              ======================================================== -->
         <section id="read-script" class="max-w-3xl mx-auto mt-28 sm:mt-36 scroll-mt-20 px-2 sm:px-4">
-            <!-- 開閉トグルボタン -->
+            <!-- 開閉トグルボタン（薄いグレー背景・角丸長方形デザイン） -->
             <div class="text-center">
-                <button id="toggle-script-btn" class="inline-flex items-center justify-center gap-3 px-9 py-4 sm:px-10 sm:py-4.5 border border-ink/40 text-ink text-sm sm:text-base font-mincho tracking-[0.25em] hover:border-ink hover:bg-paper-sub transition-all duration-300 rounded-sm cursor-pointer">
+                <button id="toggle-script-btn" class="inline-flex items-center justify-center gap-3 px-9 py-3.5 sm:px-10 sm:py-4 border border-ink/15 text-ink text-sm sm:text-base font-mincho tracking-[0.25em] rounded-lg transition-all duration-300 cursor-pointer shadow-sm" style="background-color: var(--btn-bg);" onmouseover="this.style.backgroundColor='var(--btn-bg-hover)'" onmouseout="this.style.backgroundColor='var(--btn-bg)'">
                     <span class="btn-label">脚本試し読み</span>
                     <svg class="btn-icon w-4 h-4 stroke-current transition-transform duration-300" fill="none" viewBox="0 0 24 24">
                         <path d="M19 9l-7 7-7-7" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
@@ -1046,7 +1049,7 @@
                             <div class="script-line"><span class="script-speaker">飴玉</span>　大切でない。</div>
                             <div class="script-line"><span class="script-speaker">風吟</span>　ふうん。見過ごせないな。……そうか案外に、君は心が深くなったのか。私に言葉を教わって、あげく物を信じるようになるとは……お世話になった人には十回目、ありのままの姿を晒すものと君は誰かに吹き込まれて、大当たり。棒が付いた。</div>
                             <div class="script-line"><span class="script-speaker">飴玉</span>　からっきし的外れだ。この棒は人間のあの、ステッキと違って格式張ったものでは……</div>
-                            <div class="script-line"><span class="script-speaker">風吟</span>_ [被せて] [わざとらしく] うるさい。文句があると聞こえた。</div>
+                            <div class="script-line"><span class="script-speaker">風吟</span>　[被せて] [わざとらしく] うるさい。文句があると聞こえた。</div>
                             <div class="script-line"><span class="script-speaker">飴玉</span>　当たり外れに文句を言ったまでだ。</div>
 
                             <div class="script-line"><span class="script-speaker">風吟</span>　[わざとらしく] ふん。決まった。[音読] <span class="read-aloud">破門、だ。私を打ってみろ。</span></div>
@@ -1079,7 +1082,7 @@
                             <div class="script-line"><span class="script-speaker">風吟</span>　私は知れない。覚えているだけ。やり方が古いのかもしれない。</div>
                             <div class="script-line"><span class="script-speaker">飴玉</span>　幸か不幸か、風は順行している。今晩、お前の亡骸がここにあっても、プールの方角へは流れないだろう。さすれば打たれることも恐れるな、風吟。[本を置いて構える]</div>
                             <div class="script-line"><span class="script-speaker">風吟</span>　その遺言の衾（<ruby>ふすま<rt>・</rt></ruby>）、人の思いは果てなく積もる。それでも、思いばかりの目録にもたれる心だ。君は花布をほどくように、たった一ページを以て、遺言のために語彙だけを残せ。あとは誰か覚えて、別の人。</div>
-                            <div class="script-line"><span class="script-speaker">飴玉</span>　[被せて] レチタ。</div>
+                            <div class="script-line"><span class="script-speaker">飴玉</span>_ [被せて] レチタ。</div>
                             <div class="script-line"><span class="script-speaker">風吟</span>　[被せて] 記されることが山ほどあるなら、覚えられることも山ほどあるだろう。私の頭にもうゆとりはない。……君、助走もつけて。</div>
                             <div class="script-line"><span class="script-speaker">飴玉</span>　[後ずさり] レチタ、俺の主（<ruby>あるじ<rt>・</rt></ruby>）……俺はレチタの亡き手に代えて、お前を打つだけだ。</div>
                             <div class="script-line"><span class="script-speaker">風吟</span>　レチタ……それは、誰だ？ 私じゃないのか？ 私でよければ、そのレチタとやらになってあげようか。……待って。少し近い。</div>
