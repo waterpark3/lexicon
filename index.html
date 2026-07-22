@@ -424,15 +424,15 @@
             font-family: "Noto Serif JP", "Shippori Mincho", serif;
         }
 
-        /* 縦書きビューアー本体 */
+        /* 縦書きビューアー本体（縦幅を1/10延長：68.25vh→75vh, 630px→693px, 420px→462px） */
         .scroll-container {
             display: block;
             overflow-x: auto;
             overflow-y: hidden;
             width: 100%;
-            height: 78vh;
-            max-height: 720px;
-            min-height: 480px;
+            height: 75vh;
+            max-height: 693px;
+            min-height: 462px;
             padding: 2.25rem 2rem;
             box-sizing: border-box;
             background-color: #ffffff;
@@ -512,8 +512,9 @@
             line-height: 2;
         }
 
+        /* 縦書きの配置において左側（次要素との距離）を均等（1.8rem）に保持 */
         .script-char-group {
-            margin-left: 0;
+            margin-left: 1.8rem;
         }
 
         .script-dict-notes {
@@ -654,9 +655,10 @@
             .sm\:tracking-\[0\.6em\] { letter-spacing: 0.6em; }
             .sm\:w-20 { width: 5rem; }
 
+            /* PC時の高さ（70vh→77vh, 682px→750px） */
             .scroll-container {
-                height: 80vh;
-                max-height: 780px;
+                height: 77vh;
+                max-height: 750px;
                 padding: 2.5rem 3rem;
             }
             .script-content {
@@ -1044,7 +1046,7 @@
                             <div class="script-line"><span class="script-speaker">飴玉</span>　大切でない。</div>
                             <div class="script-line"><span class="script-speaker">風吟</span>　ふうん。見過ごせないな。……そうか案外に、君は心が深くなったのか。私に言葉を教わって、あげく物を信じるようになるとは……お世話になった人には十回目、ありのままの姿を晒すものと君は誰かに吹き込まれて、大当たり。棒が付いた。</div>
                             <div class="script-line"><span class="script-speaker">飴玉</span>　からっきし的外れだ。この棒は人間のあの、ステッキと違って格式張ったものでは……</div>
-                            <div class="script-line"><span class="script-speaker">風吟</span>　[被せて] [わざとらしく] うるさい。文句があると聞こえた。</div>
+                            <div class="script-line"><span class="script-speaker">風吟</span>_ [被せて] [わざとらしく] うるさい。文句があると聞こえた。</div>
                             <div class="script-line"><span class="script-speaker">飴玉</span>　当たり外れに文句を言ったまでだ。</div>
 
                             <div class="script-line"><span class="script-speaker">風吟</span>　[わざとらしく] ふん。決まった。[音読] <span class="read-aloud">破門、だ。私を打ってみろ。</span></div>
@@ -1094,7 +1096,7 @@
                                 風吟は、いっとき地蔵のようになる。飴玉が笠を手に徒歩で戻ってくる。罠に掛かった形跡がある。
                             </div>
 
-                            <div class="script-line"><span class="script-speaker">飴玉</span>　じりじり後ろへ下がらせて、なんだ……罠があるなら罠と伝えてくれるものと思っていた。[音読] <span class="read-aloud">一、囲み罠。二、捕縛罠。三、殺戮罠。獲物を新鮮なまま活かしておきたいなら、罠の内部にはおとりが組み込まれる。</span>[捲り戻す] <span class="read-aloud">人情。自然に備わった人間の愛情。広大無辺の慈しみ。情け。……関連して……殺戮罠にはおとりを用いない。終夜（<ruby>しゅうや<rt>・</rt></ruby>）ごっこ遊びに興じていたら、俺がとけるより早く、お前が固まるだけの時間が経ってしまった。</span>[叩いて] なんと凄惨なことか。……だがよかった。俺も、お前も、無傷だ。</div>
+                            <div class="script-line"><span class="script-speaker">飴玉</span>　[音読] <span class="read-aloud">一、囲み罠。二、捕縛罠。三、殺戮罠。獲物を新鮮なまま活かしておきたいなら、罠の内部にはおとりが組み込まれる。</span>[捲り戻す] <span class="read-aloud">人情。自然に備わった人間の愛情。広大無辺の慈しみ。情け。……関連して……殺戮罠にはおとりを用いない。終夜（<ruby>しゅうや<rt>・</rt></ruby>）ごっこ遊びに興じていたら、俺がとけるより早く、お前が固まるだけの時間が経ってしまった。</span>[叩いて] なんと凄惨なことか。……だがよかった。俺も、お前も、無傷だ。</div>
 
                             <div class="script-direction">
                                 風吟の頭に笠をかけ、一拍。肩にそっと棒を添える。一気に潮風が下がる。
