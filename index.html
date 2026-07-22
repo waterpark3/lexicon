@@ -6,138 +6,103 @@
     
     <!-- サイトタイトル & 検索エンジンメタ情報 (SEO) -->
     <title>Lexicon｜Louis-room</title>
-    <meta name="description" content="ルイルーム（Louis-room）主催 演劇公演『Lexicon』（作：髙野皓太）。2026年10月11日〜12日、京都市立芸術大学 映像スタジオにて上演。">
+    <meta name="description" content="ルイルーム（Louis-room）主催 演劇公演『Lexicon』（作：髙野皓太）。2026年10月11日（日）〜 10月12日（月・祝）、京都市立芸術大学 映像スタジオにて上演。">
     
     <!-- ファビコン（ブラウザタブ & アプリ用アイコン） -->
     <link rel="icon" href="./icon.JPG" type="image/jpeg">
     <link rel="apple-touch-icon" href="./icon.JPG">
 
-    <!-- Open Graph Tags (SNSシェア・X/Twitter・LINE・Facebook用OGP設定) -->
+    <!-- Open Graph Tags (SNSシェア・X/Twitter・LINE・Facebook用OGP設定)
+         ※ og:image にはSNSクローラーが確実に画像を読み込める絶対URLを設定します -->
     <meta property="og:title" content="Lexicon｜Louis-room">
-    <meta property="og:description" content="ルイルーム（Louis-room）主催 演劇公演『Lexicon』（作：髙野皓太）。2026年10月11日（日）〜12日（月・祝）、京都市立芸術大学 映像スタジオにて上演。">
+    <meta property="og:description" content="ルイルーム（Louis-room）主催 演劇公演『Lexicon』（作：髙野皓太）。2026年10月11日（日）〜 10月12日（月・祝）、京都市立芸術大学 映像スタジオにて上演。">
     <meta property="og:type" content="website">
-    <meta property="og:image" content="./flyer.JPG">
+    <meta property="og:image" content="https://waterpark3.github.io/lexicon/flyer.JPG">
     <meta property="og:site_name" content="Louis-room">
     <meta property="og:locale" content="ja_JP">
 
     <!-- Twitter Card 設定 (Xでの大型画像表示) -->
     <meta name="twitter:card" content="summary_large_image">
     <meta name="twitter:title" content="Lexicon｜Louis-room">
-    <meta name="twitter:description" content="ルイルーム（Louis-room）主催 演劇公演『Lexicon』（作：髙野皓太）。2026年10月11日（日）〜12日（月・祝）、京都市立芸術大学 映像スタジオにて上演。">
-    <meta name="twitter:image" content="./flyer.JPG">
+    <meta name="twitter:description" content="ルイルーム（Louis-room）主催 演劇公演『Lexicon』（作：髙野皓太）。2026年10月11日（日）〜 10月12日（月・祝）、京都市立芸術大学 映像スタジオにて上演。">
+    <meta name="twitter:image" content="https://waterpark3.github.io/lexicon/flyer.JPG">
+
+    <!-- 構造化データ JSON-LD (Googleイベント検索・リッチリザルト対応) -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "TheaterEvent",
+      "name": "Lexicon",
+      "startDate": "2026-10-11T14:00:00+09:00",
+      "endDate": "2026-10-12T18:40:00+09:00",
+      "eventAttendanceMode": "https://schema.org/OfflineEventAttendanceMode",
+      "eventStatus": "https://schema.org/EventScheduled",
+      "location": {
+        "@type": "Place",
+        "name": "京都市立芸術大学 映像スタジオ",
+        "address": {
+          "@type": "PostalAddress",
+          "streetAddress": "崇仁高瀬町57-1",
+          "addressLocality": "京都市下京区",
+          "postalCode": "600-8601",
+          "addressCountry": "JP"
+        }
+      },
+      "image": [
+        "https://waterpark3.github.io/lexicon/flyer.JPG"
+      ],
+      "description": "戯曲『Lexicon』（作・髙野皓太）は40分の上演時間を予定する現代口語の短編作品であり、本公演にて初めて上演される創作脚本である。",
+      "offers": {
+        "@type": "Offer",
+        "price": "0",
+        "priceCurrency": "JPY",
+        "availability": "https://schema.org/InStock",
+        "url": "https://www.form-mailer.jp/"
+      },
+      "performer": {
+        "@type": "PerformingGroup",
+        "name": "ルイルーム（Louis-room）"
+      },
+      "organizer": {
+        "@type": "Organization",
+        "name": "ルイルーム（Louis-room）",
+        "email": "louisroom.drama@gmail.com"
+      }
+    }
+    </script>
     
     <!-- Google Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=EB+Garamond:ital,wght@0,400..700;1,400..700&family=Noto+Serif+JP:wght@400;500;600&family=Shippori+Mincho:wght@400;500;600&family=Zen+Old+Mincho:wght@400;500;700&display=swap" rel="stylesheet">
     
-    <style>
-        /* ========================================================
-           サイト基本カラー定義
-           ======================================================== */
-        :root {
-            --bg-color: #f7f5f0;        /* 背景色：静謐な生成り色 */
-            --text-color: #1a1918;      /* メイン文字色：墨黒 */
-            --label-color: #785e5b;     /* 項目名・説明文・ナビ共通カラー（茜ココア） */
-            --text-muted: #4e4a46;      /* 補足注釈・住所：チャコールグレー */
-            --text-charcoal: #595552;   /* 紹介文用：灰色がかった柔らかなシックグレー */
-            --item-line: #dcd5ce;       /* 項目間区切り線：エレガントなグレージュ */
-        }
-
-        body {
-            background-color: var(--bg-color);
-            color: var(--text-color);
-            font-family: 'Zen Old Mincho', serif;
-            word-break: break-all;
-        }
-
-        /* 柔らかい影効果 */
-        .subtle-shadow {
-            box-shadow: 0 12px 30px -8px rgba(26, 25, 24, 0.1), 0 4px 10px -4px rgba(26, 25, 24, 0.04);
-        }
-
-        .icon-shadow {
-            box-shadow: 0 6px 16px -4px rgba(26, 25, 24, 0.12);
-        }
-
-        /* カスタムスクロールバー */
-        ::-webkit-scrollbar {
-            width: 4px;
-        }
-        ::-webkit-scrollbar-track {
-            background: var(--bg-color);
-        }
-        ::-webkit-scrollbar-thumb {
-            background: rgba(26, 25, 24, 0.15);
-        }
-    </style>
-
-    <!-- Tailwind CSS -->
-    <script src="https://cdn.tailwindcss.com"></script>
-    <script>
-        tailwind.config = {
-            theme: {
-                extend: {
-                    colors: {
-                        paper: 'var(--bg-color)',
-                        'paper-sub': 'rgba(26, 25, 24, 0.04)',
-                        ink: 'var(--text-color)',
-                        'ink-label': 'var(--label-color)',
-                        'ink-muted': 'var(--text-muted)',
-                        'ink-charcoal': 'var(--text-charcoal)',
-                        'item-line': 'var(--item-line)',
-                    },
-                    fontFamily: {
-                        garamond: ['"EB Garamond"', 'serif'],
-                        mincho: ['"Zen Old Mincho"', 'serif'],
-                        shippori: ['"Shippori Mincho"', '"Zen Old Mincho"', 'serif'],
-                        dict: ['"Noto Serif JP"', '"Shippori Mincho"', 'serif'],
-                    }
-                }
-            }
-        }
-    </script>
+    <!-- サイト用スタイルシート（Tailwind CDNは使わず、使用クラスのみを静的CSS化） -->
+    <link rel="stylesheet" href="./styles.css">
 </head>
 <body class="min-h-screen flex flex-col justify-between selection:bg-ink selection:text-paper bg-paper">
 
-    <!-- 軽量・堅牢なレイアウト制御スクリプト -->
     <script>
-        // 画像フォールバック処理
-        function tryNextExtension(imgEl, fallbackId, displayType) {
-            const extPatterns = ['.JPG', '.jpg', '.png', '.jpeg', '.PNG', '.JPEG', '.png.JPG'];
-            let currentIdx = parseInt(imgEl.getAttribute('data-ext-idx') || '0', 10);
-            
-            currentIdx++;
-            if (currentIdx < extPatterns.length) {
-                imgEl.setAttribute('data-ext-idx', currentIdx);
-                const baseName = imgEl.getAttribute('data-base-name');
-                imgEl.src = './' + baseName + extPatterns[currentIdx];
-            } else {
-                imgEl.style.display = 'none';
-                if (fallbackId) {
-                    const fallbackEl = document.getElementById(fallbackId);
-                    if (fallbackEl) {
-                        fallbackEl.style.display = displayType || 'block';
-                    }
-                }
+        function handleImageError(imgEl, fallbackId) {
+            imgEl.style.display = 'none';
+            if (fallbackId) {
+                const fallbackEl = document.getElementById(fallbackId);
+                if (fallbackEl) fallbackEl.style.display = 'flex';
             }
         }
 
-        // スクロール連動：絶対位置固定の安全かつ超軽量な動的余白計算
         document.addEventListener('DOMContentLoaded', function () {
             const visualBox = document.getElementById('visual-box');
             const titleSection = document.getElementById('title-section');
             const definitionSection = document.getElementById('definition');
             const mainVisual = document.getElementById('main-visual');
 
-            let baseInitialTitlePadding = 0;
-            let baseInitialDefMargin = 0;
+            let baseTitlePadding = 0;
+            let baseDefMargin = 0;
             let minTitlePadding = 16;
             let minDefMargin = 48;
             let scrollRange = 360;
 
-            // 重い計算（画面測定）は読込・リサイズ時のみ限定実行
-            function measureBaseDimensions() {
+            function updateBaseMetrics() {
                 if (!visualBox || !titleSection || !definitionSection) return;
 
                 const vh = window.innerHeight;
@@ -148,80 +113,60 @@
 
                 const visualRect = visualBox.getBoundingClientRect();
                 const visualBottom = visualRect.top + (window.scrollY || window.pageYOffset) + visualRect.height;
-
                 const remainingSpace = vh - visualBottom;
 
                 minTitlePadding = isMobile ? 12 : 16;
-                baseInitialTitlePadding = Math.max((remainingSpace - pureTitleHeight) / 2, isMobile ? 20 : 32);
+                baseTitlePadding = Math.max((remainingSpace - pureTitleHeight) / 2, isMobile ? 20 : 32);
 
-                const titleBottomAtStart = visualBottom + baseInitialTitlePadding + pureTitleHeight;
+                const titleBottom = visualBottom + baseTitlePadding + pureTitleHeight;
                 minDefMargin = isMobile ? 32 : 48;
-                baseInitialDefMargin = Math.max(vh - titleBottomAtStart + 16, isMobile ? 40 : 60);
+                baseDefMargin = Math.max(vh - titleBottom + 16, isMobile ? 40 : 60);
 
                 scrollRange = isMobile ? 260 : 360;
 
-                applyScrollLayout();
+                renderScrollLayout();
             }
 
-            // スクロール時は数値演算のみ（CPU負荷ゼロレベル）
-            function applyScrollLayout() {
+            function renderScrollLayout() {
                 if (!titleSection || !definitionSection) return;
 
                 const scrollY = window.scrollY || window.pageYOffset;
-                const rawProgress = Math.min(Math.max(scrollY / scrollRange, 0), 1);
-                
-                const progress = Math.sin((rawProgress * Math.PI) / 2);
+                const progress = Math.sin((Math.min(Math.max(scrollY / scrollRange, 0), 1) * Math.PI) / 2);
 
-                const currentTitlePadding = baseInitialTitlePadding - (baseInitialTitlePadding - minTitlePadding) * progress;
-                const currentDefMargin = baseInitialDefMargin - (baseInitialDefMargin - minDefMargin) * progress;
+                const currentTitlePadding = baseTitlePadding - (baseTitlePadding - minTitlePadding) * progress;
+                const currentDefMargin = baseDefMargin - (baseDefMargin - minDefMargin) * progress;
 
                 titleSection.style.paddingTop = `${Math.max(currentTitlePadding, minTitlePadding)}px`;
                 definitionSection.style.marginTop = `${Math.max(currentDefMargin, minDefMargin)}px`;
             }
 
-            // フレーム同期でスクロールイベントを間引く
             let ticking = false;
             window.addEventListener('scroll', function () {
                 if (!ticking) {
                     window.requestAnimationFrame(function () {
-                        applyScrollLayout();
+                        renderScrollLayout();
                         ticking = false;
                     });
                     ticking = true;
                 }
             }, { passive: true });
 
-            window.addEventListener('resize', measureBaseDimensions);
-            window.addEventListener('load', measureBaseDimensions);
-
-            if (window.ResizeObserver && visualBox) {
-                const resizeObserver = new ResizeObserver(function () {
-                    measureBaseDimensions();
-                });
-                resizeObserver.observe(visualBox);
-            }
-
+            window.addEventListener('resize', updateBaseMetrics);
+            
             if (mainVisual) {
-                if (mainVisual.complete) {
-                    measureBaseDimensions();
-                } else {
-                    mainVisual.addEventListener('load', measureBaseDimensions);
-                }
+                if (mainVisual.complete) updateBaseMetrics();
+                else mainVisual.addEventListener('load', updateBaseMetrics);
+            } else {
+                updateBaseMetrics();
             }
 
-            measureBaseDimensions();
-
-            // ページ内ナビゲーションのスムーススクロール処理
             document.querySelectorAll('a[href^="#"]').forEach(function (anchor) {
                 anchor.addEventListener('click', function (e) {
                     const targetId = this.getAttribute('href');
                     e.preventDefault();
 
                     if (targetId === '#') {
-                        window.scrollTo({
-                            top: 0,
-                            behavior: 'smooth'
-                        });
+                        window.scrollTo({ top: 0, behavior: 'smooth' });
                         return;
                     }
                     
@@ -229,10 +174,8 @@
                     if (targetElement) {
                         const headerOffset = 80;
                         const elementPosition = targetElement.getBoundingClientRect().top;
-                        const offsetPosition = elementPosition + window.pageYOffset - headerOffset;
-
                         window.scrollTo({
-                            top: offsetPosition,
+                            top: elementPosition + window.pageYOffset - headerOffset,
                             behavior: 'smooth'
                         });
                     }
@@ -241,15 +184,11 @@
         });
     </script>
 
-    <!-- ==========================================
-         ヘッダー
-         ========================================== -->
     <header class="w-full border-b border-item-line py-5 px-6 sm:px-12 bg-paper/90 backdrop-blur-sm sticky top-0 z-30 h-16 sm:h-20 flex items-center">
         <div class="max-w-4xl w-full mx-auto flex items-center justify-between">
             <a href="#" class="font-garamond text-xl sm:text-2xl font-light tracking-widest text-ink hover:opacity-75 transition-opacity">
                 Louis-room
             </a>
-
             <nav class="flex items-center space-x-6 sm:space-x-8 text-xs font-mincho tracking-[0.15em] sm:tracking-[0.2em] text-ink-label">
                 <a href="#info" class="hover:text-ink transition-colors cursor-pointer">公演情報</a>
                 <a href="#contact" class="hover:text-ink transition-colors cursor-pointer">お問い合わせ</a>
@@ -257,19 +196,10 @@
         </div>
     </header>
 
-    <!-- ==========================================
-         メインコンテンツ
-         ========================================== -->
     <main class="flex-grow max-w-4xl w-full mx-auto px-6 sm:px-12 pb-16">
-
-        <!-- 1. ヒーローセクション（ファーストビュー） -->
         <section id="hero-section" class="pt-8 sm:pt-12">
-            
-            <!-- メインビジュアル -->
             <div id="visual-box" class="w-full flex items-center justify-center pt-2 sm:pt-4">
-                <img id="main-visual" src="./flyer.JPG" data-base-name="flyer" alt="Lexicon メインビジュアル" class="max-w-full max-h-[46vh] sm:max-h-[52vh] w-auto h-auto object-contain block subtle-shadow rounded-sm" onerror="tryNextExtension(this, 'flyer-fallback', 'flex')">
-                
-                <!-- フォールバックプレースホルダー -->
+                <img id="main-visual" src="./flyer.JPG" alt="Lexicon メインビジュアル" class="max-w-full max-h-[46vh] sm:max-h-[52vh] w-auto h-auto object-contain block subtle-shadow rounded-sm" onerror="handleImageError(this, 'flyer-fallback')">
                 <div id="flyer-fallback" class="w-full py-16 px-8 flex-col items-center justify-center text-center border border-dashed border-ink/20 bg-paper-sub" style="display: none;">
                     <svg class="w-10 h-10 text-ink-label mb-3 stroke-1" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                         <path stroke-linecap="round" stroke-linejoin="round" d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253" />
@@ -278,7 +208,6 @@
                 </div>
             </div>
 
-            <!-- タイトル & 予約リンクボタン -->
             <div id="title-section" class="flex flex-col sm:flex-row justify-between items-center sm:items-end gap-5 text-center sm:text-left">
                 <div>
                     <h1 class="text-5xl sm:text-7xl font-garamond font-light tracking-wide text-ink">
@@ -288,7 +217,6 @@
                         主催：ルイルーム（Louis-room）
                     </p>
                 </div>
-
                 <div>
                     <a href="https://www.form-mailer.jp/" target="_blank" rel="noopener noreferrer" class="inline-flex items-center justify-center gap-2.5 px-8 py-3.5 bg-ink text-paper text-xs font-mincho tracking-[0.25em] hover:bg-ink-label transition-colors duration-300">
                         <span>ご予約はこちら</span>
@@ -298,62 +226,38 @@
                     </a>
                 </div>
             </div>
-
         </section>
 
-        <!-- 2. 脚本冒頭の定義文（1画面目には入らず、スクロールで登場） -->
         <section id="definition" class="max-w-xl mx-auto space-y-4 font-dict text-xs sm:text-sm text-ink-charcoal leading-relaxed text-justify px-2 sm:px-4">
-            
-            <!-- Lexicon 定義 -->
             <div class="space-y-1">
-                <p class="font-garamond text-sm sm:text-base text-ink font-semibold tracking-wide">
-                    Lexicon:
-                </p>
+                <p class="font-garamond text-sm sm:text-base text-ink font-semibold tracking-wide">Lexicon:</p>
                 <div class="pl-3 sm:pl-4 space-y-0.5 text-ink-charcoal">
                     <p>① (特にギリシア語・ヘブライ語などの)辞典。</p>
                     <p>② (特定の作家・作品などの)語彙。語彙集。</p>
                 </div>
             </div>
-
-            <!-- Archaic 定義 -->
             <div class="space-y-1 pt-1">
-                <p class="font-garamond text-sm sm:text-base text-ink font-semibold tracking-wide">
-                    Archaic:
-                </p>
-                <p class="pl-3 sm:pl-4 text-ink-charcoal">
-                    古風で素朴なさま。特に若々しさと原始性の残る芸術様式をいう。「辞書は――である」。
-                </p>
+                <p class="font-garamond text-sm sm:text-base text-ink font-semibold tracking-wide">Archaic:</p>
+                <p class="pl-3 sm:pl-4 text-ink-charcoal">古風で素朴なさま。特に若々しさと原始性の残る芸術様式をいう。「辞書は――である」。</p>
             </div>
-
         </section>
 
-        <!-- 区切り黒点 15点（定義文と紹介文の間） -->
         <div class="my-14 sm:my-18 text-center text-ink/70 text-[10px] sm:text-xs font-mincho select-none tracking-[0.45em] sm:tracking-[0.6em] pl-[0.45em]">
             ・・・・・・・・・・・・・・・
         </div>
 
-        <!-- 3. 作品紹介文章 -->
         <section class="max-w-xl mx-auto font-shippori text-sm sm:text-base text-ink-charcoal leading-relaxed sm:leading-loose text-justify px-2 sm:px-4 tracking-wide">
-            
             <div class="space-y-6">
-                <p>
-                    コミュニケーションにおける親密さというのは、互いがそこに懐かしさを見出すような本源的な信念や規律に対して、致命的でなく、ともすると幼いいたずらっぽさとともに、揺さぶりをかける傾向として見ることができる。揺さぶられることによって変質し、再編成された新たな懐かしさには、互いの存在が避けられない仕方で編み込まれるがゆえに、その仕方で親密さは新たな形を迎え入れることになる。戯曲『Lexicon』において展開される風吟と飴玉の間の師弟関係は、世界のある視点からの確定的な記述としての辞書/Lexiconとの関わり合いを通して、そのような親密さに接近する。
-                </p>
-                <p>
-                    戯曲『Lexicon』（作・髙野皓太）は40分の上演時間を予定する現代口語の短編作品であり、本公演にて初めて上演される創作脚本である。
-                </p>
+                <p>コミュニケーションにおける親密さというのは、互いがそこに懐かしさを見出すような本源的な信念や規律に対して、致命的でなく、ともすると幼いいたずらっぽさとともに、揺さぶりをかける傾向として見ることができる。揺さぶられることによって変質し、再編成された新たな懐かしさには、互いの存在が避けられない仕方で編み込まれるがゆえに、その仕方で親密さは新たな形を迎え入れることになる。戯曲『Lexicon』において展開される風吟と飴玉の間の師弟関係は、世界のある視点からの確定的な記述としての辞書/Lexiconとの関わり合いを通して、そのような親密さに接近する。</p>
+                <p>戯曲『Lexicon』（作・髙野皓太）は40分の上演時間を予定する現代口語の短編作品であり、本公演にて初めて上演される創作脚本である。</p>
             </div>
-
         </section>
 
-        <!-- 区切り黒点 15点（紹介文と引用文の間） -->
         <div class="my-14 sm:my-18 text-center text-ink/70 text-[10px] sm:text-xs font-mincho select-none tracking-[0.45em] sm:tracking-[0.6em] pl-[0.45em]">
             ・・・・・・・・・・・・・・・
         </div>
 
-        <!-- 4. 戯曲冒頭の引用 -->
         <section class="max-w-xl mx-auto px-2 sm:px-4">
-
             <blockquote class="italic font-shippori text-[13px] sm:text-sm text-ink leading-relaxed sm:leading-loose space-y-1.5 text-left tracking-[0.2em] sm:tracking-[0.25em] mx-auto w-fit">
                 <p>エルサレム旧市街の夜は早いという。</p>
                 <p>元より聖なる土地が、ただ足早に夜を迎え、</p>
@@ -361,48 +265,26 @@
                 <p>ここは地中海性気候 (Csa) より涼しく、</p>
                 <p>しかし同じく多宗教の聖地である。</p>
             </blockquote>
-
         </section>
 
-        <!-- 5. 公演情報セクション -->
         <section id="info" class="space-y-6 mt-28 sm:mt-36">
             <div class="text-center sm:text-left">
                 <span class="text-[10px] font-garamond uppercase tracking-[0.35em] text-ink-label block">Information</span>
                 <h2 class="text-xl sm:text-2xl font-mincho tracking-[0.2em] text-ink mt-0.5">公演情報</h2>
             </div>
-
             <div class="font-mincho pt-2 space-y-5">
-                
-                <!-- 演目名 -->
                 <div class="grid grid-cols-1 sm:grid-cols-4 gap-1.5 sm:gap-4 items-baseline pb-5 border-b border-item-line">
-                    <span class="text-xs sm:text-sm text-ink-label font-medium tracking-wider sm:col-span-1">
-                        作品タイトル
-                    </span>
-                    <span class="sm:col-span-3 text-base sm:text-lg text-ink font-bold tracking-wider">
-                        『Lexicon』
-                    </span>
+                    <span class="text-xs sm:text-sm text-ink-label font-medium tracking-wider sm:col-span-1">作品タイトル</span>
+                    <span class="sm:col-span-3 text-base sm:text-lg text-ink font-bold tracking-wider">『Lexicon』</span>
                 </div>
-
-                <!-- 主催 -->
                 <div class="grid grid-cols-1 sm:grid-cols-4 gap-1.5 sm:gap-4 items-baseline pb-5 border-b border-item-line">
-                    <span class="text-xs sm:text-sm text-ink-label font-medium tracking-wider sm:col-span-1">
-                        主催
-                    </span>
-                    <span class="sm:col-span-3 text-sm sm:text-base text-ink font-medium tracking-wider">
-                        ルイルーム（Louis-room）
-                    </span>
+                    <span class="text-xs sm:text-sm text-ink-label font-medium tracking-wider sm:col-span-1">主催</span>
+                    <span class="sm:col-span-3 text-sm sm:text-base text-ink font-medium tracking-wider">ルイルーム（Louis-room）</span>
                 </div>
-
-                <!-- 日時 -->
                 <div class="grid grid-cols-1 sm:grid-cols-4 gap-1.5 sm:gap-4 items-start pb-5 border-b border-item-line">
-                    <span class="text-xs sm:text-sm text-ink-label font-medium tracking-wider sm:col-span-1 pt-0.5">
-                        日時
-                    </span>
+                    <span class="text-xs sm:text-sm text-ink-label font-medium tracking-wider sm:col-span-1 pt-0.5">日時</span>
                     <div class="sm:col-span-3 text-ink space-y-3">
-                        <p class="text-sm sm:text-base font-bold text-ink tracking-wider">
-                            2026年 10月11日（日）〜 10月12日（月・祝）
-                        </p>
-                        
+                        <p class="text-sm sm:text-base font-bold text-ink tracking-wider">2026年 10月11日（日）〜 10月12日（月・祝）</p>
                         <div class="border-l-2 border-ink-label/30 pl-4 py-1.5 space-y-2 text-xs sm:text-sm">
                             <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-1">
                                 <span class="text-ink-label font-medium">10月11日（日）</span>
@@ -413,57 +295,33 @@
                                 <span class="font-bold">14:00　／18:00</span>
                             </div>
                         </div>
-
-                        <p class="text-xs text-ink-muted leading-relaxed pt-1">
-                            ・受付開始・開場は、開演の30分前です。<br>
-                            ・上演時間：約40分
-                        </p>
+                        <p class="text-xs text-ink-muted leading-relaxed pt-1">・受付開始・開場は、開演の30分前です。<br>・上演時間：約40分</p>
                     </div>
                 </div>
-
-                <!-- 会場 -->
                 <div class="grid grid-cols-1 sm:grid-cols-4 gap-1.5 sm:gap-4 items-start pb-5 border-b border-item-line">
-                    <span class="text-xs sm:text-sm text-ink-label font-medium tracking-wider sm:col-span-1 pt-0.5">
-                        会場
-                    </span>
+                    <span class="text-xs sm:text-sm text-ink-label font-medium tracking-wider sm:col-span-1 pt-0.5">会場</span>
                     <div class="sm:col-span-3 text-ink space-y-1">
-                        <span class="text-sm sm:text-base font-bold block tracking-wider">
-                            京都市立芸術大学 映像スタジオ
-                        </span>
-                        <span class="text-xs text-ink-muted block leading-relaxed">
-                            〒600-8601 京都市下京区崇仁高瀬町57-1
-                        </span>
+                        <span class="text-sm sm:text-base font-bold block tracking-wider">京都市立芸術大学 映像スタジオ</span>
+                        <span class="text-xs text-ink-muted block leading-relaxed">〒600-8601 京都市下京区崇仁高瀬町57-1</span>
                     </div>
                 </div>
-
-                <!-- 料金 -->
                 <div class="grid grid-cols-1 sm:grid-cols-4 gap-1.5 sm:gap-4 items-baseline pb-5 border-b border-item-line">
-                    <span class="text-xs sm:text-sm text-ink-label font-medium tracking-wider sm:col-span-1">
-                        料金
-                    </span>
-                    <span class="sm:col-span-3 text-sm sm:text-base text-ink font-bold tracking-wider">
-                        無料
-                    </span>
+                    <span class="text-xs sm:text-sm text-ink-label font-medium tracking-wider sm:col-span-1">料金</span>
+                    <span class="sm:col-span-3 text-sm sm:text-base text-ink font-bold tracking-wider">無料</span>
                 </div>
-
             </div>
         </section>
 
-        <!-- 6. お問い合わせセクション -->
         <section id="contact" class="max-w-xl mx-auto text-center space-y-3 mt-10 sm:mt-12">
             <div>
                 <span class="text-[10px] font-garamond uppercase tracking-[0.35em] text-ink-label block">Contact</span>
                 <h2 class="text-xl sm:text-2xl font-mincho tracking-[0.2em] text-ink mt-0.5">お問い合わせ</h2>
             </div>
-
             <div class="space-y-2.5 font-mincho text-xs sm:text-sm text-ink-label pt-1">
                 <div class="flex items-center justify-center gap-2 whitespace-nowrap">
                     <span class="font-medium">メール：</span>
-                    <a href="mailto:louisroom.drama@gmail.com" class="font-garamond text-sm sm:text-base text-ink underline underline-offset-4 hover:opacity-75 transition-opacity">
-                        louisroom.drama@gmail.com
-                    </a>
+                    <a href="mailto:louisroom.drama@gmail.com" class="font-garamond text-sm sm:text-base text-ink underline underline-offset-4 hover:opacity-75 transition-opacity">louisroom.drama@gmail.com</a>
                 </div>
-
                 <div class="flex items-center justify-center gap-2 whitespace-nowrap pt-0.5">
                     <span class="font-medium">公式 X：</span>
                     <span class="text-ink font-medium">準備中（開設後にお知らせいたします）</span>
@@ -471,35 +329,26 @@
             </div>
         </section>
 
-        <!-- 7. 劇団紹介セクション -->
         <section id="troupe" class="max-w-xl mx-auto mt-16 sm:mt-20 pb-4">
             <div class="flex flex-row items-center justify-center gap-4 sm:gap-6">
                 <div class="w-16 h-16 sm:w-20 sm:h-20 shrink-0 rounded-full overflow-hidden icon-shadow flex items-center justify-center">
-                    <img src="./icon.JPG" data-base-name="icon" alt="Louis-room Icon" class="w-full h-full object-cover rounded-full block" onerror="tryNextExtension(this, 'troupe-icon-fallback', 'block')">
+                    <img src="./icon.JPG" alt="Louis-room Icon" class="w-full h-full object-cover rounded-full block" onerror="handleImageError(this, 'troupe-icon-fallback')">
                     <div id="troupe-icon-fallback" class="w-full h-full rounded-full bg-paper-sub flex items-center justify-center" style="display: none;">
                         <span class="font-garamond text-xs text-ink-label">Louis</span>
                     </div>
                 </div>
-
                 <p class="text-xs sm:text-sm font-mincho text-ink-label leading-relaxed sm:leading-loose text-left">
                     演劇脚本『Lexicon』の上演を目的に組織された有志演劇団体。<br class="hidden sm:inline">
                     京都大学の学生劇団である「劇団ケッペキ」の元/現団員により構成される。
                 </p>
             </div>
         </section>
-
     </main>
 
-    <!-- ==========================================
-         フッター
-         ========================================== -->
     <footer class="border-t border-item-line py-6 bg-paper">
         <div class="max-w-4xl mx-auto px-6 text-center">
-            <p class="text-[10px] sm:text-xs font-garamond text-ink-label/70 tracking-widest">
-                &copy; Louis-room. All Rights Reserved.
-            </p>
+            <p class="text-[10px] sm:text-xs font-garamond text-ink-label/70 tracking-widest">&copy; Louis-room. All Rights Reserved.</p>
         </div>
     </footer>
-
 </body>
 </html>
