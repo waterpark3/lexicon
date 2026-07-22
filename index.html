@@ -231,9 +231,13 @@
         .mb-3 { margin-bottom: 0.75rem; }
         .mt-0\.5 { margin-top: 0.125rem; }
         .mt-1\.5 { margin-top: 0.375rem; }
+        .mt-6 { margin-top: 1.5rem; }
         .mt-10 { margin-top: 2.5rem; }
         .mt-16 { margin-top: 4rem; }
+        .mt-20 { margin-top: 5rem; }
         .mt-28 { margin-top: 7rem; }
+        .mt-32 { margin-top: 8rem; }
+        .mt-36 { margin-top: 9rem; }
         .my-14 { margin-top: 3.5rem; margin-bottom: 3.5rem; }
         .mx-auto { margin-left: auto; margin-right: auto; }
 
@@ -251,18 +255,22 @@
         .px-2 { padding-left: 0.5rem; padding-right: 0.5rem; }
         .px-6 { padding-left: 1.5rem; padding-right: 1.5rem; }
         .px-8 { padding-left: 2rem; padding-right: 2rem; }
+        .px-9 { padding-left: 2.25rem; padding-right: 2.25rem; }
         .py-1\.5 { padding-top: 0.375rem; padding-bottom: 0.375rem; }
+        .py-4 { padding-top: 1rem; padding-bottom: 1rem; }
         .py-16 { padding-top: 4rem; padding-bottom: 4rem; }
         .py-3\.5 { padding-top: 0.875rem; padding-bottom: 0.875rem; }
         .py-5 { padding-top: 1.25rem; padding-bottom: 1.25rem; }
         .py-6 { padding-top: 1.5rem; padding-bottom: 1.5rem; }
 
         /* ---------- width / height ---------- */
+        .h-4 { height: 1rem; }
         .h-10 { height: 2.5rem; }
         .h-16 { height: 4rem; }
         .h-3\.5 { height: 0.875rem; }
         .h-auto { height: auto; }
         .h-full { height: 100%; }
+        .w-4 { width: 1rem; }
         .w-10 { width: 2.5rem; }
         .w-16 { width: 4rem; }
         .w-3\.5 { width: 0.875rem; }
@@ -270,6 +278,7 @@
         .w-fit { width: fit-content; }
         .w-full { width: 100%; }
         .max-h-\[46vh\] { max-height: 46vh; }
+        .max-w-3xl { max-width: 48rem; }
         .max-w-4xl { max-width: 56rem; }
         .max-w-full { max-width: 100%; }
         .max-w-xl { max-width: 36rem; }
@@ -285,6 +294,8 @@
         .border-dashed { border-style: dashed; }
         .border-item-line { border-color: var(--item-line); }
         .border-ink\/20 { border-color: rgba(26, 25, 24, 0.2); }
+        .border-ink\/30 { border-color: rgba(26, 25, 24, 0.3); }
+        .border-ink\/40 { border-color: rgba(26, 25, 24, 0.4); }
         .border-ink-label\/30 { border-color: rgba(120, 94, 91, 0.3); }
         .rounded-full { border-radius: 9999px; }
         .rounded-sm { border-radius: 0.125rem; }
@@ -347,6 +358,11 @@
         .select-none { user-select: none; }
 
         /* ---------- トランジション・エフェクト ---------- */
+        .transition-all {
+            transition-property: all;
+            transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+            transition-duration: 150ms;
+        }
         .transition-colors {
             transition-property: color, background-color, border-color, text-decoration-color, fill, stroke;
             transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
@@ -354,6 +370,11 @@
         }
         .transition-opacity {
             transition-property: opacity;
+            transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+            transition-duration: 150ms;
+        }
+        .transition-transform {
+            transition-property: transform;
             transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
             transition-duration: 150ms;
         }
@@ -366,7 +387,9 @@
         .stroke-1 { stroke-width: 1; }
         .stroke-current { stroke: currentColor; }
 
+        .hover\:bg-paper-sub:hover { background-color: rgba(26, 25, 24, 0.04); }
         .hover\:bg-ink-label:hover { background-color: var(--label-color); }
+        .hover\:border-ink:hover { border-color: var(--text-color); }
         .hover\:opacity-75:hover { opacity: 0.75; }
         .hover\:text-ink:hover { color: var(--text-color); }
 
@@ -380,11 +403,11 @@
         .scroll-outer-frame {
             position: relative;
             background: #ffffff;
-            border: 1px solid var(--item-line);
+            border: none;
             box-shadow: 0 4px 20px rgba(26, 25, 24, 0.06);
             border-radius: 2px;
             overflow: hidden;
-            margin-top: 1.25rem;
+            margin-top: 1.5rem;
         }
 
         /* 画面上部の操作案内 */
@@ -394,23 +417,23 @@
             padding: 0.4rem 1rem;
             display: flex;
             align-items: center;
-            justify-content: space-between;
+            justify-content: flex-start;
             font-size: 0.7rem;
             color: var(--text-color);
             letter-spacing: 0.1em;
             font-family: "Noto Serif JP", "Shippori Mincho", serif;
         }
 
-        /* 縦書きビューアー本体（縦長サイズ拡張） */
+        /* 縦書きビューアー本体 */
         .scroll-container {
             display: block;
             overflow-x: auto;
             overflow-y: hidden;
             width: 100%;
-            height: 85vh;
-            max-height: 880px;
-            min-height: 560px;
-            padding: 2.5rem 2rem;
+            height: 78vh;
+            max-height: 720px;
+            min-height: 480px;
+            padding: 2.25rem 2rem;
             box-sizing: border-box;
             background-color: #ffffff;
             cursor: grab;
@@ -420,7 +443,7 @@
         }
 
         .scroll-container::-webkit-scrollbar {
-            height: 7px;
+            height: 6px;
         }
         .scroll-container::-webkit-scrollbar-track {
             background: #f3f0e8;
@@ -434,7 +457,7 @@
             cursor: grabbing;
         }
 
-        /* 戯曲のテキストレイアウト（フォント統一・小サイズ・色なし） */
+        /* 戯曲のテキストレイアウト */
         .script-content {
             writing-mode: vertical-rl;
             -webkit-writing-mode: vertical-rl;
@@ -468,12 +491,37 @@
             letter-spacing: 0.2em;
         }
 
-        /* 登場人物枠 */
+        /* 登場人物 & 辞書解説 共通外枠 */
         .script-char-box {
             border-right: 1px solid var(--item-line);
             padding-right: 1.5rem;
             margin-left: 2.5rem;
             margin-right: 1.5rem;
+            display: inline-block;
+            vertical-align: top;
+        }
+
+        /* 登場人物・辞書・※注釈のすべての上端（高さ）を最上部で揃える */
+        .script-char-group,
+        .script-dict-notes,
+        .script-note-col {
+            display: inline-block;
+            vertical-align: top;
+            font-size: 0.53rem;
+            color: var(--text-color);
+            line-height: 2;
+        }
+
+        .script-char-group {
+            margin-left: 0;
+        }
+
+        .script-dict-notes {
+            margin-left: 1.8rem;
+        }
+
+        .script-note-col {
+            margin-left: 1.8rem;
         }
 
         .script-char-name {
@@ -491,39 +539,60 @@
             line-height: 1.9;
         }
 
-        /* 台詞と話し手（原稿では話者の台詞は一字下げで始まる。
-           縦書き（vertical-rl）では物理的な margin-top が「文字の頭の高さ」
-           ＝各行（列）の書き出し位置にあたるため、ここで字下げを表現する） */
+        /* 台詞と話者名：改行時（2行目）の高さを1行目の本文開始位置（3em分下）とピッタリ調整 */
         .script-line {
             margin-left: 1.15rem;
             margin-top: 1.3em;
+            padding-top: 3em;     /* 話者名2文字＋全角スペース1文字＝3文字分下 */
+            text-indent: -3em;    /* 1行目（話者名）のみ最上部(0em)へ引き戻す */
         }
 
         .script-speaker {
             font-weight: 600;
-            margin-bottom: 0.3em;
             color: var(--text-color);
+            display: inline;
         }
 
-        /* 音読・暗誦の傍線表現 */
+        /* 音読・暗誦の傍線表現（文字に接近） */
         .read-aloud {
             text-decoration: underline;
             text-decoration-color: var(--text-color);
-            text-underline-offset: 4px;
+            text-underline-offset: 1px;
             text-decoration-thickness: 1px;
         }
 
-        /* ト書き（情景描写・舞台指示）：原稿では字下げなし（行頭＝天付き） */
+        /* ト書き（地の文）：上部（行頭）を2文字分下げる */
         .script-direction {
             color: var(--text-color);
             font-size: 0.53rem;
             margin-left: 1.6rem;
             margin-right: 1.6rem;
             margin-top: 0;
+            padding-top: 2em;
             line-height: 2;
         }
 
-        /* ルビ（色なし・サイズ調整） */
+        /* 縦書き用ダッシュ（――）：完全に途切れない2文字分の縦線を完璧に描画 */
+        .dash-line {
+            display: inline-block;
+            width: 1px;
+            height: 2em;
+            background-color: var(--text-color);
+            vertical-align: middle;
+            margin: 0.15em auto;
+        }
+
+        /* 横書き用ダッシュ（――）：Webページ本文用 */
+        .dash-line-horiz {
+            display: inline-block;
+            width: 2em;
+            height: 1px;
+            background-color: var(--text-color);
+            vertical-align: middle;
+            margin: 0 0.1em;
+        }
+
+        /* ルビ */
         ruby rt {
             font-size: 0.55em;
             letter-spacing: 0.05em;
@@ -568,8 +637,10 @@
             .sm\:pl-4 { padding-left: 1rem; }
             .sm\:pt-12 { padding-top: 3rem; }
             .sm\:pt-4 { padding-top: 1rem; }
+            .sm\:px-10 { padding-left: 2.5rem; padding-right: 2.5rem; }
             .sm\:px-12 { padding-left: 3rem; padding-right: 3rem; }
             .sm\:px-4 { padding-left: 1rem; padding-right: 1rem; }
+            .sm\:py-4\.5 { padding-top: 1.125rem; padding-bottom: 1.125rem; }
             .sm\:space-x-8 > :not([hidden]) ~ :not([hidden]) { margin-left: 2rem; }
             .sm\:text-2xl { font-size: 1.5rem; line-height: 2rem; }
             .sm\:text-7xl { font-size: 4.5rem; line-height: 1; }
@@ -584,9 +655,9 @@
             .sm\:w-20 { width: 5rem; }
 
             .scroll-container {
-                height: 85vh;
-                max-height: 880px;
-                padding: 3rem 3.5rem;
+                height: 80vh;
+                max-height: 780px;
+                padding: 2.5rem 3rem;
             }
             .script-content {
                 font-size: 0.65rem;
@@ -826,7 +897,7 @@
             </div>
             <div class="space-y-1 pt-1">
                 <p class="font-garamond text-sm sm:text-base text-ink font-semibold tracking-wide">Archaic:</p>
-                <p class="pl-3 sm:pl-4 text-ink-charcoal">古風で素朴なさま。特に若々しさと原始性の残る芸術様式をいう。「辞書は――である」。</p>
+                <p class="pl-3 sm:pl-4 text-ink-charcoal">古風で素朴なさま。特に若々しさと原始性の残る芸術様式をいう。「辞書は<span class="dash-line-horiz"></span>である」。</p>
             </div>
         </section>
 
@@ -858,16 +929,12 @@
         <!-- ========================================================
              脚本試し読みセクション
              ======================================================== -->
-        <section id="read-script" class="max-w-3xl mx-auto mt-20 sm:mt-24 scroll-mt-20 px-2 sm:px-4">
-            <div class="text-center">
-                <h2 class="text-xl sm:text-2xl font-mincho tracking-[0.2em] text-ink">脚本試し読み</h2>
-            </div>
-
+        <section id="read-script" class="max-w-3xl mx-auto mt-28 sm:mt-36 scroll-mt-20 px-2 sm:px-4">
             <!-- 開閉トグルボタン -->
-            <div class="mt-6 text-center">
-                <button id="toggle-script-btn" class="inline-flex items-center justify-center gap-3 px-8 py-3.5 border border-ink/30 text-ink text-xs font-mincho tracking-[0.2em] hover:border-ink hover:bg-paper-sub transition-all duration-300 rounded-sm cursor-pointer">
+            <div class="text-center">
+                <button id="toggle-script-btn" class="inline-flex items-center justify-center gap-3 px-9 py-4 sm:px-10 sm:py-4.5 border border-ink/40 text-ink text-sm sm:text-base font-mincho tracking-[0.25em] hover:border-ink hover:bg-paper-sub transition-all duration-300 rounded-sm cursor-pointer">
                     <span class="btn-label">脚本試し読み</span>
-                    <svg class="btn-icon w-3.5 h-3.5 stroke-current transition-transform duration-300" fill="none" viewBox="0 0 24 24">
+                    <svg class="btn-icon w-4 h-4 stroke-current transition-transform duration-300" fill="none" viewBox="0 0 24 24">
                         <path d="M19 9l-7 7-7-7" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
                     </svg>
                 </button>
@@ -877,8 +944,7 @@
             <div id="script-viewer" class="hidden script-section">
                 <div class="scroll-outer-frame">
                     <div class="script-guide-bar font-mincho">
-                        <span>← スクロールして読む（右から左へ）</span>
-                        <span>ドラッグ / ホイール操作対応</span>
+                        <span>← スクロールして読む</span>
                     </div>
                     <div id="script-scroll-container" class="scroll-container">
                         <div class="script-content">
@@ -888,18 +954,22 @@
                                 Lexicon
                             </div>
 
-                            <!-- 登場人物 -->
+                            <!-- 登場人物 & 辞書解説（上端高さをすべて綺麗に揃える） -->
                             <div class="script-char-box">
-                                <div class="script-char-name"><ruby>風吟<rt>ふぎん</rt></ruby></div>
-                                <div class="script-char-desc">若くない女。Archaic な語り。読誦を天職とする。</div>
+                                <div class="script-char-group">
+                                    <div class="script-char-name"><ruby>風吟<rt>ふぎん</rt></ruby></div>
+                                    <div class="script-char-desc">若くない女。Archaic な語り。読誦を天職とする。</div>
 
-                                <div class="script-char-name">飴玉</div>
-                                <div class="script-char-desc">棒付きの飴。</div>
+                                    <div class="script-char-name">飴玉</div>
+                                    <div class="script-char-desc">棒付きの飴。</div>
+                                </div>
 
-                                <div class="script-direction" style="margin-top: 2rem;">
+                                <div class="script-dict-notes">
                                     Lexicon：①（特にギリシア語・ヘブライ語などの）辞典。②（特定の作家・作品などの）語彙。語彙集。<br>
-                                    Archaic：古風で素朴なさま。特に若々しさと原始性の残る芸術様式をいう。「辞書は――である」。<br>
-                                    <br>
+                                    Archaic：古風で素朴なさま。特に若々しさと原始性の残る芸術様式をいう。「辞書は<span class="dash-line"></span>である」。
+                                </div>
+
+                                <div class="script-note-col">
                                     ※ 以下、音読/暗誦する部分を傍線によって示す。
                                 </div>
                             </div>
@@ -925,8 +995,7 @@
                             </div>
 
                             <div class="script-line">
-                                <span class="script-speaker">風吟</span>
-                                [音読] <span class="read-aloud">レチタ、君の治らない喉声に、一箱（<ruby>ひとはこ<rt>・</rt></ruby>）のプールを贈ろう。深くて足はつかないから、君を沈める錨（<ruby>いかり<rt>・</rt></ruby>）の代わり、一杯の土も同封しておく。水底（<ruby>みなそこ<rt>・</rt></ruby>）に張り付くウミエラたちを、同じ澱として慕っておくれ。レチタ、君の使命は、ここで声ばかりを繰り返すことだ。闇雲のなかで、大切なことも、大切でないことも、見境なく覚えたろう。すべて見境なく、繰り返せ。</span>[重い咳]･･････<span class="read-aloud">レチタ、呼吸は淀みない。あまり暴れない。なんという気立（<ruby>けたたま<rt>・</rt></ruby>）しい夜の澱で、君の声が喉に引っ掛かっているのだろう。</span>[文字から【レチタ】を抜いて繰り返す]
+                                <span class="script-speaker">風吟</span>　[音読] <span class="read-aloud">レチタ、君の治らない喉声に、一箱（<ruby>ひとはこ<rt>・</rt></ruby>）のプールを贈ろう。深くて足はつかないから、君を沈める錨（<ruby>いかり<rt>・</rt></ruby>）の代わり、一杯の土も同封しておく。水底（<ruby>みなそこ<rt>・</rt></ruby>）に張り付くウミエラたちを、同じ澱として慕っておくれ。レチタ、君の使命は、ここで声ばかりを繰り返すことだ。闇雲のなかで、大切なことも、大切でないことも、見境なく覚えたろう。すべて見境なく、繰り返せ。</span>[重い咳]……<span class="read-aloud">レチタ、呼吸は淀みない。あまり暴れない。なんという気立（<ruby>けたたま<rt>・</rt></ruby>）しい夜の澱で、君の声が喉に引っ掛かっているのだろう。</span>[文字から【レチタ】を抜いて繰り返す]
                             </div>
 
                             <div class="script-direction">
@@ -935,8 +1004,7 @@
                             </div>
 
                             <div class="script-line">
-                                <span class="script-speaker">飴玉</span>
-                                [暗誦] <span class="read-aloud">甘い香りは御蔵（<ruby>みくら<rt>・</rt></ruby>）より、琥珀の夢は舌下まで。昔ながらの手練の業、いつかは主の喉の仏へ、ころころと転び入りぬべく、我再びと此処に参った。</span>[小休止]
+                                <span class="script-speaker">飴玉</span>　[暗誦] <span class="read-aloud">甘い香りは御蔵（<ruby>みくら<rt>・</rt></ruby>）より、琥珀の夢は舌下まで。昔ながらの手練の業、いつかは主の喉の仏へ、ころころと転び入りぬべく、我再びと此処に参った。</span>[小休止]
                             </div>
 
                             <div class="script-direction">
@@ -952,46 +1020,46 @@
                                 今の奇矯なコミュニケーションを払うように、普通の言動をとる。
                             </div>
 
-                            <div class="script-line"><span class="script-speaker">風吟</span> 人外！ 今のエスオーエスは？ 人に食べられてこその本望だ、と言ったな。</div>
-                            <div class="script-line"><span class="script-speaker">飴玉</span> [棒が突っかえて]うっ。[早口] しかし俺はいつの日かとけん。玉のような命だからな。今晩が命日とは思わんが･･････</div>
-                            <div class="script-line"><span class="script-speaker">風吟</span> そんなはずはない、今晩。なんだって言ってくれ。</div>
-                            <div class="script-line"><span class="script-speaker">飴玉</span> 雪が降らないのに、体は震えるいい夜だ。この冷たさを待ちわびて、何やら不測の事態が起こらんとも言い難い、いい夜だ。</div>
-                            <div class="script-line"><span class="script-speaker">風吟</span> それで？ いっそ喉の奥へ転がってしまいたいというのは、本当か？嘘なのか？</div>
-                            <div class="script-line"><span class="script-speaker">飴玉</span> 落ち着け。俺に似合う掛け声を一つ。それを覚えてみたって･･････それだけのことだ。このまるまる、そう簡単にとけはせん。</div>
-                            <div class="script-line"><span class="script-speaker">風吟</span> 嘘か。とけないのか、安心した。･･････あ、もしかして。[十まで指折り]</div>
-                            <div class="script-line"><span class="script-speaker">飴玉</span> もっとも口上は、述べあげる相手が無くなろうが亡くなろうが残るものだというが。</div>
-                            <div class="script-line"><span class="script-speaker">風吟</span> 今晩は数えたら、よし。キリがいい。</div>
-                            <div class="script-line"><span class="script-speaker">飴玉</span> ああ、十回目の出会いになる。</div>
-                            <div class="script-line"><span class="script-speaker">風吟</span> 君の手にある細長いのは、記念の、トークン？</div>
-                            <div class="script-line"><span class="script-speaker">飴玉</span> ん、この棒は、ふつう俺が肌身離さず持っているものだ。</div>
-                            <div class="script-line"><span class="script-speaker">風吟</span> なぜ？</div>
-                            <div class="script-line"><span class="script-speaker">飴玉</span> キャンディーは棒付きだと暮らしやすいからだ。</div>
-                            <div class="script-line"><span class="script-speaker">風吟</span> 違う。なぜ？</div>
-                            <div class="script-direction">[棒術のジェスチャー]</div>
-                            <div class="script-direction">[（勘違いして）頷く]</div>
-                            <div class="script-line"><span class="script-speaker">飴玉</span> 食われんようにするためだ。キャンディーだって必死だ。俺が戦闘員として駆り出されていた只中、この棒の尖端についていた返しがへし折れてしまったもんだから、俺は直ちに柄を持って、スティックにして、これと共に戦わんとした。</div>
-                            <div class="script-line"><span class="script-speaker">風吟</span> それも違う。今までは持っていなかったから訊いているんだ。十回目の今日に限って君が棒付きなのは、なぜ？</div>
-                            <div class="script-line"><span class="script-speaker">飴玉</span> そんなことは･･････</div>
-                            <div class="script-line"><span class="script-speaker">風吟</span> そういうことは？</div>
-                            <div class="script-line"><span class="script-speaker">飴玉</span> 大切でない。</div>
-                            <div class="script-line"><span class="script-speaker">風吟</span> ふうん。見過ごせないな。･･････そうか案外に、君は心が深くなったのか。私に言葉を教わって、あげく物を信じるようになるとは･･････お世話になった人には十回目、ありのままの姿を晒すものと君は誰かに吹き込まれて、大当たり。棒が付いた。</div>
-                            <div class="script-line"><span class="script-speaker">飴玉</span> からっきし的外れだ。この棒は人間のあの、ステッキと違って格式張ったものでは･･････</div>
-                            <div class="script-line"><span class="script-speaker">風吟</span> [被せて] [わざとらしく] うるさい。文句があると聞こえた。</div>
-                            <div class="script-line"><span class="script-speaker">飴玉</span> 当たり外れに文句を言ったまでだ。</div>
+                            <div class="script-line"><span class="script-speaker">風吟</span>　人外！ 今のエスオーエスは？ 人に食べられてこその本望だ、と言ったな。</div>
+                            <div class="script-line"><span class="script-speaker">飴玉</span>　[棒が突っかえて]うっ。[早口] しかし俺はいつの日かとけん。玉のような命だからな。今晩が命日とは思わんが……</div>
+                            <div class="script-line"><span class="script-speaker">風吟</span>　そんなはずはない、今晩。なんだって言ってくれ。</div>
+                            <div class="script-line"><span class="script-speaker">飴玉</span>　雪が降らないのに、体は震えるいい夜だ。この冷たさを待ちわびて、何やら不測の事態が起こらんとも言い難い、いい夜だ。</div>
+                            <div class="script-line"><span class="script-speaker">風吟</span>　それで？ いっそ喉の奥へ転がってしまいたいというのは、本当か？嘘なのか？</div>
+                            <div class="script-line"><span class="script-speaker">飴玉</span>　落ち着け。俺に似合う掛け声を一つ。それを覚えてみたって……それだけのことだ。このまるまる、そう簡単にとけはせん。</div>
+                            <div class="script-line"><span class="script-speaker">風吟</span>　嘘か。とけないのか、安心した。……あ、もしかして。[十まで指折り]</div>
+                            <div class="script-line"><span class="script-speaker">飴玉</span>　もっとも口上は、述べあげる相手が無くなろうが亡くなろうが残るものだというが。</div>
+                            <div class="script-line"><span class="script-speaker">風吟</span>　今晩は数えたら、よし。キリがいい。</div>
+                            <div class="script-line"><span class="script-speaker">飴玉</span>　ああ、十回目の出会いになる。</div>
+                            <div class="script-line"><span class="script-speaker">風吟</span>　君の手にある細長いのは、記念の、トークン？</div>
+                            <div class="script-line"><span class="script-speaker">飴玉</span>　ん、この棒は、ふつう俺が肌身離さず持っているものだ。</div>
+                            <div class="script-line"><span class="script-speaker">風吟</span>　なぜ？</div>
+                            <div class="script-line"><span class="script-speaker">飴玉</span>　キャンディーは棒付きだと暮らしやすいからだ。</div>
+                            <div class="script-line"><span class="script-speaker">風吟</span>　違う。なぜ？</div>
+                            <div class="script-line"><span class="script-speaker">飴玉</span>　［棒術のジェスチャー］</div>
+                            <div class="script-line"><span class="script-speaker">風吟</span>　［（勘違いして）頷く］</div>
+                            <div class="script-line"><span class="script-speaker">飴玉</span>　食われんようにするためだ。キャンディーだって必死だ。俺が戦闘員として駆り出されていた只中、この棒の尖端についていた返しがへし折れてしまったもんだから、俺は直ちに柄を持って、スティックにして、これと共に戦わんとした。</div>
+                            <div class="script-line"><span class="script-speaker">風吟</span>　それも違う。今までは持っていなかったから訊いているんだ。十回目の今日に限って君が棒付きなのは、なぜ？</div>
+                            <div class="script-line"><span class="script-speaker">飴玉</span>　そんなことは……</div>
+                            <div class="script-line"><span class="script-speaker">風吟</span>　そういうことは？</div>
+                            <div class="script-line"><span class="script-speaker">飴玉</span>　大切でない。</div>
+                            <div class="script-line"><span class="script-speaker">風吟</span>　ふうん。見過ごせないな。……そうか案外に、君は心が深くなったのか。私に言葉を教わって、あげく物を信じるようになるとは……お世話になった人には十回目、ありのままの姿を晒すものと君は誰かに吹き込まれて、大当たり。棒が付いた。</div>
+                            <div class="script-line"><span class="script-speaker">飴玉</span>　からっきし的外れだ。この棒は人間のあの、ステッキと違って格式張ったものでは……</div>
+                            <div class="script-line"><span class="script-speaker">風吟</span>　[被せて] [わざとらしく] うるさい。文句があると聞こえた。</div>
+                            <div class="script-line"><span class="script-speaker">飴玉</span>　当たり外れに文句を言ったまでだ。</div>
 
-                            <div class="script-line"><span class="script-speaker">風吟</span> [わざとらしく] ふん。決まった。[音読] <span class="read-aloud">破門、だ。私を打ってみろ。</span></div>
-                            <div class="script-line"><span class="script-speaker">飴玉</span> ん、ハモン。</div>
-                            <div class="script-line"><span class="script-speaker">風吟</span> その棒で、私の頭を、ぱーんと打ってみろ。ここにおとなしく座っているから。</div>
-                            <div class="script-line"><span class="script-speaker">飴玉</span> ハモンとはなんだ。[本を奪う] [音読] <span class="read-aloud">師弟の縁（<ruby>えにし<rt>・</rt></ruby>）を絶ち、門徒から除く。ハモン？</span></div>
-                            <div class="script-line"><span class="script-speaker">風吟</span> 命を懸けて私を打ってこそ、正統な伝承が為されるものだ。愛弟子まで一本道を通じようと思えば、かなしいかな、師匠たるもの縁より先に命を絶たなければならない。･･････嘘だ。そんなストーリーは探しても探しても、東西南北どこにもなかった。</div>
-                            <div class="script-line"><span class="script-speaker">飴玉</span> ･･････何を言った？</div>
-                            <div class="script-line"><span class="script-speaker">風吟</span> 弟子が命懸けで師匠を打つ物語は、なんと、一つもなかった。</div>
-                            <div class="script-line"><span class="script-speaker">飴玉</span> わからん。どれだ。[音読] <span class="read-aloud">関連して次々に及んでいく･･････</span></div>
-                            <div class="script-line"><span class="script-speaker">風吟</span> 見つかるあてのない物語のために、私は君を破門するのか？</div>
-                            <div class="script-line"><span class="script-speaker">飴玉</span> [音読] <span class="read-aloud">変化や、反応。･･････その様子だと俺を、破門、してみたいのか。</span></div>
-                            <div class="script-line"><span class="script-speaker">風吟</span> 人外、手が空いたから、ほら、頭のてっぺんが寂しい。早く、ここを思いっきり･･････</div>
-                            <div class="script-line"><span class="script-speaker">飴玉</span> [被せて] 打ってみろ。</div>
-                            <div class="script-line"><span class="script-speaker">風吟</span> あ、うん。そうするといい。話は、それから･･････</div>
+                            <div class="script-line"><span class="script-speaker">風吟</span>　[わざとらしく] ふん。決まった。[音読] <span class="read-aloud">破門、だ。私を打ってみろ。</span></div>
+                            <div class="script-line"><span class="script-speaker">飴玉</span>　ん、ハモン。</div>
+                            <div class="script-line"><span class="script-speaker">風吟</span>　その棒で、私の頭を、ぱーんと打ってみろ。ここにおとなしく座っているから。</div>
+                            <div class="script-line"><span class="script-speaker">飴玉</span>　ハモンとはなんだ。[本を奪う] [音読] <span class="read-aloud">師弟の縁（<ruby>えにし<rt>・</rt></ruby>）を絶ち、門徒から除く。ハモン？</span></div>
+                            <div class="script-line"><span class="script-speaker">風吟</span>　命を懸けて私を打ってこそ、正統な伝承が為されるものだ。愛弟子まで一本道を通じようと思えば、かなしいかな、師匠たるもの縁より先に命を絶たなければならない。……嘘だ。そんなストーリーは探しても探しても、東西南北どこにもなかった。</div>
+                            <div class="script-line"><span class="script-speaker">飴玉</span>　……何を言った？</div>
+                            <div class="script-line"><span class="script-speaker">風吟</span>　弟子が命懸けで師匠を打つ物語は、なんと、一つもなかった。</div>
+                            <div class="script-line"><span class="script-speaker">飴玉</span>　わからん。どれだ。[音読] <span class="read-aloud">関連して次々に及んでいく……</span></div>
+                            <div class="script-line"><span class="script-speaker">風吟</span>　見つかるあてのない物語のために、私は君を破門するのか？</div>
+                            <div class="script-line"><span class="script-speaker">飴玉</span>　[音読] <span class="read-aloud">変化や、反応。……その様子だと俺を、破門、してみたいのか。</span></div>
+                            <div class="script-line"><span class="script-speaker">風吟</span>　人外、手が空いたから、ほら、頭のてっぺんが寂しい。早く、ここを思いっきり……</div>
+                            <div class="script-line"><span class="script-speaker">飴玉</span>　[被せて] 打ってみろ。</div>
+                            <div class="script-line"><span class="script-speaker">風吟</span>　あ、うん。そうするといい。話は、それから……</div>
 
                             <!-- 本文: 2A -->
                             <div class="script-section-tag">＜２Ａ＞</div>
@@ -1001,22 +1069,22 @@
                                 聖性を帯びた書物を、聖書ではないものとして読めるのは人間の特権だろうか。
                             </div>
 
-                            <div class="script-line"><span class="script-speaker">飴玉</span> [無線機（本）に] 話は･･････ [聴取不能] それから、風だ。北東の煽（<ruby>あお<rt>・</rt></ruby>）ち風だ･･････吹き上げる高さは、千二百メートル。発生源は四十キロメートル先、この方角なら最も標高の低い区民プールだ。その泳ぎやすさで評判がいい。ここは大陸の風下。北東に突き出した丘の縁に立てば、塩味（<ruby>しおあじ<rt>・</rt></ruby>）が少し目に染みる。</div>
-                            <div class="script-line"><span class="script-speaker">風吟</span> しょっぱい風！ そこのプールの生き物、みんな、塩ふりかかって死んでいるのに。</div>
-                            <div class="script-line"><span class="script-speaker">飴玉</span> やはり蛞蝓（<ruby>なめくじ<rt>・</rt></ruby>）のように人間はとけたのか。</div>
-                            <div class="script-line"><span class="script-speaker">風吟</span> わからない。実際は、わからない。君がとけるようにとけた、と言ったらまずいだろうか。空見上げて、雪と思ったら塩だったと、プールサイドの遺言にそう書いてあった。</div>
-                            <div class="script-line"><span class="script-speaker">飴玉</span> そうか。お前といい、人間は、人間の時代がついた言伝を、なんでも知っているものだな。</div>
-                            <div class="script-line"><span class="script-speaker">風吟</span> 私は知れない。覚えているだけ。やり方が古いのかもしれない。</div>
-                            <div class="script-line"><span class="script-speaker">飴玉</span> 幸か不幸か、風は順行している。今晩、お前の亡骸がここにあっても、プールの方角へは流れないだろう。さすれば打たれることも恐れるな、風吟。[本を置いて構える]</div>
-                            <div class="script-line"><span class="script-speaker">風吟</span> その遺言の衾（<ruby>ふすま<rt>・</rt></ruby>）、人の思いは果てなく積もる。それでも、思いばかりの目録にもたれる心だ。君は花布をほどくように、たった一ページを以て、遺言のために語彙だけを残せ。あとは誰か覚えて、別の人。</div>
-                            <div class="script-line"><span class="script-speaker">飴玉</span> [被せて] レチタ。</div>
-                            <div class="script-line"><span class="script-speaker">風吟</span> [被せて] 記されることが山ほどあるなら、覚えられることも山ほどあるだろう。私の頭にもうゆとりはない。･･････君、助走もつけて。</div>
-                            <div class="script-line"><span class="script-speaker">飴玉</span> [後ずさり] レチタ、俺の主（<ruby>あるじ<rt>・</rt></ruby>）･･････俺はレチタの亡き手に代えて、お前を打つだけだ。</div>
-                            <div class="script-line"><span class="script-speaker">風吟</span> レチタ･･････それは、誰だ？ 私じゃないのか？ 私でよければ、そのレチタとやらになってあげようか。･･････待って。少し近い。</div>
-                            <div class="script-line"><span class="script-speaker">飴玉</span> 人情をかけるのは違反だ、風吟。</div>
-                            <div class="script-line"><span class="script-speaker">風吟</span> ううん。違う。助走もつけて、もっと離れて、人外。</div>
-                            <div class="script-line"><span class="script-speaker">飴玉</span> [後ずさり] 三歩下がった。手元はしがなく、まだ震えない。お前を打ちそうだ。</div>
-                            <div class="script-line"><span class="script-speaker">風吟</span> 助走もつけて。うんと。昔。今。君のいた天幕が近い。上だ。君の鋩（<ruby>きっさき<rt>・</rt></ruby>）に下りてくる。</div>
+                            <div class="script-line"><span class="script-speaker">飴玉</span>　[無線機（本）に] 話は…… [聴取不能] それから、風だ。北東の煽（<ruby>あお<rt>・</rt></ruby>）ち風だ……吹き上げる高さは、千二百メートル。発生源は四十キロメートル先、この方角なら最も標高の低い区民プールだ。その泳ぎやすさで評判がいい。ここは大陸の風下。北東に突き出した丘の縁に立てば、塩味（<ruby>しおあじ<rt>・</rt></ruby>）が少し目に染みる。</div>
+                            <div class="script-line"><span class="script-speaker">風吟</span>　しょっぱい風！ そこのプールの生き物、みんな、塩ふりかかって死んでいるのに。</div>
+                            <div class="script-line"><span class="script-speaker">飴玉</span>　やはり蛞蝓（<ruby>なめくじ<rt>・</rt></ruby>）のように人間はとけたのか。</div>
+                            <div class="script-line"><span class="script-speaker">風吟</span>　わからない。実際は、わからない。君がとけるようにとけた、と言ったらまずいだろうか。空見上げて、雪と思ったら塩だったと、プールサイドの遺言にそう書いてあった。</div>
+                            <div class="script-line"><span class="script-speaker">飴玉</span>　そうか。お前といい、人間は、人間の時代がついた言伝を、なんでも知っているものだな。</div>
+                            <div class="script-line"><span class="script-speaker">風吟</span>　私は知れない。覚えているだけ。やり方が古いのかもしれない。</div>
+                            <div class="script-line"><span class="script-speaker">飴玉</span>　幸か不幸か、風は順行している。今晩、お前の亡骸がここにあっても、プールの方角へは流れないだろう。さすれば打たれることも恐れるな、風吟。[本を置いて構える]</div>
+                            <div class="script-line"><span class="script-speaker">風吟</span>　その遺言の衾（<ruby>ふすま<rt>・</rt></ruby>）、人の思いは果てなく積もる。それでも、思いばかりの目録にもたれる心だ。君は花布をほどくように、たった一ページを以て、遺言のために語彙だけを残せ。あとは誰か覚えて、別の人。</div>
+                            <div class="script-line"><span class="script-speaker">飴玉</span>　[被せて] レチタ。</div>
+                            <div class="script-line"><span class="script-speaker">風吟</span>　[被せて] 記されることが山ほどあるなら、覚えられることも山ほどあるだろう。私の頭にもうゆとりはない。……君、助走もつけて。</div>
+                            <div class="script-line"><span class="script-speaker">飴玉</span>　[後ずさり] レチタ、俺の主（<ruby>あるじ<rt>・</rt></ruby>）……俺はレチタの亡き手に代えて、お前を打つだけだ。</div>
+                            <div class="script-line"><span class="script-speaker">風吟</span>　レチタ……それは、誰だ？ 私じゃないのか？ 私でよければ、そのレチタとやらになってあげようか。……待って。少し近い。</div>
+                            <div class="script-line"><span class="script-speaker">飴玉</span>　人情をかけるのは違反だ、風吟。</div>
+                            <div class="script-line"><span class="script-speaker">風吟</span>　ううん。違う。助走もつけて、もっと離れて、人外。</div>
+                            <div class="script-line"><span class="script-speaker">飴玉</span>　[後ずさり] 三歩下がった。手元はしがなく、まだ震えない。……お前を打ちそうだ。</div>
+                            <div class="script-line"><span class="script-speaker">風吟</span>　助走もつけて。うんと。昔。今。君のいた天幕が近い。上だ。君の鋩（<ruby>きっさき<rt>・</rt></ruby>）に下りてくる。</div>
 
                             <!-- 本文: 2B -->
                             <div class="script-section-tag">＜２Ｂ＞</div>
@@ -1026,7 +1094,7 @@
                                 風吟は、いっとき地蔵のようになる。飴玉が笠を手に徒歩で戻ってくる。罠に掛かった形跡がある。
                             </div>
 
-                            <div class="script-line"><span class="script-speaker">飴玉</span> じりじり後ろへ下がらせて、なんだ･･････罠があるなら罠と伝えてくれるものと思っていた。[音読] <span class="read-aloud">一、囲み罠。二、捕縛罠。三、殺戮罠。獲物を新鮮なまま活かしておきたいなら、罠の内部にはおとりが組み込まれる。</span>[捲り戻す] <span class="read-aloud">人情。自然に備わった人間の愛情。広大無辺の慈しみ。情け。･･････関連して･･････殺戮罠にはおとりを用いない。終夜（<ruby>しゅうや<rt>・</rt></ruby>）ごっこ遊びに興じていたら、俺がとけるより早く、お前が固まるだけの時間が経ってしまった。</span>[叩いて] なんと凄惨なことか。･･････だがよかった。俺も、お前も、無傷だ。</div>
+                            <div class="script-line"><span class="script-speaker">飴玉</span>　じりじり後ろへ下がらせて、なんだ……罠があるなら罠と伝えてくれるものと思っていた。[音読] <span class="read-aloud">一、囲み罠。二、捕縛罠。三、殺戮罠。獲物を新鮮なまま活かしておきたいなら、罠の内部にはおとりが組み込まれる。</span>[捲り戻す] <span class="read-aloud">人情。自然に備わった人間の愛情。広大無辺の慈しみ。情け。……関連して……殺戮罠にはおとりを用いない。終夜（<ruby>しゅうや<rt>・</rt></ruby>）ごっこ遊びに興じていたら、俺がとけるより早く、お前が固まるだけの時間が経ってしまった。</span>[叩いて] なんと凄惨なことか。……だがよかった。俺も、お前も、無傷だ。</div>
 
                             <div class="script-direction">
                                 風吟の頭に笠をかけ、一拍。肩にそっと棒を添える。一気に潮風が下がる。
@@ -1035,45 +1103,45 @@
                             <!-- 本文: 3A -->
                             <div class="script-section-tag">＜３Ａ＞</div>
 
-                            <div class="script-line"><span class="script-speaker">風吟</span> [勢いよく] 弱い！ [笠に] なにこれ。</div>
-                            <div class="script-line"><span class="script-speaker">飴玉</span> ひしゃげたテントで拾ってきた、天（<ruby>あま<rt>・</rt></ruby>）の笠だ。[音読] <span class="read-aloud">雪を防いだり、日光を遮ったりする。</span></div>
-                            <div class="script-line"><span class="script-speaker">風吟</span> なら君が身に付けておくべきだ。</div>
-                            <div class="script-line"><span class="script-speaker">飴玉</span> いや遠慮しておく。ふさわしく･･････ない。</div>
-                            <div class="script-line"><span class="script-speaker">風吟</span> 関係ない。私には霜焼けも日焼けも、命に別状ないから。</div>
+                            <div class="script-line"><span class="script-speaker">風吟</span>　[勢いよく] 弱い！ [笠に] なにこれ。</div>
+                            <div class="script-line"><span class="script-speaker">飴玉</span>　ひしゃげたテントで拾ってきた、天（<ruby>あま<rt>・</rt></ruby>）の笠だ。[音読] <span class="read-aloud">雪を防いだり、日光を遮ったりする。</span></div>
+                            <div class="script-line"><span class="script-speaker">風吟</span>　なら君が身に付けておくべきだ。</div>
+                            <div class="script-line"><span class="script-speaker">飴玉</span>　いや遠慮しておく。ふさわしく……ない。</div>
+                            <div class="script-line"><span class="script-speaker">風吟</span>　関係ない。私には霜焼けも日焼けも、命に別状ないから。</div>
 
                             <div class="script-direction">
                                 気持ちを溜めて、思いっきり打つ。
                             </div>
 
-                            <div class="script-line"><span class="script-speaker">風吟</span> ん。･･････ふう。流石のみねうち。そんなふうにするのか。</div>
-                            <div class="script-line"><span class="script-speaker">飴玉</span> チャンバラはどの向きで打っても峰だ。何度繰り返せば･･････</div>
-                            <div class="script-line"><span class="script-speaker">風吟</span> [被せて] 私は、しつこくて、うるさいか？</div>
-                            <div class="script-line"><span class="script-speaker">飴玉</span> いや、どうだ･･････お前以外の、他の人間には敵わん。</div>
-                            <div class="script-line"><span class="script-speaker">風吟</span> 嘘だ。別の人が？そんなはずはない。</div>
-                            <div class="script-line"><span class="script-speaker">飴玉</span> あいつらの地上には近々、俺には到底知られんような禍（<ruby>わざわい<rt>・</rt></ruby>）のいっぱしでも降ってくるとみえる。俺のカマクラにまでやりきれないのへたれ声が轟いてきて敵わん。しつこい声だ。</div>
-                            <div class="script-line"><span class="script-speaker">風吟</span> 君、カマクラに住んでいたのか。カマクラ･･････[暗誦] <span class="read-aloud">積もる雪をはたいて半球形の室（<ruby>むろ<rt>・</rt></ruby>）を作った子供たちが、水神（<ruby>すいじん<rt>・</rt></ruby>）を祀り、十一回目の朝、天（<ruby>あま<rt>・</rt></ruby>）の筆をとって思いを書き留める。その思いの丈の短さといったら、それを焚き上げる火柱（<ruby>ひばしら<rt>・</rt></ruby>）が、害鳥を追い払うのに足らないほどだ。</span>なんと。･･････うん。そんな息苦しいところ、引っ越せばよかろう？</div>
-                            <div class="script-line"><span class="script-speaker">飴玉</span> ･･････蔵（<ruby>くら<rt>・</rt></ruby>）の外は住むには暑い。全身とけだしてしまう。</div>
-                            <div class="script-line"><span class="script-speaker">風吟</span> なるほど。外側からとろとろとける？</div>
-                            <div class="script-line"><span class="script-speaker">飴玉</span> ねちねちとける。あまり見栄えよくない。</div>
-                            <div class="script-line"><span class="script-speaker">風吟</span> ふうん。</div>
-                            <div class="script-line"><span class="script-speaker">飴玉</span> 外はしつこい暑さで、その上、うるさい。</div>
-                            <div class="script-line"><span class="script-speaker">風吟</span> 悔しい、私以外でうるさくして。私だけ仲間から外して、みんなで生き急いでいるのか？</div>
-                            <div class="script-line"><span class="script-speaker">飴玉</span> ただの直感だ。俺はああいう小競り合いには口挟みしない。</div>
-                            <div class="script-line"><span class="script-speaker">風吟</span> そうか。すると、君がまた私に会いに来たのは不思議だな。</div>
-                            <div class="script-line"><span class="script-speaker">飴玉</span> なぜだ。</div>
-                            <div class="script-line"><span class="script-speaker">風吟</span> 私に言葉を教わって、外で口論もしないとなると、いったい誰に披露するんだ？</div>
-                            <div class="script-line"><span class="script-speaker">飴玉</span> 好奇心にすぎん。お前はただ教鞭をとっていればいい。</div>
-                            <div class="script-line"><span class="script-speaker">風吟</span> 人外が言葉を知って、話し相手が人外しかいないのは悲しかろう？まず言葉を知る人外がなかなかなくて、君は、足りない話し相手がバタバタ黙っていくのを見つめて･･････なぜ？･･････いや、よく喋るようになってよかった。うん。達者だ。これは八回目の話、君に根気があるとは思わなかった。だから、来てくれて、うれしい。</div>
-                            <div class="script-line"><span class="script-speaker">飴玉</span> 八回目、気に食わんな。</div>
-                            <div class="script-line"><span class="script-speaker">風吟</span> 根気と数えるのは三回目からだ。</div>
-                            <div class="script-line"><span class="script-speaker">飴玉</span> 十ひく三たす一で、八か。</div>
-                            <div class="script-line"><span class="script-speaker">風吟</span> ありがとう。･･････君、今日の通学手段は？</div>
-                            <div class="script-line"><span class="script-speaker">飴玉</span> もちろん [前転] 前回りだ。</div>
-                            <div class="script-line"><span class="script-speaker">風吟</span> 君が飴玉だからか？</div>
-                            <div class="script-line"><span class="script-speaker">飴玉</span> そうだ。ローリング・キャンディーだ。</div>
-                            <div class="script-line"><span class="script-speaker">風吟</span> 形がまるまるだからか？</div>
-                            <div class="script-line"><span class="script-speaker">飴玉</span> そうだ。ローリング・キャンディーだ。</div>
-                            <div class="script-line"><span class="script-speaker">風吟</span> ふうん。･･････[わざとらしく] あっ！拾って！人外！</div>
+                            <div class="script-line"><span class="script-speaker">風吟</span>　ん。……ふう。流石のみねうち。そんなふうにするのか。</div>
+                            <div class="script-line"><span class="script-speaker">飴玉</span>　チャンバラはどの向きで打っても峰だ。何度繰り返せば……</div>
+                            <div class="script-line"><span class="script-speaker">風吟</span>　[被せて] 私は、しつこくて、うるさいか？</div>
+                            <div class="script-line"><span class="script-speaker">飴玉</span>　いや、どうだ……お前以外の、他の人間には敵わん。</div>
+                            <div class="script-line"><span class="script-speaker">風吟</span>　嘘だ。別の人が？そんなはずはない。</div>
+                            <div class="script-line"><span class="script-speaker">飴玉</span>　あいつらの地上には近々、俺には到底知られんような禍（<ruby>わざわい<rt>・</rt></ruby>）のいっぱしでも降ってくるとみえる。俺のカマクラにまでやりきれないのへたれ声が轟いてきて敵わん。しつこい声だ。</div>
+                            <div class="script-line"><span class="script-speaker">風吟</span>　君、カマクラに住んでいたのか。カマクラ……[暗誦] <span class="read-aloud">積もる雪をはたいて半球形の室（<ruby>むろ<rt>・</rt></ruby>）を作った子供たちが、水神（<ruby>すいじん<rt>・</rt></ruby>）を祀り、十一回目の朝、天（<ruby>あま<rt>・</rt></ruby>）の筆をとって思いを書き留める。その思いの丈の短さといったら、それを焚き上げる火柱（<ruby>ひばしら<rt>・</rt></ruby>）が、害鳥を追い払うのに足らないほどだ。</span>なんと。……うん。そんな息苦しいところ、引っ越せばよかろう？</div>
+                            <div class="script-line"><span class="script-speaker">飴玉</span>　……蔵（<ruby>くら<rt>・</rt></ruby>）の外は住むには暑い。全身とけだしてしまう。</div>
+                            <div class="script-line"><span class="script-speaker">風吟</span>　なるほど。外側からとろとろとける？</div>
+                            <div class="script-line"><span class="script-speaker">飴玉</span>　ねちねちとける。あまり見栄えよくない。</div>
+                            <div class="script-line"><span class="script-speaker">風吟</span>　ふうん。</div>
+                            <div class="script-line"><span class="script-speaker">飴玉</span>　外はしつこい暑さで、その上、うるさい。</div>
+                            <div class="script-line"><span class="script-speaker">風吟</span>　悔しい、私以外でうるさくして。私だけ仲間から外して、みんなで生き急いでいるのか？</div>
+                            <div class="script-line"><span class="script-speaker">飴玉</span>　ただの直感だ。俺はああいう小競り合いには口挟みしない。</div>
+                            <div class="script-line"><span class="script-speaker">風吟</span>　そうか。すると、君がまた私に会いに来たのは不思議だな。</div>
+                            <div class="script-line"><span class="script-speaker">飴玉</span>　なぜだ。</div>
+                            <div class="script-line"><span class="script-speaker">風吟</span>　私に言葉を教わって、外で口論もしないとなると、いったい誰に披露するんだ？</div>
+                            <div class="script-line"><span class="script-speaker">飴玉</span>　好奇心にすぎん。お前はただ教鞭をとっていればいい。</div>
+                            <div class="script-line"><span class="script-speaker">風吟</span>　人外が言葉を知って、話し相手が人外しかいないのは悲しかろう？まず言葉を知る人外がなかなかなくて、君は、足りない話し相手がバタバタ黙っていくのを見つめて……なぜ？……いや、よく喋るようになってよかった。うん。達者だ。これは八回目の話、君に根気があるとは思わなかった。だから、来てくれて、うれしい。</div>
+                            <div class="script-line"><span class="script-speaker">飴玉</span>　八回目、気に食わんな。</div>
+                            <div class="script-line"><span class="script-speaker">風吟</span>　根気と数えるのは三回目からだ。</div>
+                            <div class="script-line"><span class="script-speaker">飴玉</span>　十ひく三たす一で、八か。</div>
+                            <div class="script-line"><span class="script-speaker">風吟</span>　ありがとう。……君、今日の通学手段は？</div>
+                            <div class="script-line"><span class="script-speaker">飴玉</span>　もちろん [前転] 前回りだ。</div>
+                            <div class="script-line"><span class="script-speaker">風吟</span>　君が飴玉だからか？</div>
+                            <div class="script-line"><span class="script-speaker">飴玉</span>　そうだ。ローリング・キャンディーだ。</div>
+                            <div class="script-line"><span class="script-speaker">風吟</span>　形がまるまるだからか？</div>
+                            <div class="script-line"><span class="script-speaker">飴玉</span>　そうだ。ローリング・キャンディーだ。</div>
+                            <div class="script-line"><span class="script-speaker">風吟</span>　ふうん。……[わざとらしく] あっ！拾って！人外！</div>
 
                             <!-- 試し読み終了マーカー -->
                             <div class="script-end-marker">
