@@ -3,7 +3,24 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    <!-- サイトタイトル & メタ情報 (SEO) -->
     <title>Lexicon｜Louis-room</title>
+    <meta name="description" content="ルイルーム（Louis-room）主催 演劇公演『Lexicon』（作：髙野皓太）。2026年10月11日〜12日、京都市立芸術大学 映像スタジオにて上演。">
+    
+    <!-- ファビコン（ブラウザタブアイコン） -->
+    <link rel="icon" href="./icon.JPG" type="image/jpeg">
+    <link rel="apple-touch-icon" href="./icon.JPG">
+
+    <!-- Open Graph Tags (SNSシェア・X・LINEカード表示用) -->
+    <meta property="og:title" content="Lexicon｜Louis-room">
+    <meta property="og:description" content="ルイルーム（Louis-room）主催 演劇公演『Lexicon』公式サイト。">
+    <meta property="og:type" content="website">
+    <meta property="og:image" content="./flyer.JPG">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Lexicon｜Louis-room">
+    <meta name="twitter:description" content="ルイルーム（Louis-room）主催 演劇公演『Lexicon』公式サイト。">
+    <meta name="twitter:image" content="./flyer.JPG">
     
     <!-- Google Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -49,14 +66,6 @@
         ::-webkit-scrollbar-thumb {
             background: rgba(26, 25, 24, 0.15);
         }
-
-        /* アニメーション要素のGPUレンダリング最適化 */
-        #title-section {
-            will-change: padding-top;
-        }
-        #definition {
-            will-change: margin-top;
-        }
     </style>
 
     <!-- Tailwind CSS -->
@@ -87,9 +96,9 @@
 </head>
 <body class="min-h-screen flex flex-col justify-between selection:bg-ink selection:text-paper bg-paper">
 
-    <!-- 画像フォールバック ＆ レイアウト最適化スクリプト -->
+    <!-- 軽量・堅牢なレイアウト制御スクリプト -->
     <script>
-        // 画像読み込み失敗時のフォールバック処理
+        // 画像フォールバック処理
         function tryNextExtension(imgEl, fallbackId, displayType) {
             const extPatterns = ['.JPG', '.jpg', '.png', '.jpeg', '.PNG', '.JPEG', '.png.JPG'];
             let currentIdx = parseInt(imgEl.getAttribute('data-ext-idx') || '0', 10);
@@ -110,96 +119,110 @@
             }
         }
 
-        // スクロール連動レイアウト精密計算ロジック
+        // スクロール連動：絶対位置固定の安全かつ超軽量な動的余白計算
         document.addEventListener('DOMContentLoaded', function () {
             const visualBox = document.getElementById('visual-box');
             const titleSection = document.getElementById('title-section');
             const definitionSection = document.getElementById('definition');
             const mainVisual = document.getElementById('main-visual');
 
-            function updateScrollLayout() {
+            let baseInitialTitlePadding = 0;
+            let baseInitialDefMargin = 0;
+            let minTitlePadding = 16;
+            let minDefMargin = 48;
+            let scrollRange = 360;
+
+            // 重い計算（画面測定）は読込・リサイズ時のみ限定実行
+            function measureBaseDimensions() {
                 if (!visualBox || !titleSection || !definitionSection) return;
 
-                const scrollY = window.scrollY || window.pageYOffset;
                 const vh = window.innerHeight;
                 const isMobile = window.innerWidth < 640;
 
-                // 1. 画像ボックスの絶対座標と下端位置
-                const visualRect = visualBox.getBoundingClientRect();
-                const visualBottom = visualRect.top + scrollY + visualRect.height;
-
-                // 2. タイトルブロック本来の高さ（paddingTopを除く）
                 const currentPt = parseFloat(titleSection.style.paddingTop || '0');
                 const pureTitleHeight = titleSection.offsetHeight - currentPt;
 
-                // 3. 画像下端から画面底面（vh）までの残り空間
+                const visualRect = visualBox.getBoundingClientRect();
+                const visualBottom = visualRect.top + (window.scrollY || window.pageYOffset) + visualRect.height;
+
                 const remainingSpace = vh - visualBottom;
 
-                // 4. 残り空間の中で「完璧な上下中央」にする初期 paddingTop
-                let initialTitlePadding = (remainingSpace - pureTitleHeight) / 2;
-                initialTitlePadding = Math.max(initialTitlePadding, isMobile ? 20 : 32);
+                minTitlePadding = isMobile ? 12 : 16;
+                baseInitialTitlePadding = Math.max((remainingSpace - pureTitleHeight) / 2, isMobile ? 20 : 32);
 
-                // 5. スクロール完了後の最小 paddingTop（詰まった状態）
-                const minTitlePadding = isMobile ? 12 : 16;
+                const titleBottomAtStart = visualBottom + baseInitialTitlePadding + pureTitleHeight;
+                minDefMargin = isMobile ? 32 : 48;
+                baseInitialDefMargin = Math.max(vh - titleBottomAtStart + 16, isMobile ? 40 : 60);
 
-                // 6. 初期状態で定義文を画面直下に置くための初期 marginTop
-                const titleBottomAtStart = visualBottom + initialTitlePadding + pureTitleHeight;
-                let initialDefMargin = Math.max(vh - titleBottomAtStart + 16, isMobile ? 40 : 60);
-                const minDefMargin = isMobile ? 32 : 48;
+                scrollRange = isMobile ? 260 : 360;
 
-                // スクロール反応距離（px）
-                const scrollRange = isMobile ? 260 : 360;
+                applyScrollLayout();
+            }
+
+            // スクロール時は数値演算のみ（CPU負荷ゼロレベル）
+            function applyScrollLayout() {
+                if (!titleSection || !definitionSection) return;
+
+                const scrollY = window.scrollY || window.pageYOffset;
                 const rawProgress = Math.min(Math.max(scrollY / scrollRange, 0), 1);
                 
-                // サインカーブによる滑らかなイージング
                 const progress = Math.sin((rawProgress * Math.PI) / 2);
 
-                // スクロール量に応じたリアルタイム補間計算
-                const currentTitlePadding = initialTitlePadding - (initialTitlePadding - minTitlePadding) * progress;
-                const currentDefMargin = initialDefMargin - (initialDefMargin - minDefMargin) * progress;
+                const currentTitlePadding = baseInitialTitlePadding - (baseInitialTitlePadding - minTitlePadding) * progress;
+                const currentDefMargin = baseInitialDefMargin - (baseInitialDefMargin - minDefMargin) * progress;
 
                 titleSection.style.paddingTop = `${Math.max(currentTitlePadding, minTitlePadding)}px`;
                 definitionSection.style.marginTop = `${Math.max(currentDefMargin, minDefMargin)}px`;
             }
 
-            // フレーム同期による高パフォーマンスイベントリスナー
+            // フレーム同期でスクロールイベントを間引く
             let ticking = false;
-            function requestLayoutUpdate() {
+            window.addEventListener('scroll', function () {
                 if (!ticking) {
                     window.requestAnimationFrame(function () {
-                        updateScrollLayout();
+                        applyScrollLayout();
                         ticking = false;
                     });
                     ticking = true;
                 }
+            }, { passive: true });
+
+            window.addEventListener('resize', measureBaseDimensions);
+            window.addEventListener('load', measureBaseDimensions);
+
+            if (window.ResizeObserver && visualBox) {
+                const resizeObserver = new ResizeObserver(function () {
+                    measureBaseDimensions();
+                });
+                resizeObserver.observe(visualBox);
             }
 
-            // イベント登録（画面スクロール＆リサイズ）
-            window.addEventListener('scroll', requestLayoutUpdate, { passive: true });
-            window.addEventListener('resize', requestLayoutUpdate);
-            window.addEventListener('load', updateScrollLayout);
-
-            // 画像の読み込み完了・キャッシュ状態を判定して初期位置を確定
             if (mainVisual) {
                 if (mainVisual.complete) {
-                    updateScrollLayout();
+                    measureBaseDimensions();
                 } else {
-                    mainVisual.addEventListener('load', updateScrollLayout);
+                    mainVisual.addEventListener('load', measureBaseDimensions);
                 }
             }
 
-            // 初期実行
-            updateScrollLayout();
+            measureBaseDimensions();
 
             // ページ内ナビゲーションのスムーススクロール処理
             document.querySelectorAll('a[href^="#"]').forEach(function (anchor) {
                 anchor.addEventListener('click', function (e) {
                     const targetId = this.getAttribute('href');
-                    if (targetId === '#') return;
+                    e.preventDefault();
+
+                    if (targetId === '#') {
+                        window.scrollTo({
+                            top: 0,
+                            behavior: 'smooth'
+                        });
+                        return;
+                    }
                     
                     const targetElement = document.querySelector(targetId);
                     if (targetElement) {
-                        e.preventDefault();
                         const headerOffset = 80;
                         const elementPosition = targetElement.getBoundingClientRect().top;
                         const offsetPosition = elementPosition + window.pageYOffset - headerOffset;
@@ -466,7 +489,12 @@
     <!-- ==========================================
          フッター
          ========================================== -->
-    <footer class="border-t border-item-line py-4 bg-paper">
+    <footer class="border-t border-item-line py-6 bg-paper">
+        <div class="max-w-4xl mx-auto px-6 text-center">
+            <p class="text-[10px] sm:text-xs font-garamond text-ink-label/70 tracking-widest">
+                &copy; Louis-room. All Rights Reserved.
+            </p>
+        </div>
     </footer>
 
 </body>
