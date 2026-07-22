@@ -91,6 +91,7 @@ body {
 
 /* ---------- レイアウト・display ---------- */
 .block { display: block; }
+.inline-block { display: inline-block; }
 .flex { display: flex; }
 .inline-flex { display: inline-flex; }
 .grid { display: grid; }
@@ -102,12 +103,14 @@ body {
 
 .flex-col { flex-direction: column; }
 .flex-row { flex-direction: row; }
+.flex-wrap { flex-wrap: wrap; }
 
 .items-center { align-items: center; }
 .items-start { align-items: flex-start; }
 .items-baseline { align-items: baseline; }
 .justify-center { justify-content: center; }
 .justify-between { justify-content: space-between; }
+.justify-start { justify-content: flex-start; }
 
 .grid-cols-1 { grid-template-columns: repeat(1, minmax(0, 1fr)); }
 
@@ -122,6 +125,7 @@ body {
 .gap-1\.5 { gap: 0.375rem; }
 .gap-2 { gap: 0.5rem; }
 .gap-2\.5 { gap: 0.625rem; }
+.gap-3 { gap: 0.75rem; }
 .gap-4 { gap: 1rem; }
 .gap-5 { gap: 1.25rem; }
 
@@ -148,9 +152,9 @@ body {
 .mx-auto { margin-left: auto; margin-right: auto; }
 
 /* ---------- padding ---------- */
-.pb-16 { padding-bottom: 4rem; }
 .pb-4 { padding-bottom: 1rem; }
 .pb-5 { padding-bottom: 1.25rem; }
+.pb-16 { padding-bottom: 4rem; }
 .pl-3 { padding-left: 0.75rem; }
 .pl-4 { padding-left: 1rem; }
 .pl-\[0\.45em\] { padding-left: 0.45em; }
@@ -183,6 +187,9 @@ body {
 .max-w-4xl { max-width: 56rem; }
 .max-w-full { max-width: 100%; }
 .max-w-xl { max-width: 36rem; }
+
+/* 座組名揃え用 */
+.cast-name-width { width: 4.8em; }
 
 /* ---------- border ---------- */
 .border { border-width: 1px; }
@@ -234,6 +241,7 @@ body {
 
 .text-center { text-align: center; }
 .text-left { text-align: left; }
+.text-right { text-align: right; }
 .text-justify { text-align: justify; }
 
 .tracking-wide { letter-spacing: 0.025em; }
@@ -285,6 +293,7 @@ body {
     .sm\:flex-row { flex-direction: row; }
     .sm\:gap-4 { gap: 1rem; }
     .sm\:gap-6 { gap: 1.5rem; }
+    .sm\:grid-cols-2 { grid-template-columns: repeat(2, minmax(0, 1fr)); }
     .sm\:grid-cols-4 { grid-template-columns: repeat(4, minmax(0, 1fr)); }
     .sm\:h-20 { height: 5rem; }
     .sm\:inline { display: inline; }
