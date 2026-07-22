@@ -69,7 +69,7 @@
     
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=EB+Garamond:ital,wght@0,400;0,600;1,400&family=Noto+Serif+JP:wght@400;600&family=Shippori+Mincho:wght@400;500&family=Zen+Old+Mincho:wght@400;500;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=EB+Garamond:ital,wght@0,400..700;1,400..700&family=Noto+Serif+JP:wght@400;500;600&family=Shippori+Mincho:wght@400;500;600&family=Zen+Old+Mincho:wght@400;500;700&display=swap" rel="stylesheet">
     
     <link rel="stylesheet" href="./styles.css">
 </head>
@@ -83,6 +83,99 @@
                 if (fallbackEl) fallbackEl.style.display = 'flex';
             }
         }
+
+        document.addEventListener('DOMContentLoaded', function () {
+            const visualBox = document.getElementById('visual-box');
+            const titleSection = document.getElementById('title-section');
+            const definitionSection = document.getElementById('definition');
+            const mainVisual = document.getElementById('main-visual');
+
+            let baseTitlePadding = 0;
+            let baseDefMargin = 0;
+            let minTitlePadding = 16;
+            let minDefMargin = 48;
+            let scrollRange = 360;
+
+            function updateBaseMetrics() {
+                if (!visualBox || !titleSection || !definitionSection) return;
+
+                const vh = window.innerHeight;
+                const isMobile = window.innerWidth < 640;
+
+                const currentPt = parseFloat(titleSection.style.paddingTop || '0');
+                const pureTitleHeight = titleSection.offsetHeight - currentPt;
+
+                const visualRect = visualBox.getBoundingClientRect();
+                const visualBottom = visualRect.top + (window.scrollY || window.pageYOffset) + visualRect.height;
+                const remainingSpace = vh - visualBottom;
+
+                minTitlePadding = isMobile ? 12 : 16;
+                baseTitlePadding = Math.max((remainingSpace - pureTitleHeight) / 2, isMobile ? 20 : 32);
+
+                const titleBottom = visualBottom + baseTitlePadding + pureTitleHeight;
+                minDefMargin = isMobile ? 32 : 48;
+                baseDefMargin = Math.max(vh - titleBottom + 16, isMobile ? 40 : 60);
+
+                scrollRange = isMobile ? 260 : 360;
+
+                renderScrollLayout();
+            }
+
+            function renderScrollLayout() {
+                if (!titleSection || !definitionSection) return;
+
+                const scrollY = window.scrollY || window.pageYOffset;
+                const progress = Math.sin((Math.min(Math.max(scrollY / scrollRange, 0), 1) * Math.PI) / 2);
+
+                const currentTitlePadding = baseTitlePadding - (baseTitlePadding - minTitlePadding) * progress;
+                const currentDefMargin = baseDefMargin - (baseDefMargin - minDefMargin) * progress;
+
+                titleSection.style.paddingTop = `${Math.max(currentTitlePadding, minTitlePadding)}px`;
+                definitionSection.style.marginTop = `${Math.max(currentDefMargin, minDefMargin)}px`;
+            }
+
+            let ticking = false;
+            window.addEventListener('scroll', function () {
+                if (!ticking) {
+                    window.requestAnimationFrame(function () {
+                        renderScrollLayout();
+                        ticking = false;
+                    });
+                    ticking = true;
+                }
+            }, { passive: true });
+
+            window.addEventListener('resize', updateBaseMetrics);
+            
+            if (mainVisual) {
+                if (mainVisual.complete) updateBaseMetrics();
+                else mainVisual.addEventListener('load', updateBaseMetrics);
+            } else {
+                updateBaseMetrics();
+            }
+
+            document.querySelectorAll('a[href^="#"]').forEach(function (anchor) {
+                anchor.addEventListener('click', function (e) {
+                    const targetId = this.getAttribute('href');
+                    e.preventDefault();
+
+                    if (targetId === '#') {
+                        window.scrollTo({ top: 0, behavior: 'smooth' });
+                        return;
+                    }
+                    
+                    const targetElement = document.querySelector(targetId);
+                    if (targetElement) {
+                        const headerOffset = 80;
+                        const elementPosition = targetElement.getBoundingClientRect().top;
+                        window.scrollTo({
+                            top: elementPosition + window.pageYOffset - headerOffset,
+                            behavior: 'smooth'
+                        });
+                    }
+                });
+            });
+        });
     </script>
 
     <header class="w-full border-b border-item-line py-5 px-6 sm:px-12 bg-paper/90 backdrop-blur-sm sticky top-0 z-30 h-16 sm:h-20 flex items-center">
@@ -109,7 +202,7 @@
                 </div>
             </div>
 
-            <div id="title-section" class="pt-6 sm:pt-10 flex flex-col sm:flex-row justify-between items-center sm:items-end gap-5 text-center sm:text-left">
+            <div id="title-section" class="flex flex-col sm:flex-row justify-between items-center sm:items-end gap-5 text-center sm:text-left">
                 <div>
                     <h1 class="text-5xl sm:text-7xl font-garamond font-light tracking-wide text-ink">
                         Lexicon
@@ -129,7 +222,7 @@
             </div>
         </section>
 
-        <section id="definition" class="mt-12 sm:mt-16 max-w-xl mx-auto space-y-4 font-dict text-xs sm:text-sm text-ink-charcoal leading-relaxed text-justify px-2 sm:px-4">
+        <section id="definition" class="max-w-xl mx-auto space-y-4 font-dict text-xs sm:text-sm text-ink-charcoal leading-relaxed text-justify px-2 sm:px-4">
             <div class="space-y-1">
                 <p class="font-garamond text-sm sm:text-base text-ink font-semibold tracking-wide">Lexicon:</p>
                 <div class="pl-3 sm:pl-4 space-y-0.5 text-ink-charcoal">
@@ -143,7 +236,7 @@
             </div>
         </section>
 
-        <div class="my-12 sm:my-16 text-center text-ink/70 text-xs font-mincho select-none tracking-[0.45em] sm:tracking-[0.6em] pl-[0.45em]">
+        <div class="my-14 sm:my-18 text-center text-ink/70 text-[10px] sm:text-xs font-mincho select-none tracking-[0.45em] sm:tracking-[0.6em] pl-[0.45em]">
             ・・・・・・・・・・・・・・・
         </div>
 
@@ -154,12 +247,12 @@
             </div>
         </section>
 
-        <div class="my-12 sm:my-16 text-center text-ink/70 text-xs font-mincho select-none tracking-[0.45em] sm:tracking-[0.6em] pl-[0.45em]">
+        <div class="my-14 sm:my-18 text-center text-ink/70 text-[10px] sm:text-xs font-mincho select-none tracking-[0.45em] sm:tracking-[0.6em] pl-[0.45em]">
             ・・・・・・・・・・・・・・・
         </div>
 
         <section class="max-w-xl mx-auto px-2 sm:px-4">
-            <blockquote class="italic font-shippori text-xs sm:text-sm text-ink leading-relaxed sm:leading-loose space-y-1.5 text-left tracking-[0.2em] sm:tracking-[0.25em] mx-auto w-fit">
+            <blockquote class="italic font-shippori text-[13px] sm:text-sm text-ink leading-relaxed sm:leading-loose space-y-1.5 text-left tracking-[0.2em] sm:tracking-[0.25em] mx-auto w-fit">
                 <p>エルサレム旧市街の夜は早いという。</p>
                 <p>元より聖なる土地が、ただ足早に夜を迎え、</p>
                 <p>聖夜の名を冠する。</p>
@@ -168,9 +261,9 @@
             </blockquote>
         </section>
 
-        <section id="info" class="space-y-6 mt-24 sm:mt-32 scroll-mt-20">
+        <section id="info" class="space-y-6 mt-28 sm:mt-36 scroll-mt-20">
             <div class="text-center sm:text-left">
-                <span class="text-xs font-garamond uppercase tracking-[0.35em] text-ink-label block">Information</span>
+                <span class="text-[10px] font-garamond uppercase tracking-[0.35em] text-ink-label block">Information</span>
                 <h2 class="text-xl sm:text-2xl font-mincho tracking-[0.2em] text-ink mt-0.5">公演情報</h2>
             </div>
             <div class="font-mincho pt-2 space-y-5">
@@ -189,11 +282,11 @@
                         <div class="border-l-2 border-ink-label/30 pl-4 py-1.5 space-y-2 text-xs sm:text-sm">
                             <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-1">
                                 <span class="text-ink-label font-medium">10月11日（日）</span>
-                                <span class="font-bold">14:00 ／ 18:00</span>
+                                <span class="font-bold">14:00　／18:00</span>
                             </div>
                             <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-1">
                                 <span class="text-ink-label font-medium">10月12日（月・祝）</span>
-                                <span class="font-bold">14:00 ／ 18:00</span>
+                                <span class="font-bold">14:00　／18:00</span>
                             </div>
                         </div>
                         <p class="text-xs text-ink-muted leading-relaxed pt-1">・受付開始・開場は、開演の30分前です。<br>・上演時間：約40分</p>
@@ -215,7 +308,7 @@
 
         <section id="contact" class="max-w-xl mx-auto text-center space-y-3 mt-10 sm:mt-12 scroll-mt-20">
             <div>
-                <span class="text-xs font-garamond uppercase tracking-[0.35em] text-ink-label block">Contact</span>
+                <span class="text-[10px] font-garamond uppercase tracking-[0.35em] text-ink-label block">Contact</span>
                 <h2 class="text-xl sm:text-2xl font-mincho tracking-[0.2em] text-ink mt-0.5">お問い合わせ</h2>
             </div>
             <div class="space-y-2.5 font-mincho text-xs sm:text-sm text-ink-label pt-1">
@@ -248,7 +341,7 @@
 
     <footer class="border-t border-item-line py-6 bg-paper">
         <div class="max-w-4xl mx-auto px-6 text-center">
-            <p class="text-xs font-garamond text-ink-label/70 tracking-widest">&copy; Louis-room. All Rights Reserved.</p>
+            <p class="text-[10px] sm:text-xs font-garamond text-ink-label/70 tracking-widest">&copy; Louis-room. All Rights Reserved.</p>
         </div>
     </footer>
 </body>
