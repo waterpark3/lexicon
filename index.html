@@ -49,6 +49,14 @@
         ::-webkit-scrollbar-thumb {
             background: rgba(26, 25, 24, 0.15);
         }
+
+        /* アニメーション要素のGPUレンダリング最適化 */
+        #title-section {
+            will-change: padding-top;
+        }
+        #definition {
+            will-change: margin-top;
+        }
     </style>
 
     <!-- Tailwind CSS -->
@@ -79,11 +87,12 @@
 </head>
 <body class="min-h-screen flex flex-col justify-between selection:bg-ink selection:text-paper bg-paper">
 
-    <!-- 画像フォールバック ＆ レイアウト数値精密計算スクリプト -->
+    <!-- 画像フォールバック ＆ レイアウト最適化スクリプト -->
     <script>
+        // 画像読み込み失敗時のフォールバック処理
         function tryNextExtension(imgEl, fallbackId, displayType) {
             const extPatterns = ['.JPG', '.jpg', '.png', '.jpeg', '.PNG', '.JPEG', '.png.JPG'];
-            let currentIdx = parseInt(imgEl.getAttribute('data-ext-idx') || '0');
+            let currentIdx = parseInt(imgEl.getAttribute('data-ext-idx') || '0', 10);
             
             currentIdx++;
             if (currentIdx < extPatterns.length) {
@@ -101,8 +110,7 @@
             }
         }
 
-        // 初期状態で「画像下端〜画面最下端」の真ん中に正確にタイトルを配置し、
-        // スクロールに応じて直下にスムーズ縮小する演算処理
+        // スクロール連動レイアウト精密計算ロジック
         document.addEventListener('DOMContentLoaded', function () {
             const visualBox = document.getElementById('visual-box');
             const titleSection = document.getElementById('title-section');
@@ -154,30 +162,36 @@
                 definitionSection.style.marginTop = `${Math.max(currentDefMargin, minDefMargin)}px`;
             }
 
-            // フレーム最適化スクロールイベント
+            // フレーム同期による高パフォーマンスイベントリスナー
             let ticking = false;
-            window.addEventListener('scroll', function () {
+            function requestLayoutUpdate() {
                 if (!ticking) {
-                    window.requestAnimationFrame(function() {
+                    window.requestAnimationFrame(function () {
                         updateScrollLayout();
                         ticking = false;
                     });
                     ticking = true;
                 }
-            }, { passive: true });
+            }
 
-            // イベント登録
-            window.addEventListener('resize', updateScrollLayout);
+            // イベント登録（画面スクロール＆リサイズ）
+            window.addEventListener('scroll', requestLayoutUpdate, { passive: true });
+            window.addEventListener('resize', requestLayoutUpdate);
             window.addEventListener('load', updateScrollLayout);
 
+            // 画像の読み込み完了・キャッシュ状態を判定して初期位置を確定
             if (mainVisual) {
-                mainVisual.addEventListener('load', updateScrollLayout);
+                if (mainVisual.complete) {
+                    updateScrollLayout();
+                } else {
+                    mainVisual.addEventListener('load', updateScrollLayout);
+                }
             }
 
             // 初期実行
             updateScrollLayout();
 
-            // スムーススクロール
+            // ページ内ナビゲーションのスムーススクロール処理
             document.querySelectorAll('a[href^="#"]').forEach(function (anchor) {
                 anchor.addEventListener('click', function (e) {
                     const targetId = this.getAttribute('href');
@@ -222,10 +236,10 @@
     <main class="flex-grow max-w-4xl w-full mx-auto px-6 sm:px-12 pb-16">
 
         <!-- 1. ヒーローセクション（ファーストビュー） -->
-        <section id="hero-section" class="pt-4 sm:pt-6">
+        <section id="hero-section" class="pt-8 sm:pt-12">
             
             <!-- メインビジュアル -->
-            <div id="visual-box" class="w-full flex items-center justify-center">
+            <div id="visual-box" class="w-full flex items-center justify-center pt-2 sm:pt-4">
                 <img id="main-visual" src="./flyer.JPG" data-base-name="flyer" alt="Lexicon メインビジュアル" class="max-w-full max-h-[46vh] sm:max-h-[52vh] w-auto h-auto object-contain block subtle-shadow rounded-sm" onerror="tryNextExtension(this, 'flyer-fallback', 'flex')">
                 
                 <!-- フォールバックプレースホルダー -->
