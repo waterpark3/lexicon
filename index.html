@@ -302,7 +302,6 @@
         .rounded-full { border-radius: 9999px; }
         .rounded-sm { border-radius: 0.125rem; }
         .rounded-lg { border-radius: 0.5rem; }
-        .rounded-xl { border-radius: 0.75rem; }
 
         /* ---------- 背景・文字色 ---------- */
         .bg-ink { background-color: var(--text-color); }
@@ -414,18 +413,54 @@
             margin-top: 1.5rem;
         }
 
-        /* 画面上部の操作案内 */
+        /* 画面上部の操作案内バー（元の生成り背景色） */
         .script-guide-bar {
             background-color: var(--bg-color);
-            border-bottom: 1px solid var(--item-line);
-            padding: 0.4rem 1rem;
+            padding: 0.65rem 1.25rem;
             display: flex;
             align-items: center;
-            justify-content: flex-start;
-            font-size: 0.7rem;
+            justify-content: space-between;
+            font-size: 0.72rem;
             color: var(--text-color);
             letter-spacing: 0.1em;
             font-family: "Noto Serif JP", "Shippori Mincho", serif;
+            position: relative;
+        }
+
+        .script-guide-bar .guide-left,
+        .script-guide-bar .guide-right {
+            flex: 1;
+            display: flex;
+            align-items: center;
+        }
+
+        .script-guide-bar .guide-left {
+            justify-content: flex-start;
+        }
+
+        .script-guide-bar .guide-right {
+            justify-content: flex-end;
+        }
+
+        /* ガイドバー直下の全幅プログレスバー線（下線に配置・右から左へ伸びる） */
+        .script-progress-track {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            height: 2px;
+            background-color: var(--item-line);
+            overflow: hidden;
+        }
+
+        .script-progress-bar-fill {
+            height: 100%;
+            background-color: var(--label-color);
+            width: 0%;
+            position: absolute;
+            right: 0; /* 右端固定で左に向かって伸長 */
+            top: 0;
+            transition: width 0.08s ease-out;
         }
 
         /* 縦書きビューアー本体 */
@@ -617,6 +652,13 @@
             align-items: center;
         }
 
+        /* レスポンシブ調整 */
+        @media (max-width: 520px) {
+            .script-guide-bar .guide-left span {
+                font-size: 0.65rem;
+            }
+        }
+
         /* ========================================================
            レスポンシブ（sm: 640px以上）
            ======================================================== */
@@ -742,7 +784,10 @@
                 }
             }, { passive: true });
 
-            window.addEventListener('resize', updateBaseMetrics);
+            window.addEventListener('resize', function() {
+                updateBaseMetrics();
+                updateScriptProgress();
+            });
             
             if (mainVisual) {
                 if (mainVisual.complete) updateBaseMetrics();
@@ -774,17 +819,37 @@
             });
 
             // ----------------------------------------------------
-            // 脚本試し読みトグル & 縦書きスクロール確実化制御
+            // 脚本試し読みトグル & 進捗バー・縦書きスクロール制御
             // ----------------------------------------------------
             const readBtn = document.getElementById('toggle-script-btn');
             const scriptViewer = document.getElementById('script-viewer');
             const scrollContainer = document.getElementById('script-scroll-container');
+            const progressFill = document.getElementById('script-progress-fill');
+
+            // 縦書きの読誦進捗率（右から左へ増えるバー）を計算・描画する関数
+            function updateScriptProgress() {
+                if (!scrollContainer || !progressFill) return;
+                const maxScrollLeft = scrollContainer.scrollWidth - scrollContainer.clientWidth;
+
+                if (maxScrollLeft <= 0) {
+                    progressFill.style.width = '0%';
+                    return;
+                }
+
+                // 縦書き（右端が冒頭 0%、左端が末尾 100%）
+                const currentScroll = scrollContainer.scrollLeft;
+                let percent = Math.round(((maxScrollLeft - currentScroll) / maxScrollLeft) * 100);
+                percent = Math.max(0, Math.min(100, percent));
+
+                progressFill.style.width = percent + '%';
+            }
 
             // 一番最初（右端＝冒頭）へ画面をスクロールさせる関数
             function resetScrollToBeginning() {
                 if (!scrollContainer) return;
                 const maxScrollLeft = scrollContainer.scrollWidth - scrollContainer.clientWidth;
                 scrollContainer.scrollLeft = maxScrollLeft;
+                updateScriptProgress();
             }
 
             if (readBtn && scriptViewer) {
@@ -810,6 +875,8 @@
 
             // マウスドラッグで掴んで左右にスクロール
             if (scrollContainer) {
+                scrollContainer.addEventListener('scroll', updateScriptProgress, { passive: true });
+
                 let isMouseDown = false;
                 let startX = 0;
                 let startScrollLeft = 0;
@@ -834,6 +901,7 @@
                     const x = e.pageX - scrollContainer.offsetLeft;
                     const walk = (x - startX) * 1.8; 
                     scrollContainer.scrollLeft = startScrollLeft - walk;
+                    updateScriptProgress();
                 });
 
                 // マウスホイールの回転（縦）を横スクロールに変換
@@ -841,6 +909,7 @@
                     if (e.deltaY !== 0) {
                         e.preventDefault();
                         scrollContainer.scrollLeft -= e.deltaY * 1.5;
+                        updateScriptProgress();
                     }
                 }, { passive: false });
             }
@@ -935,7 +1004,7 @@
              脚本試し読みセクション
              ======================================================== -->
         <section id="read-script" class="max-w-3xl mx-auto mt-28 sm:mt-36 scroll-mt-20 px-2 sm:px-4">
-            <!-- 開閉トグルボタン（薄いグレー背景・角丸長方形デザイン） -->
+            <!-- 開閉トグルボタン -->
             <div class="text-center">
                 <button id="toggle-script-btn" class="inline-flex items-center justify-center gap-3 px-9 py-3.5 sm:px-10 sm:py-4 border border-ink/15 text-ink text-sm sm:text-base font-mincho tracking-[0.25em] rounded-lg transition-all duration-300 cursor-pointer shadow-sm" style="background-color: var(--btn-bg);" onmouseover="this.style.backgroundColor='var(--btn-bg-hover)'" onmouseout="this.style.backgroundColor='var(--btn-bg)'">
                     <span class="btn-label">脚本試し読み</span>
@@ -948,8 +1017,16 @@
             <!-- 縦書きビューアーエリア -->
             <div id="script-viewer" class="hidden script-section">
                 <div class="scroll-outer-frame">
-                    <div class="script-guide-bar font-mincho">
-                        <span>← スクロールして読む</span>
+                    <!-- 上部操作案内バー（元の生成り背景色・下部に右から左へ伸びる全幅プログレスバー線） -->
+                    <div class="script-guide-bar">
+                        <div class="guide-left">
+                            <span>← スクロールして読む</span>
+                        </div>
+                        <div class="guide-right"></div>
+                        <!-- 下線に沿って配置された進行バー（右端から左へ進む） -->
+                        <div class="script-progress-track">
+                            <div id="script-progress-fill" class="script-progress-bar-fill"></div>
+                        </div>
                     </div>
                     <div id="script-scroll-container" class="scroll-container">
                         <div class="script-content">
@@ -1082,7 +1159,7 @@
                             <div class="script-line"><span class="script-speaker">風吟</span>　私は知れない。覚えているだけ。やり方が古いのかもしれない。</div>
                             <div class="script-line"><span class="script-speaker">飴玉</span>　幸か不幸か、風は順行している。今晩、お前の亡骸がここにあっても、プールの方角へは流れないだろう。さすれば打たれることも恐れるな、風吟。[本を置いて構える]</div>
                             <div class="script-line"><span class="script-speaker">風吟</span>　その遺言の衾（<ruby>ふすま<rt>・</rt></ruby>）、人の思いは果てなく積もる。それでも、思いばかりの目録にもたれる心だ。君は花布をほどくように、たった一ページを以て、遺言のために語彙だけを残せ。あとは誰か覚えて、別の人。</div>
-                            <div class="script-line"><span class="script-speaker">飴玉</span>_ [被せて] レチタ。</div>
+                            <div class="script-line"><span class="script-speaker">飴玉</span>　[被せて] レチタ。</div>
                             <div class="script-line"><span class="script-speaker">風吟</span>　[被せて] 記されることが山ほどあるなら、覚えられることも山ほどあるだろう。私の頭にもうゆとりはない。……君、助走もつけて。</div>
                             <div class="script-line"><span class="script-speaker">飴玉</span>　[後ずさり] レチタ、俺の主（<ruby>あるじ<rt>・</rt></ruby>）……俺はレチタの亡き手に代えて、お前を打つだけだ。</div>
                             <div class="script-line"><span class="script-speaker">風吟</span>　レチタ……それは、誰だ？ 私じゃないのか？ 私でよければ、そのレチタとやらになってあげようか。……待って。少し近い。</div>
@@ -1150,7 +1227,7 @@
 
                             <!-- 試し読み終了マーカー -->
                             <div class="script-end-marker">
-                                試し読みはここまでです（上演の続きは劇場にてお楽しみください）
+                                試し読みはここまでです（続きは劇場にてお楽しみください）
                             </div>
 
                         </div>
