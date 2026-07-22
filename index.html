@@ -128,8 +128,8 @@
     <!-- ==========================================
          ヘッダー
          ========================================== -->
-    <header class="w-full border-b border-item-line py-5 px-6 sm:px-12 bg-paper/90 backdrop-blur-sm sticky top-0 z-30">
-        <div class="max-w-4xl mx-auto flex items-center justify-between">
+    <header class="w-full border-b border-item-line py-5 px-6 sm:px-12 bg-paper/90 backdrop-blur-sm sticky top-0 z-30 h-16 sm:h-20 flex items-center">
+        <div class="max-w-4xl w-full mx-auto flex items-center justify-between">
             <a href="#" class="font-garamond text-xl sm:text-2xl font-light tracking-widest text-ink hover:opacity-75 transition-opacity">
                 Louis-room
             </a>
@@ -144,14 +144,14 @@
     <!-- ==========================================
          メインコンテンツ
          ========================================== -->
-    <main class="flex-grow max-w-4xl w-full mx-auto px-6 sm:px-12 py-8 sm:py-12 pb-16">
+    <main class="flex-grow max-w-4xl w-full mx-auto px-6 sm:px-12 pb-16">
 
-        <!-- 1. ヒーローセクション（ビジュアル・タイトル・予約ボタン） -->
-        <section class="space-y-6">
+        <!-- 1. ヒーローセクション（ファーストビュー） -->
+        <section class="min-h-[calc(100vh-4rem)] sm:min-h-[calc(100vh-5rem)] flex flex-col justify-start gap-4 sm:gap-6 py-4 sm:py-8">
             
             <!-- メインビジュアル -->
             <div class="w-full flex items-center justify-center">
-                <img src="./flyer.JPG" data-base-name="flyer" alt="Lexicon メインビジュアル" class="w-full h-auto object-cover max-h-[640px] block subtle-shadow rounded-sm" onerror="tryNextExtension(this, 'flyer-fallback', 'flex')">
+                <img src="./flyer.JPG" data-base-name="flyer" alt="Lexicon メインビジュアル" class="max-w-full max-h-[48vh] sm:max-h-[54vh] w-auto h-auto object-contain block subtle-shadow rounded-sm" onerror="tryNextExtension(this, 'flyer-fallback', 'flex')">
                 
                 <!-- フォールバックプレースホルダー -->
                 <div id="flyer-fallback" class="w-full py-16 px-8 flex-col items-center justify-center text-center border border-dashed border-ink/20 bg-paper-sub" style="display: none;">
@@ -162,13 +162,13 @@
                 </div>
             </div>
 
-            <!-- タイトル & 予約リンクボタン -->
-            <div class="pt-2 flex flex-col sm:flex-row justify-between items-center sm:items-end gap-5 text-center sm:text-left">
+            <!-- タイトル & 予約リンクボタン（ビジュアルからの余白を広げて下に配置） -->
+            <div class="pt-6 sm:pt-10 flex flex-col sm:flex-row justify-between items-center sm:items-end gap-5 text-center sm:text-left">
                 <div>
-                    <h1 class="text-5xl sm:text-6xl font-garamond font-light tracking-wide text-ink">
+                    <h1 class="text-5xl sm:text-7xl font-garamond font-light tracking-wide text-ink">
                         Lexicon
                     </h1>
-                    <p class="text-xs font-mincho text-ink-label tracking-[0.25em] mt-2">
+                    <p class="text-xs font-mincho text-ink-label tracking-[0.25em] mt-1.5 sm:mt-2">
                         主催：ルイルーム（Louis-room）
                     </p>
                 </div>
@@ -185,8 +185,8 @@
 
         </section>
 
-        <!-- 2. 脚本冒頭の定義文 -->
-        <section class="mt-28 sm:mt-36 max-w-xl mx-auto space-y-4 font-dict text-xs sm:text-sm text-ink-charcoal leading-relaxed text-justify px-2 sm:px-4">
+        <!-- 2. 脚本冒頭の定義文（スクロールで登場） -->
+        <section id="definition" class="pt-8 sm:pt-16 max-w-xl mx-auto space-y-4 font-dict text-xs sm:text-sm text-ink-charcoal leading-relaxed text-justify px-2 sm:px-4">
             
             <!-- Lexicon 定義 -->
             <div class="space-y-1">
