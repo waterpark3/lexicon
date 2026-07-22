@@ -79,7 +79,7 @@
 </head>
 <body class="min-h-screen flex flex-col justify-between selection:bg-ink selection:text-paper bg-paper">
 
-    <!-- 画像フォールバック読み込みスクリプト -->
+    <!-- 画像フォールバック ＆ スクロール距離ゆっくり連動余白制御スクリプト -->
     <script>
         function tryNextExtension(imgEl, fallbackId, displayType) {
             const extPatterns = ['.JPG', '.jpg', '.png', '.jpeg', '.PNG', '.JPEG', '.png.JPG'];
@@ -101,8 +101,60 @@
             }
         }
 
-        // ヘッダーナビゲーションの確実なスムーススクロール処理
+        // スクロール量に応じてゆっくり余白を縮小する処理
         document.addEventListener('DOMContentLoaded', function () {
+            const heroSection = document.getElementById('hero-section');
+            const definitionSection = document.getElementById('definition');
+            
+            function updateDynamicMargin() {
+                if (!heroSection || !definitionSection) return;
+
+                const scrollY = window.scrollY || window.pageYOffset;
+                const vh = window.innerHeight;
+                const isMobile = window.innerWidth < 640;
+                
+                // ヒーローセクション全体の高さ
+                const heroHeight = heroSection.offsetHeight;
+                
+                // 初期状態（scrollY=0）の最大余白
+                const initialMargin = Math.max(vh - heroHeight - 40, 100);
+                
+                // スクロール完了後の最小余白
+                const minMargin = isMobile ? 36 : 48;
+                
+                // スクロールの変化幅を長く（ゆっくり）設定（スマホ: 420px, PC: 600px）
+                const transitionDistance = isMobile ? 420 : 600;
+
+                // スクロール進行度（0.0 〜 1.0）
+                const rawProgress = Math.min(Math.max(scrollY / transitionDistance, 0), 1);
+                
+                // 滑らかなイージングでマイルドに変化
+                const progress = Math.sin((rawProgress * Math.PI) / 2);
+                
+                // 現在の余白を算出
+                const currentMargin = initialMargin - (initialMargin - minMargin) * progress;
+
+                definitionSection.style.marginTop = `${currentMargin}px`;
+            }
+
+            // スクロールイベント
+            let ticking = false;
+            window.addEventListener('scroll', function () {
+                if (!ticking) {
+                    window.requestAnimationFrame(function() {
+                        updateDynamicMargin();
+                        ticking = false;
+                    });
+                    ticking = true;
+                }
+            }, { passive: true });
+
+            // 初期計算 ＆ リサイズ・読み込み完了時の追従
+            updateDynamicMargin();
+            window.addEventListener('resize', updateDynamicMargin);
+            window.addEventListener('load', updateDynamicMargin);
+
+            // スムーススクロール
             document.querySelectorAll('a[href^="#"]').forEach(function (anchor) {
                 anchor.addEventListener('click', function (e) {
                     const targetId = this.getAttribute('href');
@@ -147,7 +199,7 @@
     <main class="flex-grow max-w-4xl w-full mx-auto px-6 sm:px-12 pb-16">
 
         <!-- 1. ヒーローセクション（ファーストビュー） -->
-        <section class="min-h-[calc(100vh-4rem)] sm:min-h-[calc(100vh-5rem)] flex flex-col justify-start gap-4 sm:gap-6 py-4 sm:py-8">
+        <section id="hero-section" class="pt-4 sm:pt-8">
             
             <!-- メインビジュアル -->
             <div class="w-full flex items-center justify-center">
@@ -162,7 +214,7 @@
                 </div>
             </div>
 
-            <!-- タイトル & 予約リンクボタン（ビジュアルからの余白を広げて下に配置） -->
+            <!-- タイトル & 予約リンクボタン -->
             <div class="pt-6 sm:pt-10 flex flex-col sm:flex-row justify-between items-center sm:items-end gap-5 text-center sm:text-left">
                 <div>
                     <h1 class="text-5xl sm:text-7xl font-garamond font-light tracking-wide text-ink">
@@ -185,8 +237,8 @@
 
         </section>
 
-        <!-- 2. 脚本冒頭の定義文（スクロールで登場） -->
-        <section id="definition" class="pt-8 sm:pt-16 max-w-xl mx-auto space-y-4 font-dict text-xs sm:text-sm text-ink-charcoal leading-relaxed text-justify px-2 sm:px-4">
+        <!-- 2. 脚本冒頭の定義文（スクロールに応じてゆったりと間隔が詰まります） -->
+        <section id="definition" class="max-w-xl mx-auto space-y-4 font-dict text-xs sm:text-sm text-ink-charcoal leading-relaxed text-justify px-2 sm:px-4">
             
             <!-- Lexicon 定義 -->
             <div class="space-y-1">
