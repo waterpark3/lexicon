@@ -79,7 +79,7 @@
 </head>
 <body class="min-h-screen flex flex-col justify-between selection:bg-ink selection:text-paper bg-paper">
 
-    <!-- 画像フォールバック ＆ スクロール距離ゆっくり連動余白制御スクリプト -->
+    <!-- 画像フォールバック ＆ レイアウト数値精密計算スクリプト -->
     <script>
         function tryNextExtension(imgEl, fallbackId, displayType) {
             const extPatterns = ['.JPG', '.jpg', '.png', '.jpeg', '.PNG', '.JPEG', '.png.JPG'];
@@ -101,58 +101,81 @@
             }
         }
 
-        // スクロール量に応じてゆっくり余白を縮小する処理
+        // 初期状態で「画像下端〜画面最下端」の真ん中に正確にタイトルを配置し、
+        // スクロールに応じて直下にスムーズ縮小する演算処理
         document.addEventListener('DOMContentLoaded', function () {
-            const heroSection = document.getElementById('hero-section');
+            const visualBox = document.getElementById('visual-box');
+            const titleSection = document.getElementById('title-section');
             const definitionSection = document.getElementById('definition');
-            
-            function updateDynamicMargin() {
-                if (!heroSection || !definitionSection) return;
+            const mainVisual = document.getElementById('main-visual');
+
+            function updateScrollLayout() {
+                if (!visualBox || !titleSection || !definitionSection) return;
 
                 const scrollY = window.scrollY || window.pageYOffset;
                 const vh = window.innerHeight;
                 const isMobile = window.innerWidth < 640;
-                
-                // ヒーローセクション全体の高さ
-                const heroHeight = heroSection.offsetHeight;
-                
-                // 初期状態（scrollY=0）の最大余白
-                const initialMargin = Math.max(vh - heroHeight - 40, 100);
-                
-                // スクロール完了後の最小余白
-                const minMargin = isMobile ? 36 : 48;
-                
-                // スクロールの変化幅を長く（ゆっくり）設定（スマホ: 420px, PC: 600px）
-                const transitionDistance = isMobile ? 420 : 600;
 
-                // スクロール進行度（0.0 〜 1.0）
-                const rawProgress = Math.min(Math.max(scrollY / transitionDistance, 0), 1);
+                // 1. 画像ボックスの絶対座標と下端位置
+                const visualRect = visualBox.getBoundingClientRect();
+                const visualBottom = visualRect.top + scrollY + visualRect.height;
+
+                // 2. タイトルブロック本来の高さ（paddingTopを除く）
+                const currentPt = parseFloat(titleSection.style.paddingTop || '0');
+                const pureTitleHeight = titleSection.offsetHeight - currentPt;
+
+                // 3. 画像下端から画面底面（vh）までの残り空間
+                const remainingSpace = vh - visualBottom;
+
+                // 4. 残り空間の中で「完璧な上下中央」にする初期 paddingTop
+                let initialTitlePadding = (remainingSpace - pureTitleHeight) / 2;
+                initialTitlePadding = Math.max(initialTitlePadding, isMobile ? 20 : 32);
+
+                // 5. スクロール完了後の最小 paddingTop（詰まった状態）
+                const minTitlePadding = isMobile ? 12 : 16;
+
+                // 6. 初期状態で定義文を画面直下に置くための初期 marginTop
+                const titleBottomAtStart = visualBottom + initialTitlePadding + pureTitleHeight;
+                let initialDefMargin = Math.max(vh - titleBottomAtStart + 16, isMobile ? 40 : 60);
+                const minDefMargin = isMobile ? 32 : 48;
+
+                // スクロール反応距離（px）
+                const scrollRange = isMobile ? 260 : 360;
+                const rawProgress = Math.min(Math.max(scrollY / scrollRange, 0), 1);
                 
-                // 滑らかなイージングでマイルドに変化
+                // サインカーブによる滑らかなイージング
                 const progress = Math.sin((rawProgress * Math.PI) / 2);
-                
-                // 現在の余白を算出
-                const currentMargin = initialMargin - (initialMargin - minMargin) * progress;
 
-                definitionSection.style.marginTop = `${currentMargin}px`;
+                // スクロール量に応じたリアルタイム補間計算
+                const currentTitlePadding = initialTitlePadding - (initialTitlePadding - minTitlePadding) * progress;
+                const currentDefMargin = initialDefMargin - (initialDefMargin - minDefMargin) * progress;
+
+                titleSection.style.paddingTop = `${Math.max(currentTitlePadding, minTitlePadding)}px`;
+                definitionSection.style.marginTop = `${Math.max(currentDefMargin, minDefMargin)}px`;
             }
 
-            // スクロールイベント
+            // フレーム最適化スクロールイベント
             let ticking = false;
             window.addEventListener('scroll', function () {
                 if (!ticking) {
                     window.requestAnimationFrame(function() {
-                        updateDynamicMargin();
+                        updateScrollLayout();
                         ticking = false;
                     });
                     ticking = true;
                 }
             }, { passive: true });
 
-            // 初期計算 ＆ リサイズ・読み込み完了時の追従
-            updateDynamicMargin();
-            window.addEventListener('resize', updateDynamicMargin);
-            window.addEventListener('load', updateDynamicMargin);
+            // イベント登録
+            window.addEventListener('resize', updateScrollLayout);
+            window.addEventListener('load', updateScrollLayout);
+
+            if (mainVisual) {
+                mainVisual.addEventListener('load', updateScrollLayout);
+            }
+
+            // 初期実行
+            updateScrollLayout();
 
             // スムーススクロール
             document.querySelectorAll('a[href^="#"]').forEach(function (anchor) {
@@ -199,11 +222,11 @@
     <main class="flex-grow max-w-4xl w-full mx-auto px-6 sm:px-12 pb-16">
 
         <!-- 1. ヒーローセクション（ファーストビュー） -->
-        <section id="hero-section" class="pt-4 sm:pt-8">
+        <section id="hero-section" class="pt-4 sm:pt-6">
             
             <!-- メインビジュアル -->
-            <div class="w-full flex items-center justify-center">
-                <img src="./flyer.JPG" data-base-name="flyer" alt="Lexicon メインビジュアル" class="max-w-full max-h-[48vh] sm:max-h-[54vh] w-auto h-auto object-contain block subtle-shadow rounded-sm" onerror="tryNextExtension(this, 'flyer-fallback', 'flex')">
+            <div id="visual-box" class="w-full flex items-center justify-center">
+                <img id="main-visual" src="./flyer.JPG" data-base-name="flyer" alt="Lexicon メインビジュアル" class="max-w-full max-h-[46vh] sm:max-h-[52vh] w-auto h-auto object-contain block subtle-shadow rounded-sm" onerror="tryNextExtension(this, 'flyer-fallback', 'flex')">
                 
                 <!-- フォールバックプレースホルダー -->
                 <div id="flyer-fallback" class="w-full py-16 px-8 flex-col items-center justify-center text-center border border-dashed border-ink/20 bg-paper-sub" style="display: none;">
@@ -215,7 +238,7 @@
             </div>
 
             <!-- タイトル & 予約リンクボタン -->
-            <div class="pt-6 sm:pt-10 flex flex-col sm:flex-row justify-between items-center sm:items-end gap-5 text-center sm:text-left">
+            <div id="title-section" class="flex flex-col sm:flex-row justify-between items-center sm:items-end gap-5 text-center sm:text-left">
                 <div>
                     <h1 class="text-5xl sm:text-7xl font-garamond font-light tracking-wide text-ink">
                         Lexicon
@@ -237,7 +260,7 @@
 
         </section>
 
-        <!-- 2. 脚本冒頭の定義文（スクロールに応じてゆったりと間隔が詰まります） -->
+        <!-- 2. 脚本冒頭の定義文（1画面目には入らず、スクロールで登場） -->
         <section id="definition" class="max-w-xl mx-auto space-y-4 font-dict text-xs sm:text-sm text-ink-charcoal leading-relaxed text-justify px-2 sm:px-4">
             
             <!-- Lexicon 定義 -->
