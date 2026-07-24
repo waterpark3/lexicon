@@ -34,10 +34,8 @@
     <script type="application/ld+json">
     {
       "@context": "https://schema.org",
-      "@type": "TheaterEvent",
+      "@type": "EventSeries",
       "name": "Lexicon",
-      "startDate": "2026-10-11T14:00:00+09:00",
-      "endDate": "2026-10-12T18:40:00+09:00",
       "eventAttendanceMode": "https://schema.org/OfflineEventAttendanceMode",
       "eventStatus": "https://schema.org/EventScheduled",
       "location": {
@@ -55,13 +53,6 @@
         "https://waterpark3.github.io/lexicon/flyer.JPG"
       ],
       "description": "戯曲『Lexicon』（作・髙野皓太）は40分の上演時間を予定する現代口語の短編作品であり、本公演にて初めて上演される創作脚本である。",
-      "offers": {
-        "@type": "Offer",
-        "price": "0",
-        "priceCurrency": "JPY",
-        "availability": "https://schema.org/InStock",
-        "url": "https://www.form-mailer.jp/"
-      },
       "performer": {
         "@type": "PerformingGroup",
         "name": "ルイルーム（Louis-room）"
@@ -70,7 +61,113 @@
         "@type": "Organization",
         "name": "ルイルーム（Louis-room）",
         "email": "louisroom.drama@gmail.com"
-      }
+      },
+      "subEvent": [
+        {
+          "@type": "TheaterEvent",
+          "name": "Lexicon（10月11日 14:00回）",
+          "startDate": "2026-10-11T14:00:00+09:00",
+          "endDate": "2026-10-11T14:40:00+09:00",
+          "eventAttendanceMode": "https://schema.org/OfflineEventAttendanceMode",
+          "eventStatus": "https://schema.org/EventScheduled",
+          "location": {
+            "@type": "Place",
+            "name": "京都市立芸術大学 映像スタジオ",
+            "address": {
+              "@type": "PostalAddress",
+              "streetAddress": "崇仁高瀬町57-1",
+              "addressLocality": "京都市下京区",
+              "postalCode": "600-8601",
+              "addressCountry": "JP"
+            }
+          },
+          "offers": {
+            "@type": "Offer",
+            "price": "0",
+            "priceCurrency": "JPY",
+            "availability": "https://schema.org/InStock",
+            "url": "https://www.form-mailer.jp/"
+          }
+        },
+        {
+          "@type": "TheaterEvent",
+          "name": "Lexicon（10月11日 18:00回）",
+          "startDate": "2026-10-11T18:00:00+09:00",
+          "endDate": "2026-10-11T18:40:00+09:00",
+          "eventAttendanceMode": "https://schema.org/OfflineEventAttendanceMode",
+          "eventStatus": "https://schema.org/EventScheduled",
+          "location": {
+            "@type": "Place",
+            "name": "京都市立芸術大学 映像スタジオ",
+            "address": {
+              "@type": "PostalAddress",
+              "streetAddress": "崇仁高瀬町57-1",
+              "addressLocality": "京都市下京区",
+              "postalCode": "600-8601",
+              "addressCountry": "JP"
+            }
+          },
+          "offers": {
+            "@type": "Offer",
+            "price": "0",
+            "priceCurrency": "JPY",
+            "availability": "https://schema.org/InStock",
+            "url": "https://www.form-mailer.jp/"
+          }
+        },
+        {
+          "@type": "TheaterEvent",
+          "name": "Lexicon（10月12日 14:00回）",
+          "startDate": "2026-10-12T14:00:00+09:00",
+          "endDate": "2026-10-12T14:40:00+09:00",
+          "eventAttendanceMode": "https://schema.org/OfflineEventAttendanceMode",
+          "eventStatus": "https://schema.org/EventScheduled",
+          "location": {
+            "@type": "Place",
+            "name": "京都市立芸術大学 映像スタジオ",
+            "address": {
+              "@type": "PostalAddress",
+              "streetAddress": "崇仁高瀬町57-1",
+              "addressLocality": "京都市下京区",
+              "postalCode": "600-8601",
+              "addressCountry": "JP"
+            }
+          },
+          "offers": {
+            "@type": "Offer",
+            "price": "0",
+            "priceCurrency": "JPY",
+            "availability": "https://schema.org/InStock",
+            "url": "https://www.form-mailer.jp/"
+          }
+        },
+        {
+          "@type": "TheaterEvent",
+          "name": "Lexicon（10月12日 18:00回）",
+          "startDate": "2026-10-12T18:00:00+09:00",
+          "endDate": "2026-10-12T18:40:00+09:00",
+          "eventAttendanceMode": "https://schema.org/OfflineEventAttendanceMode",
+          "eventStatus": "https://schema.org/EventScheduled",
+          "location": {
+            "@type": "Place",
+            "name": "京都市立芸術大学 映像スタジオ",
+            "address": {
+              "@type": "PostalAddress",
+              "streetAddress": "崇仁高瀬町57-1",
+              "addressLocality": "京都市下京区",
+              "postalCode": "600-8601",
+              "addressCountry": "JP"
+            }
+          },
+          "offers": {
+            "@type": "Offer",
+            "price": "0",
+            "priceCurrency": "JPY",
+            "availability": "https://schema.org/InStock",
+            "url": "https://www.form-mailer.jp/"
+          }
+        }
+      ]
     }
     </script>
     
@@ -479,7 +576,7 @@
             cursor: grab;
             user-select: none;
             -webkit-overflow-scrolling: touch;
-            touch-action: pan-x;
+            touch-action: pan-x pinch-zoom;
         }
 
         .scroll-container::-webkit-scrollbar {
@@ -954,7 +1051,7 @@
                 <div>
                     <a href="https://www.form-mailer.jp/" target="_blank" rel="noopener noreferrer" class="inline-flex items-center justify-center gap-2.5 px-8 py-3.5 bg-ink text-paper text-xs font-mincho tracking-[0.25em] hover:bg-ink-label transition-colors duration-300">
                         <span>ご予約はこちら</span>
-                        <svg class="w-3.5 h-3.5 stroke-current opacity-80" fill="none" viewBox="0 0 24 24">
+                        <svg class="w-3.5 h-3.5 stroke-current opacity-80" fill="none" viewBox="0 0 24 24" aria-hidden="true">
                             <path d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
                         </svg>
                     </a>
@@ -976,7 +1073,7 @@
             </div>
         </section>
 
-        <div class="my-14 sm:my-18 text-center text-ink/70 text-[10px] sm:text-xs font-mincho select-none tracking-[0.45em] sm:tracking-[0.6em] pl-[0.45em]">
+        <div class="my-14 sm:my-18 text-center text-ink/70 text-[10px] sm:text-xs font-mincho select-none tracking-[0.45em] sm:tracking-[0.6em] pl-[0.45em]" aria-hidden="true">
             ・・・・・・・・・・・・・・・
         </div>
 
@@ -987,7 +1084,7 @@
             </div>
         </section>
 
-        <div class="my-14 sm:my-18 text-center text-ink/70 text-[10px] sm:text-xs font-mincho select-none tracking-[0.45em] sm:tracking-[0.6em] pl-[0.45em]">
+        <div class="my-14 sm:my-18 text-center text-ink/70 text-[10px] sm:text-xs font-mincho select-none tracking-[0.45em] sm:tracking-[0.6em] pl-[0.45em]" aria-hidden="true">
             ・・・・・・・・・・・・・・・
         </div>
 
