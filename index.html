@@ -691,11 +691,11 @@
             display: inline;
         }
 
-        /* 音読・暗誦の傍線表現（文字に接近） */
+        /* 音読・暗誦の傍線表現（文字に近接させる） */
         .read-aloud {
             text-decoration: underline;
             text-decoration-color: var(--text-color);
-            text-underline-offset: 1px;
+            text-underline-offset: 0px;
             text-decoration-thickness: 1px;
         }
 
@@ -955,6 +955,7 @@
                     const isHidden = scriptViewer.classList.contains('hidden');
                     if (isHidden) {
                         scriptViewer.classList.remove('hidden');
+                        readBtn.setAttribute('aria-expanded', 'true');
                         readBtn.querySelector('.btn-label').textContent = '試し読みを閉じる';
                         readBtn.querySelector('.btn-icon').style.transform = 'rotate(180deg)';
                         
@@ -965,6 +966,7 @@
                         });
                     } else {
                         scriptViewer.classList.add('hidden');
+                        readBtn.setAttribute('aria-expanded', 'false');
                         readBtn.querySelector('.btn-label').textContent = '脚本試し読み';
                         readBtn.querySelector('.btn-icon').style.transform = 'rotate(0deg)';
                     }
@@ -1010,6 +1012,27 @@
                         updateScriptProgress();
                     }
                 }, { passive: false });
+
+                // キーボード操作（矢印キー・Home/End）で読み進められるようにする
+                scrollContainer.addEventListener('keydown', function (e) {
+                    const step = 80;
+                    if (e.key === 'ArrowLeft') {
+                        e.preventDefault();
+                        scrollContainer.scrollLeft += step;
+                        updateScriptProgress();
+                    } else if (e.key === 'ArrowRight') {
+                        e.preventDefault();
+                        scrollContainer.scrollLeft -= step;
+                        updateScriptProgress();
+                    } else if (e.key === 'Home') {
+                        e.preventDefault();
+                        resetScrollToBeginning();
+                    } else if (e.key === 'End') {
+                        e.preventDefault();
+                        scrollContainer.scrollLeft = 0;
+                        updateScriptProgress();
+                    }
+                });
             }
         });
     </script>
@@ -1032,7 +1055,7 @@
             <div id="visual-box" class="w-full flex items-center justify-center pt-2 sm:pt-4">
                 <img id="main-visual" src="./flyer.JPG" alt="Lexicon メインビジュアル" class="max-w-full max-h-[46vh] sm:max-h-[52vh] w-auto h-auto object-contain block subtle-shadow rounded-sm" onerror="handleImageError(this, 'flyer-fallback')">
                 <div id="flyer-fallback" class="w-full py-16 px-8 flex-col items-center justify-center text-center border border-dashed border-ink/20 bg-paper-sub" style="display: none;">
-                    <svg class="w-10 h-10 text-ink-label mb-3 stroke-1" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <svg class="w-10 h-10 text-ink-label mb-3 stroke-1" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true">
                         <path stroke-linecap="round" stroke-linejoin="round" d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253" />
                     </svg>
                     <p class="font-garamond text-xs text-ink-label tracking-widest uppercase">Lexicon — Main Visual</p>
@@ -1104,9 +1127,9 @@
         <section id="read-script" class="max-w-3xl mx-auto mt-28 sm:mt-36 scroll-mt-20 px-2 sm:px-4">
             <!-- 開閉トグルボタン -->
             <div class="text-center">
-                <button id="toggle-script-btn" class="inline-flex items-center justify-center gap-3 px-9 py-3.5 sm:px-10 sm:py-4 border border-ink/15 text-ink text-sm sm:text-base font-mincho tracking-[0.25em] rounded-lg transition-all duration-300 cursor-pointer shadow-sm" style="background-color: var(--btn-bg);" onmouseover="this.style.backgroundColor='var(--btn-bg-hover)'" onmouseout="this.style.backgroundColor='var(--btn-bg)'">
+                <button id="toggle-script-btn" class="inline-flex items-center justify-center gap-3 px-9 py-3.5 sm:px-10 sm:py-4 border border-ink/15 text-ink text-sm sm:text-base font-mincho tracking-[0.25em] rounded-lg transition-all duration-300 cursor-pointer shadow-sm" style="background-color: var(--btn-bg);" onmouseover="this.style.backgroundColor='var(--btn-bg-hover)'" onmouseout="this.style.backgroundColor='var(--btn-bg)'" aria-expanded="false" aria-controls="script-viewer">
                     <span class="btn-label">脚本試し読み</span>
-                    <svg class="btn-icon w-4 h-4 stroke-current transition-transform duration-300" fill="none" viewBox="0 0 24 24">
+                    <svg class="btn-icon w-4 h-4 stroke-current transition-transform duration-300" fill="none" viewBox="0 0 24 24" aria-hidden="true">
                         <path d="M19 9l-7 7-7-7" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
                     </svg>
                 </button>
@@ -1126,7 +1149,7 @@
                             <div id="script-progress-fill" class="script-progress-bar-fill"></div>
                         </div>
                     </div>
-                    <div id="script-scroll-container" class="scroll-container">
+                    <div id="script-scroll-container" class="scroll-container" tabindex="0" role="region" aria-label="脚本試し読み本文（矢印キーで読み進められます）">
                         <div class="script-content">
                             
                             <!-- 戯曲表紙・タイトル -->
@@ -1175,7 +1198,7 @@
                             </div>
 
                             <div class="script-line">
-                                <span class="script-speaker">風吟</span>　[音読] <span class="read-aloud">レチタ、君の治らない喉声に、一箱（<ruby>ひとはこ<rt>・</rt></ruby>）のプールを贈ろう。深くて足はつかないから、君を沈める錨（<ruby>いかり<rt>・</rt></ruby>）の代わり、一杯の土も同封しておく。水底（<ruby>みなそこ<rt>・</rt></ruby>）に張り付くウミエラたちを、同じ澱として慕っておくれ。レチタ、君の使命は、ここで声ばかりを繰り返すことだ。闇雲のなかで、大切なことも、大切でないことも、見境なく覚えたろう。すべて見境なく、繰り返せ。</span>[重い咳]……<span class="read-aloud">レチタ、呼吸は淀みない。あまり暴れない。なんという気立（<ruby>けたたま<rt>・</rt></ruby>）しい夜の澱で、君の声が喉に引っ掛かっているのだろう。</span>[文字から【レチタ】を抜いて繰り返す]
+                                <span class="script-speaker">風吟</span>　[音読] <span class="read-aloud">レチタ、君の治らない喉声に、<ruby>一箱<rt>ひとはこ</rt></ruby>のプールを贈ろう。深くて足はつかないから、君を沈める<ruby>錨<rt>いかり</rt></ruby>の代わり、一杯の土も同封しておく。<ruby>水底<rt>みなそこ</rt></ruby>に張り付くウミエラたちを、同じ澱として慕っておくれ。レチタ、君の使命は、ここで声ばかりを繰り返すことだ。闇雲のなかで、大切なことも、大切でないことも、見境なく覚えたろう。すべて見境なく、繰り返せ。</span>[重い咳]……<span class="read-aloud">レチタ、呼吸は淀みない。あまり暴れない。なんという<ruby>気立<rt>けたたま</rt></ruby>しい夜の澱で、君の声が喉に引っ掛かっているのだろう。</span>[文字から【レチタ】を抜いて繰り返す]
                             </div>
 
                             <div class="script-direction">
@@ -1184,7 +1207,7 @@
                             </div>
 
                             <div class="script-line">
-                                <span class="script-speaker">飴玉</span>　[暗誦] <span class="read-aloud">甘い香りは御蔵（<ruby>みくら<rt>・</rt></ruby>）より、琥珀の夢は舌下まで。昔ながらの手練の業、いつかは主の喉の仏へ、ころころと転び入りぬべく、我再びと此処に参った。</span>[小休止]
+                                <span class="script-speaker">飴玉</span>　[暗誦] <span class="read-aloud">甘い香りは<ruby>御蔵<rt>みくら</rt></ruby>より、琥珀の夢は舌下まで。昔ながらの手練の業、いつかは主の喉の仏へ、ころころと転び入りぬべく、我再びと此処に参った。</span>[小休止]
                             </div>
 
                             <div class="script-direction">
@@ -1230,7 +1253,7 @@
                             <div class="script-line"><span class="script-speaker">風吟</span>　[わざとらしく] ふん。決まった。[音読] <span class="read-aloud">破門、だ。私を打ってみろ。</span></div>
                             <div class="script-line"><span class="script-speaker">飴玉</span>　ん、ハモン。</div>
                             <div class="script-line"><span class="script-speaker">風吟</span>　その棒で、私の頭を、ぱーんと打ってみろ。ここにおとなしく座っているから。</div>
-                            <div class="script-line"><span class="script-speaker">飴玉</span>　ハモンとはなんだ。[本を奪う] [音読] <span class="read-aloud">師弟の縁（<ruby>えにし<rt>・</rt></ruby>）を絶ち、門徒から除く。ハモン？</span></div>
+                            <div class="script-line"><span class="script-speaker">飴玉</span>　ハモンとはなんだ。[本を奪う] [音読] <span class="read-aloud">師弟の<ruby>縁<rt>えにし</rt></ruby>を絶ち、門徒から除く。ハモン？</span></div>
                             <div class="script-line"><span class="script-speaker">風吟</span>　命を懸けて私を打ってこそ、正統な伝承が為されるものだ。愛弟子まで一本道を通じようと思えば、かなしいかな、師匠たるもの縁より先に命を絶たなければならない。……嘘だ。そんなストーリーは探しても探しても、東西南北どこにもなかった。</div>
                             <div class="script-line"><span class="script-speaker">飴玉</span>　……何を言った？</div>
                             <div class="script-line"><span class="script-speaker">風吟</span>　弟子が命懸けで師匠を打つ物語は、なんと、一つもなかった。</div>
@@ -1249,22 +1272,22 @@
                                 聖性を帯びた書物を、聖書ではないものとして読めるのは人間の特権だろうか。
                             </div>
 
-                            <div class="script-line"><span class="script-speaker">飴玉</span>　[無線機（本）に] 話は…… [聴取不能] それから、風だ。北東の煽（<ruby>あお<rt>・</rt></ruby>）ち風だ……吹き上げる高さは、千二百メートル。発生源は四十キロメートル先、この方角なら最も標高の低い区民プールだ。その泳ぎやすさで評判がいい。ここは大陸の風下。北東に突き出した丘の縁に立てば、塩味（<ruby>しおあじ<rt>・</rt></ruby>）が少し目に染みる。</div>
+                            <div class="script-line"><span class="script-speaker">飴玉</span>　[無線機（本）に] 話は…… [聴取不能] それから、風だ。北東の<ruby>煽<rt>あお</rt></ruby>ち風だ……吹き上げる高さは、千二百メートル。発生源は四十キロメートル先、この方角なら最も標高の低い区民プールだ。その泳ぎやすさで評判がいい。ここは大陸の風下。北東に突き出した丘の縁に立てば、<ruby>塩味<rt>しおあじ</rt></ruby>が少し目に染みる。</div>
                             <div class="script-line"><span class="script-speaker">風吟</span>　しょっぱい風！ そこのプールの生き物、みんな、塩ふりかかって死んでいるのに。</div>
-                            <div class="script-line"><span class="script-speaker">飴玉</span>　やはり蛞蝓（<ruby>なめくじ<rt>・</rt></ruby>）のように人間はとけたのか。</div>
+                            <div class="script-line"><span class="script-speaker">飴玉</span>　やはり<ruby>蛞蝓<rt>なめくじ</rt></ruby>のように人間はとけたのか。</div>
                             <div class="script-line"><span class="script-speaker">風吟</span>　わからない。実際は、わからない。君がとけるようにとけた、と言ったらまずいだろうか。空見上げて、雪と思ったら塩だったと、プールサイドの遺言にそう書いてあった。</div>
                             <div class="script-line"><span class="script-speaker">飴玉</span>　そうか。お前といい、人間は、人間の時代がついた言伝を、なんでも知っているものだな。</div>
                             <div class="script-line"><span class="script-speaker">風吟</span>　私は知れない。覚えているだけ。やり方が古いのかもしれない。</div>
                             <div class="script-line"><span class="script-speaker">飴玉</span>　幸か不幸か、風は順行している。今晩、お前の亡骸がここにあっても、プールの方角へは流れないだろう。さすれば打たれることも恐れるな、風吟。[本を置いて構える]</div>
-                            <div class="script-line"><span class="script-speaker">風吟</span>　その遺言の衾（<ruby>ふすま<rt>・</rt></ruby>）、人の思いは果てなく積もる。それでも、思いばかりの目録にもたれる心だ。君は花布をほどくように、たった一ページを以て、遺言のために語彙だけを残せ。あとは誰か覚えて、別の人。</div>
+                            <div class="script-line"><span class="script-speaker">風吟</span>　その遺言の<ruby>衾<rt>ふすま</rt></ruby>、人の思いは果てなく積もる。それでも、思いばかりの目録にもたれる心だ。君は花布をほどくように、たった一ページを以て、遺言のために語彙だけを残せ。あとは誰か覚えて、別の人。</div>
                             <div class="script-line"><span class="script-speaker">飴玉</span>　[被せて] レチタ。</div>
                             <div class="script-line"><span class="script-speaker">風吟</span>　[被せて] 記されることが山ほどあるなら、覚えられることも山ほどあるだろう。私の頭にもうゆとりはない。……君、助走もつけて。</div>
-                            <div class="script-line"><span class="script-speaker">飴玉</span>　[後ずさり] レチタ、俺の主（<ruby>あるじ<rt>・</rt></ruby>）……俺はレチタの亡き手に代えて、お前を打つだけだ。</div>
+                            <div class="script-line"><span class="script-speaker">飴玉</span>　[後ずさり] レチタ、俺の<ruby>主<rt>あるじ</rt></ruby>……俺はレチタの亡き手に代えて、お前を打つだけだ。</div>
                             <div class="script-line"><span class="script-speaker">風吟</span>　レチタ……それは、誰だ？ 私じゃないのか？ 私でよければ、そのレチタとやらになってあげようか。……待って。少し近い。</div>
                             <div class="script-line"><span class="script-speaker">飴玉</span>　人情をかけるのは違反だ、風吟。</div>
                             <div class="script-line"><span class="script-speaker">風吟</span>　ううん。違う。助走もつけて、もっと離れて、人外。</div>
                             <div class="script-line"><span class="script-speaker">飴玉</span>　[後ずさり] 三歩下がった。手元はしがなく、まだ震えない。……お前を打ちそうだ。</div>
-                            <div class="script-line"><span class="script-speaker">風吟</span>　助走もつけて。うんと。昔。今。君のいた天幕が近い。上だ。君の鋩（<ruby>きっさき<rt>・</rt></ruby>）に下りてくる。</div>
+                            <div class="script-line"><span class="script-speaker">風吟</span>　助走もつけて。うんと。昔。今。君のいた天幕が近い。上だ。君の<ruby>鋩<rt>きっさき</rt></ruby>に下りてくる。</div>
 
                             <!-- 本文: 2B -->
                             <div class="script-section-tag">＜２Ｂ＞</div>
@@ -1274,7 +1297,7 @@
                                 風吟は、いっとき地蔵のようになる。飴玉が笠を手に徒歩で戻ってくる。罠に掛かった形跡がある。
                             </div>
 
-                            <div class="script-line"><span class="script-speaker">飴玉</span>　[音読] <span class="read-aloud">一、囲み罠。二、捕縛罠。三、殺戮罠。獲物を新鮮なまま活かしておきたいなら、罠の内部にはおとりが組み込まれる。</span>[捲り戻す] <span class="read-aloud">人情。自然に備わった人間の愛情。広大無辺の慈しみ。情け。……関連して……殺戮罠にはおとりを用いない。終夜（<ruby>しゅうや<rt>・</rt></ruby>）ごっこ遊びに興じていたら、俺がとけるより早く、お前が固まるだけの時間が経ってしまった。</span>[叩いて] なんと凄惨なことか。……だがよかった。俺も、お前も、無傷だ。</div>
+                            <div class="script-line"><span class="script-speaker">飴玉</span>　[音読] <span class="read-aloud">一、囲み罠。二、捕縛罠。三、殺戮罠。獲物を新鮮なまま活かしておきたいなら、罠の内部にはおとりが組み込まれる。</span>[捲り戻す] <span class="read-aloud">人情。自然に備わった人間の愛情。広大無辺の慈しみ。情け。……関連して……殺戮罠にはおとりを用いない。<ruby>終夜<rt>しゅうや</rt></ruby>ごっこ遊びに興じていたら、俺がとけるより早く、お前が固まるだけの時間が経ってしまった。</span>[叩いて] なんと凄惨なことか。……だがよかった。俺も、お前も、無傷だ。</div>
 
                             <div class="script-direction">
                                 風吟の頭に笠をかけ、一拍。肩にそっと棒を添える。一気に潮風が下がる。
@@ -1284,7 +1307,7 @@
                             <div class="script-section-tag">＜３Ａ＞</div>
 
                             <div class="script-line"><span class="script-speaker">風吟</span>　[勢いよく] 弱い！ [笠に] なにこれ。</div>
-                            <div class="script-line"><span class="script-speaker">飴玉</span>　ひしゃげたテントで拾ってきた、天（<ruby>あま<rt>・</rt></ruby>）の笠だ。[音読] <span class="read-aloud">雪を防いだり、日光を遮ったりする。</span></div>
+                            <div class="script-line"><span class="script-speaker">飴玉</span>　ひしゃげたテントで拾ってきた、<ruby>天<rt>あま</rt></ruby>の笠だ。[音読] <span class="read-aloud">雪を防いだり、日光を遮ったりする。</span></div>
                             <div class="script-line"><span class="script-speaker">風吟</span>　なら君が身に付けておくべきだ。</div>
                             <div class="script-line"><span class="script-speaker">飴玉</span>　いや遠慮しておく。ふさわしく……ない。</div>
                             <div class="script-line"><span class="script-speaker">風吟</span>　関係ない。私には霜焼けも日焼けも、命に別状ないから。</div>
@@ -1298,9 +1321,9 @@
                             <div class="script-line"><span class="script-speaker">風吟</span>　[被せて] 私は、しつこくて、うるさいか？</div>
                             <div class="script-line"><span class="script-speaker">飴玉</span>　いや、どうだ……お前以外の、他の人間には敵わん。</div>
                             <div class="script-line"><span class="script-speaker">風吟</span>　嘘だ。別の人が？そんなはずはない。</div>
-                            <div class="script-line"><span class="script-speaker">飴玉</span>　あいつらの地上には近々、俺には到底知られんような禍（<ruby>わざわい<rt>・</rt></ruby>）のいっぱしでも降ってくるとみえる。俺のカマクラにまでやりきれないのへたれ声が轟いてきて敵わん。しつこい声だ。</div>
-                            <div class="script-line"><span class="script-speaker">風吟</span>　君、カマクラに住んでいたのか。カマクラ……[暗誦] <span class="read-aloud">積もる雪をはたいて半球形の室（<ruby>むろ<rt>・</rt></ruby>）を作った子供たちが、水神（<ruby>すいじん<rt>・</rt></ruby>）を祀り、十一回目の朝、天（<ruby>あま<rt>・</rt></ruby>）の筆をとって思いを書き留める。その思いの丈の短さといったら、それを焚き上げる火柱（<ruby>ひばしら<rt>・</rt></ruby>）が、害鳥を追い払うのに足らないほどだ。</span>なんと。……うん。そんな息苦しいところ、引っ越せばよかろう？</div>
-                            <div class="script-line"><span class="script-speaker">飴玉</span>　……蔵（<ruby>くら<rt>・</rt></ruby>）の外は住むには暑い。全身とけだしてしまう。</div>
+                            <div class="script-line"><span class="script-speaker">飴玉</span>　あいつらの地上には近々、俺には到底知られんような<ruby>禍<rt>わざわい</rt></ruby>のいっぱしでも降ってくるとみえる。俺のカマクラにまでやりきれないのへたれ声が轟いてきて敵わん。しつこい声だ。</div>
+                            <div class="script-line"><span class="script-speaker">風吟</span>　君、カマクラに住んでいたのか。カマクラ……[暗誦] <span class="read-aloud">積もる雪をはたいて半球形の<ruby>室<rt>むろ</rt></ruby>を作った子供たちが、<ruby>水神<rt>すいじん</rt></ruby>を祀り、十一回目の朝、<ruby>天<rt>あま</rt></ruby>の筆をとって思いを書き留める。その思いの丈の短さといったら、それを焚き上げる<ruby>火柱<rt>ひばしら</rt></ruby>が、害鳥を追い払うのに足らないほどだ。</span>なんと。……うん。そんな息苦しいところ、引っ越せばよかろう？</div>
+                            <div class="script-line"><span class="script-speaker">飴玉</span>　……<ruby>蔵<rt>くら</rt></ruby>の外は住むには暑い。全身とけだしてしまう。</div>
                             <div class="script-line"><span class="script-speaker">風吟</span>　なるほど。外側からとろとろとける？</div>
                             <div class="script-line"><span class="script-speaker">飴玉</span>　ねちねちとける。あまり見栄えよくない。</div>
                             <div class="script-line"><span class="script-speaker">風吟</span>　ふうん。</div>
