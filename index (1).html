@@ -1,0 +1,1356 @@
+<!DOCTYPE html>
+<html lang="ja" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="color-scheme" content="light">
+    
+    <!-- サイトタイトル & 検索エンジンメタ情報 (SEO) -->
+    <title>Lexicon｜Louis-room</title>
+    <meta name="description" content="ルイルーム（Louis-room）主催 演劇公演『Lexicon』（作：髙野皓太）。2026年10月11日（日）〜 10月12日（月・祝）、京都市立芸術大学 映像スタジオにて上演。">
+    <link rel="canonical" href="https://waterpark3.github.io/lexicon/">
+    
+    <!-- ファビコン（ブラウザタブ & アプリ用アイコン） -->
+    <link rel="icon" href="./icon.JPG" type="image/jpeg">
+    <link rel="apple-touch-icon" href="./icon.JPG">
+
+    <!-- Open Graph Tags (SNSシェア・X/Twitter・LINE・Facebook用OGP設定) -->
+    <meta property="og:title" content="Lexicon｜Louis-room">
+    <meta property="og:description" content="ルイルーム（Louis-room）主催 演劇公演『Lexicon』（作：髙野皓太）。2026年10月11日（日）〜 10月12日（月・祝）、京都市立芸術大学 映像スタジオにて上演。">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://waterpark3.github.io/lexicon/">
+    <meta property="og:image" content="https://waterpark3.github.io/lexicon/flyer.JPG">
+    <meta property="og:site_name" content="Louis-room">
+    <meta property="og:locale" content="ja_JP">
+
+    <!-- Twitter Card 設定 (Xでの大型画像表示) -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Lexicon｜Louis-room">
+    <meta name="twitter:description" content="ルイルーム（Louis-room）主催 演劇公演『Lexicon』（作：髙野皓太）。2026年10月11日（日）〜 10月12日（月・祝）、京都市立芸術大学 映像スタジオにて上演。">
+    <meta name="twitter:image" content="https://waterpark3.github.io/lexicon/flyer.JPG">
+
+    <!-- 構造化データ JSON-LD (Googleイベント検索・リッチリザルト対応) -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "TheaterEvent",
+      "name": "Lexicon",
+      "startDate": "2026-10-11T14:00:00+09:00",
+      "endDate": "2026-10-12T18:40:00+09:00",
+      "eventAttendanceMode": "https://schema.org/OfflineEventAttendanceMode",
+      "eventStatus": "https://schema.org/EventScheduled",
+      "location": {
+        "@type": "Place",
+        "name": "京都市立芸術大学 映像スタジオ",
+        "address": {
+          "@type": "PostalAddress",
+          "streetAddress": "崇仁高瀬町57-1",
+          "addressLocality": "京都市下京区",
+          "postalCode": "600-8601",
+          "addressCountry": "JP"
+        }
+      },
+      "image": [
+        "https://waterpark3.github.io/lexicon/flyer.JPG"
+      ],
+      "description": "戯曲『Lexicon』（作・髙野皓太）は40分の上演時間を予定する現代口語の短編作品であり、本公演にて初めて上演される創作脚本である。",
+      "offers": {
+        "@type": "Offer",
+        "price": "0",
+        "priceCurrency": "JPY",
+        "availability": "https://schema.org/InStock",
+        "url": "https://www.form-mailer.jp/"
+      },
+      "performer": {
+        "@type": "PerformingGroup",
+        "name": "ルイルーム（Louis-room）"
+      },
+      "organizer": {
+        "@type": "Organization",
+        "name": "ルイルーム（Louis-room）",
+        "email": "louisroom.drama@gmail.com"
+      }
+    }
+    </script>
+    
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=EB+Garamond:ital,wght@0,400..700;1,400..700&family=Noto+Serif+JP:wght@400;500;600&family=Shippori+Mincho:wght@400;500;600&family=Zen+Old+Mincho:wght@400;500;700&display=swap" rel="stylesheet">
+    
+    <style>
+        /* ========================================================
+           Lexicon｜Louis-room - 統合スタイルシート
+           ======================================================== */
+
+        /* ---------- リセット ---------- */
+        *, *::before, *::after {
+            box-sizing: border-box;
+            border-width: 0;
+            border-style: solid;
+            border-color: currentColor;
+            margin: 0;
+            padding: 0;
+        }
+
+        html {
+            -webkit-text-size-adjust: 100%;
+            line-height: 1.5;
+            background-color: #f7f5f0;
+        }
+
+        body {
+            line-height: inherit;
+        }
+
+        img, svg {
+            display: block;
+            max-width: 100%;
+            height: auto;
+        }
+
+        a {
+            color: inherit;
+            text-decoration: inherit;
+        }
+
+        button, input {
+            font: inherit;
+            color: inherit;
+            background: none;
+            border: none;
+        }
+
+        h1, h2, p, blockquote {
+            font-size: inherit;
+            font-weight: inherit;
+        }
+
+        /* ---------- サイト基本カラー定義 ---------- */
+        :root {
+            --bg-color: #f7f5f0;        /* 背景色：静謐な生成り色 */
+            --text-color: #1a1918;      /* メイン文字色：墨黒 */
+            --label-color: #785e5b;     /* 項目名・説明文・ナビ共通カラー（茜ココア） */
+            --text-muted: #4e4a46;      /* 補足注釈・住所：チャコールグレー */
+            --text-charcoal: #595552;   /* 紹介文用：灰色がかった柔らかなシックグレー */
+            --item-line: #dcd5ce;       /* 項目間区切り線：エレガントなグレージュ */
+            --btn-bg: #e8e4dc;          /* ボタン用柔らかな薄グレー */
+            --btn-bg-hover: #ded8ce;    /* ボタンホバー時薄グレー */
+        }
+
+        html.scroll-smooth {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            background-color: var(--bg-color);
+            color: var(--text-color);
+            font-family: 'Zen Old Mincho', serif;
+            overflow-wrap: break-word;
+            word-break: normal;
+        }
+
+        ::selection {
+            background-color: var(--text-color);
+            color: var(--bg-color);
+        }
+
+        /* 柔らかい影効果 */
+        .subtle-shadow {
+            box-shadow: 0 12px 30px -8px rgba(26, 25, 24, 0.1), 0 4px 10px -4px rgba(26, 25, 24, 0.04);
+        }
+
+        .icon-shadow {
+            box-shadow: 0 6px 16px -4px rgba(26, 25, 24, 0.12);
+        }
+
+        /* カスタムスクロールバー（通常） */
+        ::-webkit-scrollbar {
+            width: 4px;
+            height: 8px;
+        }
+        ::-webkit-scrollbar-track {
+            background: rgba(26, 25, 24, 0.05);
+        }
+        ::-webkit-scrollbar-thumb {
+            background: rgba(26, 25, 24, 0.25);
+            border-radius: 4px;
+        }
+
+        /* ---------- レイアウト・display ---------- */
+        .block { display: block; }
+        .inline-block { display: inline-block; }
+        .flex { display: flex; }
+        .inline-flex { display: inline-flex; }
+        .grid { display: grid; }
+        .hidden { display: none; }
+        .flex-grow { flex-grow: 1; }
+        .shrink-0 { flex-shrink: 0; }
+        .overflow-hidden { overflow: hidden; }
+        .min-h-screen { min-height: 100vh; }
+
+        .flex-col { flex-direction: column; }
+        .flex-row { flex-direction: row; }
+        .flex-wrap { flex-wrap: wrap; }
+
+        .items-center { align-items: center; }
+        .items-start { align-items: flex-start; }
+        .items-baseline { align-items: baseline; }
+        .justify-center { justify-content: center; }
+        .justify-between { justify-content: space-between; }
+        .justify-start { justify-content: flex-start; }
+
+        .grid-cols-1 { grid-template-columns: repeat(1, minmax(0, 1fr)); }
+
+        /* ---------- 位置 ---------- */
+        .sticky { position: sticky; }
+        .top-0 { top: 0; }
+        .z-30 { z-index: 30; }
+        .scroll-mt-20 { scroll-margin-top: 5rem; }
+
+        /* ---------- gap / space ---------- */
+        .gap-1 { gap: 0.25rem; }
+        .gap-1\.5 { gap: 0.375rem; }
+        .gap-2 { gap: 0.5rem; }
+        .gap-2\.5 { gap: 0.625rem; }
+        .gap-3 { gap: 0.75rem; }
+        .gap-4 { gap: 1rem; }
+        .gap-5 { gap: 1.25rem; }
+
+        .space-x-6 > :not([hidden]) ~ :not([hidden]) { margin-left: 1.5rem; }
+
+        .space-y-0\.5 > :not([hidden]) ~ :not([hidden]) { margin-top: 0.125rem; }
+        .space-y-1 > :not([hidden]) ~ :not([hidden]) { margin-top: 0.25rem; }
+        .space-y-1\.5 > :not([hidden]) ~ :not([hidden]) { margin-top: 0.375rem; }
+        .space-y-2 > :not([hidden]) ~ :not([hidden]) { margin-top: 0.5rem; }
+        .space-y-2\.5 > :not([hidden]) ~ :not([hidden]) { margin-top: 0.625rem; }
+        .space-y-3 > :not([hidden]) ~ :not([hidden]) { margin-top: 0.75rem; }
+        .space-y-4 > :not([hidden]) ~ :not([hidden]) { margin-top: 1rem; }
+        .space-y-5 > :not([hidden]) ~ :not([hidden]) { margin-top: 1.25rem; }
+        .space-y-6 > :not([hidden]) ~ :not([hidden]) { margin-top: 1.5rem; }
+
+        /* ---------- margin ---------- */
+        .mb-3 { margin-bottom: 0.75rem; }
+        .mt-0\.5 { margin-top: 0.125rem; }
+        .mt-1\.5 { margin-top: 0.375rem; }
+        .mt-6 { margin-top: 1.5rem; }
+        .mt-10 { margin-top: 2.5rem; }
+        .mt-16 { margin-top: 4rem; }
+        .mt-20 { margin-top: 5rem; }
+        .mt-28 { margin-top: 7rem; }
+        .mt-32 { margin-top: 8rem; }
+        .mt-36 { margin-top: 9rem; }
+        .my-14 { margin-top: 3.5rem; margin-bottom: 3.5rem; }
+        .mx-auto { margin-left: auto; margin-right: auto; }
+
+        /* ---------- padding ---------- */
+        .pb-4 { padding-bottom: 1rem; }
+        .pb-5 { padding-bottom: 1.25rem; }
+        .pb-16 { padding-bottom: 4rem; }
+        .pl-3 { padding-left: 0.75rem; }
+        .pl-4 { padding-left: 1rem; }
+        .pl-\[0\.45em\] { padding-left: 0.45em; }
+        .pt-0\.5 { padding-top: 0.125rem; }
+        .pt-1 { padding-top: 0.25rem; }
+        .pt-2 { padding-top: 0.5rem; }
+        .pt-8 { padding-top: 2rem; }
+        .px-2 { padding-left: 0.5rem; padding-right: 0.5rem; }
+        .px-6 { padding-left: 1.5rem; padding-right: 1.5rem; }
+        .px-8 { padding-left: 2rem; padding-right: 2rem; }
+        .px-9 { padding-left: 2.25rem; padding-right: 2.25rem; }
+        .py-1\.5 { padding-top: 0.375rem; padding-bottom: 0.375rem; }
+        .py-4 { padding-top: 1rem; padding-bottom: 1rem; }
+        .py-16 { padding-top: 4rem; padding-bottom: 4rem; }
+        .py-3\.5 { padding-top: 0.875rem; padding-bottom: 0.875rem; }
+        .py-5 { padding-top: 1.25rem; padding-bottom: 1.25rem; }
+        .py-6 { padding-top: 1.5rem; padding-bottom: 1.5rem; }
+
+        /* ---------- width / height ---------- */
+        .h-4 { height: 1rem; }
+        .h-10 { height: 2.5rem; }
+        .h-16 { height: 4rem; }
+        .h-3\.5 { height: 0.875rem; }
+        .h-auto { height: auto; }
+        .h-full { height: 100%; }
+        .w-4 { width: 1rem; }
+        .w-10 { width: 2.5rem; }
+        .w-16 { width: 4rem; }
+        .w-3\.5 { width: 0.875rem; }
+        .w-auto { width: auto; }
+        .w-fit { width: fit-content; }
+        .w-full { width: 100%; }
+        .max-h-\[46vh\] { max-height: 46vh; }
+        .max-w-3xl { max-width: 48rem; }
+        .max-w-4xl { max-width: 56rem; }
+        .max-w-full { max-width: 100%; }
+        .max-w-xl { max-width: 36rem; }
+
+        /* 座組名揃え用 */
+        .cast-name-width { width: 4.8em; }
+
+        /* ---------- border ---------- */
+        .border { border-width: 1px; }
+        .border-b { border-bottom-width: 1px; }
+        .border-t { border-top-width: 1px; }
+        .border-l-2 { border-left-width: 2px; }
+        .border-dashed { border-style: dashed; }
+        .border-item-line { border-color: var(--item-line); }
+        .border-ink\/20 { border-color: rgba(26, 25, 24, 0.2); }
+        .border-ink\/30 { border-color: rgba(26, 25, 24, 0.3); }
+        .border-ink\/40 { border-color: rgba(26, 25, 24, 0.4); }
+        .border-ink-label\/30 { border-color: rgba(120, 94, 91, 0.3); }
+        .rounded-full { border-radius: 9999px; }
+        .rounded-sm { border-radius: 0.125rem; }
+        .rounded-lg { border-radius: 0.5rem; }
+
+        /* ---------- 背景・文字色 ---------- */
+        .bg-ink { background-color: var(--text-color); }
+        .bg-paper { background-color: var(--bg-color); }
+        .bg-paper-sub { background-color: rgba(26, 25, 24, 0.04); }
+        .bg-paper\/90 { background-color: rgba(247, 245, 240, 0.9); }
+
+        .text-ink { color: var(--text-color); }
+        .text-ink-charcoal { color: var(--text-charcoal); }
+        .text-ink-label { color: var(--label-color); }
+        .text-ink-label\/70 { color: rgba(120, 94, 91, 0.7); }
+        .text-ink-muted { color: var(--text-muted); }
+        .text-ink\/70 { color: rgba(26, 25, 24, 0.7); }
+        .text-paper { color: var(--bg-color); }
+
+        /* ---------- 書体 ---------- */
+        .font-dict { font-family: "Noto Serif JP", "Shippori Mincho", serif; }
+        .font-garamond { font-family: "EB Garamond", serif; }
+        .font-mincho { font-family: "Zen Old Mincho", serif; }
+        .font-shippori { font-family: "Shippori Mincho", "Zen Old Mincho", serif; }
+
+        .font-bold { font-weight: 700; }
+        .font-light { font-weight: 300; }
+        .font-medium { font-weight: 500; }
+        .font-semibold { font-weight: 600; }
+        .italic { font-style: italic; }
+
+        .leading-relaxed { line-height: 1.625; }
+
+        .text-5xl { font-size: 3rem; line-height: 1; }
+        .text-base { font-size: 1rem; line-height: 1.5rem; }
+        .text-sm { font-size: 0.875rem; line-height: 1.25rem; }
+        .text-xl { font-size: 1.25rem; line-height: 1.75rem; }
+        .text-xs { font-size: 0.75rem; line-height: 1rem; }
+        .text-\[10px\] { font-size: 10px; }
+        .text-\[13px\] { font-size: 13px; }
+
+        .text-center { text-align: center; }
+        .text-left { text-align: left; }
+        .text-right { text-align: right; }
+        .text-justify { text-align: justify; }
+
+        .tracking-wide { letter-spacing: 0.025em; }
+        .tracking-wider { letter-spacing: 0.05em; }
+        .tracking-widest { letter-spacing: 0.1em; }
+        .tracking-\[0\.15em\] { letter-spacing: 0.15em; }
+        .tracking-\[0\.25em\] { letter-spacing: 0.25em; }
+        .tracking-\[0\.2em\] { letter-spacing: 0.2em; }
+        .tracking-\[0\.35em\] { letter-spacing: 0.35em; }
+        .tracking-\[0\.45em\] { letter-spacing: 0.45em; }
+
+        .underline { text-decoration-line: underline; }
+        .underline-offset-4 { text-underline-offset: 4px; }
+        .uppercase { text-transform: uppercase; }
+        .whitespace-nowrap { white-space: nowrap; }
+        .break-all { word-break: break-all; }
+        .select-none { user-select: none; }
+
+        /* ---------- トランジション・エフェクト ---------- */
+        .transition-all {
+            transition-property: all;
+            transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+            transition-duration: 150ms;
+        }
+        .transition-colors {
+            transition-property: color, background-color, border-color, text-decoration-color, fill, stroke;
+            transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+            transition-duration: 150ms;
+        }
+        .transition-opacity {
+            transition-property: opacity;
+            transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+            transition-duration: 150ms;
+        }
+        .transition-transform {
+            transition-property: transform;
+            transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+            transition-duration: 150ms;
+        }
+        .duration-300 { transition-duration: 300ms; }
+        .opacity-80 { opacity: 0.8; }
+        .cursor-pointer { cursor: pointer; }
+        .backdrop-blur-sm { backdrop-filter: blur(4px); -webkit-backdrop-filter: blur(4px); }
+        .object-contain { object-fit: contain; }
+        .object-cover { object-fit: cover; }
+        .stroke-1 { stroke-width: 1; }
+        .stroke-current { stroke: currentColor; }
+
+        .hover\:bg-paper-sub:hover { background-color: rgba(26, 25, 24, 0.04); }
+        .hover\:bg-ink-label:hover { background-color: var(--label-color); }
+        .hover\:border-ink:hover { border-color: var(--text-color); }
+        .hover\:opacity-75:hover { opacity: 0.75; }
+        .hover\:text-ink:hover { color: var(--text-color); }
+
+        /* ========================================================
+           脚本試し読み（縦書きビューアー）専用CSS
+           ======================================================== */
+        .script-section {
+            transition: all 0.4s ease-in-out;
+        }
+
+        .scroll-outer-frame {
+            position: relative;
+            background: #ffffff;
+            border: none;
+            box-shadow: 0 4px 20px rgba(26, 25, 24, 0.06);
+            border-radius: 2px;
+            overflow: hidden;
+            margin-top: 1.5rem;
+        }
+
+        /* 画面上部の操作案内バー（元の生成り背景色） */
+        .script-guide-bar {
+            background-color: var(--bg-color);
+            padding: 0.65rem 1.25rem;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            font-size: 0.72rem;
+            color: var(--text-color);
+            letter-spacing: 0.1em;
+            font-family: "Noto Serif JP", "Shippori Mincho", serif;
+            position: relative;
+        }
+
+        .script-guide-bar .guide-left,
+        .script-guide-bar .guide-right {
+            flex: 1;
+            display: flex;
+            align-items: center;
+        }
+
+        .script-guide-bar .guide-left {
+            justify-content: flex-start;
+        }
+
+        .script-guide-bar .guide-right {
+            justify-content: flex-end;
+        }
+
+        /* ガイドバー直下の全幅プログレスバー線（下線に配置・右から左へ伸びる） */
+        .script-progress-track {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            height: 2px;
+            background-color: var(--item-line);
+            overflow: hidden;
+        }
+
+        .script-progress-bar-fill {
+            height: 100%;
+            background-color: var(--label-color);
+            width: 0%;
+            position: absolute;
+            right: 0; /* 右端固定で左に向かって伸長 */
+            top: 0;
+            transition: width 0.08s ease-out;
+        }
+
+        /* 縦書きビューアー本体 */
+        .scroll-container {
+            display: block;
+            overflow-x: auto;
+            overflow-y: hidden;
+            width: 100%;
+            height: 75vh;
+            max-height: 693px;
+            min-height: 462px;
+            padding: 2.25rem 2rem;
+            box-sizing: border-box;
+            background-color: #ffffff;
+            cursor: grab;
+            user-select: none;
+            -webkit-overflow-scrolling: touch;
+            touch-action: pan-x;
+        }
+
+        .scroll-container::-webkit-scrollbar {
+            height: 6px;
+        }
+        .scroll-container::-webkit-scrollbar-track {
+            background: #f3f0e8;
+        }
+        .scroll-container::-webkit-scrollbar-thumb {
+            background: rgba(26, 25, 24, 0.4);
+            border-radius: 3px;
+        }
+
+        .scroll-container.is-dragging {
+            cursor: grabbing;
+        }
+
+        /* 戯曲のテキストレイアウト */
+        .script-content {
+            writing-mode: vertical-rl;
+            -webkit-writing-mode: vertical-rl;
+            text-orientation: mixed;
+            font-family: "Noto Serif JP", "Shippori Mincho", "Zen Old Mincho", serif;
+            color: var(--text-color);
+            font-size: 0.58rem;
+            line-height: 2.1;
+            letter-spacing: 0.1em;
+            height: 100%;
+            display: inline-block;
+            user-select: text;
+        }
+
+        /* 戯曲のタイトル */
+        .script-title {
+            font-size: 1.19rem;
+            font-family: "Noto Serif JP", "Shippori Mincho", serif;
+            letter-spacing: 0.3em;
+            margin-left: 3rem;
+            font-weight: 400;
+            color: var(--text-color);
+        }
+
+        /* 節タグ (1A, 1B等) */
+        .script-section-tag {
+            font-size: 0.51rem;
+            color: var(--text-color);
+            margin-left: 2rem;
+            margin-right: 1rem;
+            letter-spacing: 0.2em;
+        }
+
+        /* 登場人物 & 辞書解説 共通外枠 */
+        .script-char-box {
+            border-right: 1px solid var(--item-line);
+            padding-right: 1.5rem;
+            margin-left: 2.5rem;
+            margin-right: 1.5rem;
+            display: inline-block;
+            vertical-align: top;
+        }
+
+        /* 登場人物・辞書・※注釈のすべての上端（高さ）を最上部で揃える */
+        .script-char-group,
+        .script-dict-notes,
+        .script-note-col {
+            display: inline-block;
+            vertical-align: top;
+            font-size: 0.53rem;
+            color: var(--text-color);
+            line-height: 2;
+        }
+
+        /* 縦書きの配置において左側（次要素との距離）を均等（1.8rem）に保持 */
+        .script-char-group {
+            margin-left: 1.8rem;
+        }
+
+        .script-dict-notes {
+            margin-left: 1.8rem;
+        }
+
+        .script-note-col {
+            margin-left: 1.8rem;
+        }
+
+        .script-char-name {
+            font-weight: 600;
+            font-size: 0.63rem;
+            margin-bottom: 0.5rem;
+            letter-spacing: 0.2em;
+            color: var(--text-color);
+        }
+
+        .script-char-desc {
+            font-size: 0.53rem;
+            color: var(--text-color);
+            margin-bottom: 1.5rem;
+            line-height: 1.9;
+        }
+
+        /* 台詞と話者名：改行時（2行目）の高さを1行目の本文開始位置（3em分下）とピッタリ調整 */
+        .script-line {
+            margin-left: 1.15rem;
+            margin-top: 1.3em;
+            padding-top: 3em;     /* 話者名2文字＋全角スペース1文字＝3文字分下 */
+            text-indent: -3em;    /* 1行目（話者名）のみ最上部(0em)へ引き戻す */
+        }
+
+        .script-speaker {
+            font-weight: 600;
+            color: var(--text-color);
+            display: inline;
+        }
+
+        /* 音読・暗誦の傍線表現（文字に接近） */
+        .read-aloud {
+            text-decoration: underline;
+            text-decoration-color: var(--text-color);
+            text-underline-offset: 1px;
+            text-decoration-thickness: 1px;
+        }
+
+        /* ト書き（地の文）：上部（行頭）を2文字分下げる */
+        .script-direction {
+            color: var(--text-color);
+            font-size: 0.53rem;
+            margin-left: 1.6rem;
+            margin-right: 1.6rem;
+            margin-top: 0;
+            padding-top: 2em;
+            line-height: 2;
+        }
+
+        /* 縦書き用ダッシュ（――）：完全に途切れない2文字分の縦線を完璧に描画 */
+        .dash-line {
+            display: inline-block;
+            width: 1px;
+            height: 2em;
+            background-color: var(--text-color);
+            vertical-align: middle;
+            margin: 0.15em auto;
+        }
+
+        /* 横書き用ダッシュ（――）：Webページ本文用 */
+        .dash-line-horiz {
+            display: inline-block;
+            width: 2em;
+            height: 1px;
+            background-color: var(--text-color);
+            vertical-align: middle;
+            margin: 0 0.1em;
+        }
+
+        /* ルビ */
+        ruby rt {
+            font-size: 0.55em;
+            letter-spacing: 0.05em;
+            color: var(--text-color);
+        }
+
+        /* 終端インジケーター */
+        .script-end-marker {
+            margin-left: 3rem;
+            margin-right: 2rem;
+            padding-right: 1rem;
+            color: var(--text-color);
+            font-size: 0.51rem;
+            letter-spacing: 0.2em;
+            border-right: 1px dashed var(--item-line);
+            display: flex;
+            align-items: center;
+        }
+
+        /* レスポンシブ調整 */
+        @media (max-width: 520px) {
+            .script-guide-bar .guide-left span {
+                font-size: 0.65rem;
+            }
+        }
+
+        /* ========================================================
+           レスポンシブ（sm: 640px以上）
+           ======================================================== */
+        @media (min-width: 640px) {
+            .sm\:col-span-1 { grid-column: span 1 / span 1; }
+            .sm\:col-span-3 { grid-column: span 3 / span 3; }
+            .sm\:flex-row { flex-direction: row; }
+            .sm\:gap-4 { gap: 1rem; }
+            .sm\:gap-6 { gap: 1.5rem; }
+            .sm\:grid-cols-2 { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+            .sm\:grid-cols-4 { grid-template-columns: repeat(4, minmax(0, 1fr)); }
+            .sm\:h-20 { height: 5rem; }
+            .sm\:inline { display: inline; }
+            .sm\:items-center { align-items: center; }
+            .sm\:items-end { align-items: flex-end; }
+            .sm\:leading-loose { line-height: 2; }
+            .sm\:max-h-\[52vh\] { max-height: 52vh; }
+            .sm\:mt-12 { margin-top: 3rem; }
+            .sm\:mt-2 { margin-top: 0.5rem; }
+            .sm\:mt-20 { margin-top: 5rem; }
+            .sm\:mt-36 { margin-top: 9rem; }
+            .sm\:my-18 { margin-top: 4.5rem; margin-bottom: 4.5rem; }
+            .sm\:pl-4 { padding-left: 1rem; }
+            .sm\:pt-12 { padding-top: 3rem; }
+            .sm\:pt-4 { padding-top: 1rem; }
+            .sm\:px-10 { padding-left: 2.5rem; padding-right: 2.5rem; }
+            .sm\:px-12 { padding-left: 3rem; padding-right: 3rem; }
+            .sm\:px-4 { padding-left: 1rem; padding-right: 1rem; }
+            .sm\:py-4\.5 { padding-top: 1.125rem; padding-bottom: 1.125rem; }
+            .sm\:space-x-8 > :not([hidden]) ~ :not([hidden]) { margin-left: 2rem; }
+            .sm\:text-2xl { font-size: 1.5rem; line-height: 2rem; }
+            .sm\:text-7xl { font-size: 4.5rem; line-height: 1; }
+            .sm\:text-base { font-size: 1rem; line-height: 1.5rem; }
+            .sm\:text-left { text-align: left; }
+            .sm\:text-lg { font-size: 1.125rem; line-height: 1.75rem; }
+            .sm\:text-sm { font-size: 0.875rem; line-height: 1.25rem; }
+            .sm\:text-xs { font-size: 0.75rem; line-height: 1rem; }
+            .sm\:tracking-\[0\.25em\] { letter-spacing: 0.25em; }
+            .sm\:tracking-\[0\.2em\] { letter-spacing: 0.2em; }
+            .sm\:tracking-\[0\.6em\] { letter-spacing: 0.6em; }
+            .sm\:w-20 { width: 5rem; }
+
+            .scroll-container {
+                height: 77vh;
+                max-height: 750px;
+                padding: 2.5rem 3rem;
+            }
+            .script-content {
+                font-size: 0.65rem;
+            }
+        }
+    </style>
+</head>
+<body class="min-h-screen flex flex-col justify-between selection:bg-ink selection:text-paper bg-paper">
+
+    <script>
+        function handleImageError(imgEl, fallbackId) {
+            imgEl.style.display = 'none';
+            if (fallbackId) {
+                const fallbackEl = document.getElementById(fallbackId);
+                if (fallbackEl) fallbackEl.style.display = 'flex';
+            }
+        }
+
+        document.addEventListener('DOMContentLoaded', function () {
+            const visualBox = document.getElementById('visual-box');
+            const titleSection = document.getElementById('title-section');
+            const definitionSection = document.getElementById('definition');
+            const mainVisual = document.getElementById('main-visual');
+
+            let baseTitlePadding = 0;
+            let baseDefMargin = 0;
+            let minTitlePadding = 16;
+            let minDefMargin = 48;
+            let scrollRange = 360;
+
+            function updateBaseMetrics() {
+                if (!visualBox || !titleSection || !definitionSection) return;
+
+                const vh = window.innerHeight;
+                const isMobile = window.innerWidth < 640;
+
+                const currentPt = parseFloat(titleSection.style.paddingTop || '0');
+                const pureTitleHeight = titleSection.offsetHeight - currentPt;
+
+                const visualRect = visualBox.getBoundingClientRect();
+                const visualBottom = visualRect.top + (window.scrollY || window.pageYOffset) + visualRect.height;
+                const remainingSpace = vh - visualBottom;
+
+                minTitlePadding = isMobile ? 12 : 16;
+                baseTitlePadding = Math.max((remainingSpace - pureTitleHeight) / 2, isMobile ? 20 : 32);
+
+                const titleBottom = visualBottom + baseTitlePadding + pureTitleHeight;
+                minDefMargin = isMobile ? 32 : 48;
+                baseDefMargin = Math.max(vh - titleBottom + 16, isMobile ? 40 : 60);
+
+                scrollRange = isMobile ? 260 : 360;
+
+                renderScrollLayout();
+            }
+
+            function renderScrollLayout() {
+                if (!titleSection || !definitionSection) return;
+
+                const scrollY = window.scrollY || window.pageYOffset;
+                const progress = Math.sin((Math.min(Math.max(scrollY / scrollRange, 0), 1) * Math.PI) / 2);
+
+                const currentTitlePadding = baseTitlePadding - (baseTitlePadding - minTitlePadding) * progress;
+                const currentDefMargin = baseDefMargin - (baseDefMargin - minDefMargin) * progress;
+
+                titleSection.style.paddingTop = `${Math.max(currentTitlePadding, minTitlePadding)}px`;
+                definitionSection.style.marginTop = `${Math.max(currentDefMargin, minDefMargin)}px`;
+            }
+
+            let ticking = false;
+            window.addEventListener('scroll', function () {
+                if (!ticking) {
+                    window.requestAnimationFrame(function () {
+                        renderScrollLayout();
+                        ticking = false;
+                    });
+                    ticking = true;
+                }
+            }, { passive: true });
+
+            window.addEventListener('resize', function() {
+                updateBaseMetrics();
+                updateScriptProgress();
+            });
+            
+            if (mainVisual) {
+                if (mainVisual.complete) updateBaseMetrics();
+                else mainVisual.addEventListener('load', updateBaseMetrics);
+            } else {
+                updateBaseMetrics();
+            }
+
+            document.querySelectorAll('a[href^="#"]').forEach(function (anchor) {
+                anchor.addEventListener('click', function (e) {
+                    const targetId = this.getAttribute('href');
+                    e.preventDefault();
+
+                    if (targetId === '#') {
+                        window.scrollTo({ top: 0, behavior: 'smooth' });
+                        return;
+                    }
+                    
+                    const targetElement = document.querySelector(targetId);
+                    if (targetElement) {
+                        const headerOffset = 80;
+                        const elementPosition = targetElement.getBoundingClientRect().top;
+                        window.scrollTo({
+                            top: elementPosition + window.pageYOffset - headerOffset,
+                            behavior: 'smooth'
+                        });
+                    }
+                });
+            });
+
+            // ----------------------------------------------------
+            // 脚本試し読みトグル & 進捗バー・縦書きスクロール制御
+            // ----------------------------------------------------
+            const readBtn = document.getElementById('toggle-script-btn');
+            const scriptViewer = document.getElementById('script-viewer');
+            const scrollContainer = document.getElementById('script-scroll-container');
+            const progressFill = document.getElementById('script-progress-fill');
+
+            // 縦書きの読誦進捗率（右から左へ増えるバー）を計算・描画する関数
+            function updateScriptProgress() {
+                if (!scrollContainer || !progressFill) return;
+                const maxScrollLeft = scrollContainer.scrollWidth - scrollContainer.clientWidth;
+
+                if (maxScrollLeft <= 0) {
+                    progressFill.style.width = '0%';
+                    return;
+                }
+
+                // 縦書き（右端が冒頭 0%、左端が末尾 100%）
+                const currentScroll = scrollContainer.scrollLeft;
+                let percent = Math.round(((maxScrollLeft - currentScroll) / maxScrollLeft) * 100);
+                percent = Math.max(0, Math.min(100, percent));
+
+                progressFill.style.width = percent + '%';
+            }
+
+            // 一番最初（右端＝冒頭）へ画面をスクロールさせる関数
+            function resetScrollToBeginning() {
+                if (!scrollContainer) return;
+                const maxScrollLeft = scrollContainer.scrollWidth - scrollContainer.clientWidth;
+                scrollContainer.scrollLeft = maxScrollLeft;
+                updateScriptProgress();
+            }
+
+            if (readBtn && scriptViewer) {
+                readBtn.addEventListener('click', function () {
+                    const isHidden = scriptViewer.classList.contains('hidden');
+                    if (isHidden) {
+                        scriptViewer.classList.remove('hidden');
+                        readBtn.querySelector('.btn-label').textContent = '試し読みを閉じる';
+                        readBtn.querySelector('.btn-icon').style.transform = 'rotate(180deg)';
+                        
+                        // 表示された瞬間に確実に一番右（冒頭）へ移動する
+                        requestAnimationFrame(function() {
+                            resetScrollToBeginning();
+                            setTimeout(resetScrollToBeginning, 100);
+                        });
+                    } else {
+                        scriptViewer.classList.add('hidden');
+                        readBtn.querySelector('.btn-label').textContent = '脚本試し読み';
+                        readBtn.querySelector('.btn-icon').style.transform = 'rotate(0deg)';
+                    }
+                });
+            }
+
+            // マウスドラッグで掴んで左右にスクロール
+            if (scrollContainer) {
+                scrollContainer.addEventListener('scroll', updateScriptProgress, { passive: true });
+
+                let isMouseDown = false;
+                let startX = 0;
+                let startScrollLeft = 0;
+
+                scrollContainer.addEventListener('mousedown', function (e) {
+                    isMouseDown = true;
+                    scrollContainer.classList.add('is-dragging');
+                    startX = e.pageX - scrollContainer.offsetLeft;
+                    startScrollLeft = scrollContainer.scrollLeft;
+                });
+
+                window.addEventListener('mouseup', function () {
+                    if (isMouseDown) {
+                        isMouseDown = false;
+                        scrollContainer.classList.remove('is-dragging');
+                    }
+                });
+
+                scrollContainer.addEventListener('mousemove', function (e) {
+                    if (!isMouseDown) return;
+                    e.preventDefault();
+                    const x = e.pageX - scrollContainer.offsetLeft;
+                    const walk = (x - startX) * 1.8; 
+                    scrollContainer.scrollLeft = startScrollLeft - walk;
+                    updateScriptProgress();
+                });
+
+                // マウスホイールの回転（縦）を横スクロールに変換
+                scrollContainer.addEventListener('wheel', function (e) {
+                    if (e.deltaY !== 0) {
+                        e.preventDefault();
+                        scrollContainer.scrollLeft -= e.deltaY * 1.5;
+                        updateScriptProgress();
+                    }
+                }, { passive: false });
+            }
+        });
+    </script>
+
+    <header class="w-full border-b border-item-line py-5 px-6 sm:px-12 bg-paper/90 backdrop-blur-sm sticky top-0 z-30 h-16 sm:h-20 flex items-center">
+        <div class="max-w-4xl w-full mx-auto flex items-center justify-between">
+            <a href="#" class="font-garamond text-xl sm:text-2xl font-light tracking-widest text-ink hover:opacity-75 transition-opacity">
+                Louis-room
+            </a>
+            <nav class="flex items-center space-x-6 sm:space-x-8 text-xs font-mincho tracking-[0.15em] sm:tracking-[0.2em] text-ink-label">
+                <a href="#read-script" class="hover:text-ink transition-colors cursor-pointer">脚本</a>
+                <a href="#info" class="hover:text-ink transition-colors cursor-pointer">公演情報</a>
+                <a href="#contact" class="hover:text-ink transition-colors cursor-pointer">お問い合わせ</a>
+            </nav>
+        </div>
+    </header>
+
+    <main class="flex-grow max-w-4xl w-full mx-auto px-6 sm:px-12 pb-16">
+        <section id="hero-section" class="pt-8 sm:pt-12">
+            <div id="visual-box" class="w-full flex items-center justify-center pt-2 sm:pt-4">
+                <img id="main-visual" src="./flyer.JPG" alt="Lexicon メインビジュアル" class="max-w-full max-h-[46vh] sm:max-h-[52vh] w-auto h-auto object-contain block subtle-shadow rounded-sm" onerror="handleImageError(this, 'flyer-fallback')">
+                <div id="flyer-fallback" class="w-full py-16 px-8 flex-col items-center justify-center text-center border border-dashed border-ink/20 bg-paper-sub" style="display: none;">
+                    <svg class="w-10 h-10 text-ink-label mb-3 stroke-1" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                        <path stroke-linecap="round" stroke-linejoin="round" d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253" />
+                    </svg>
+                    <p class="font-garamond text-xs text-ink-label tracking-widest uppercase">Lexicon — Main Visual</p>
+                </div>
+            </div>
+
+            <div id="title-section" class="flex flex-col sm:flex-row justify-between items-center sm:items-end gap-5 text-center sm:text-left">
+                <div>
+                    <h1 class="text-5xl sm:text-7xl font-garamond font-light tracking-wide text-ink">
+                        Lexicon
+                    </h1>
+                    <p class="text-xs font-mincho text-ink-label tracking-[0.25em] mt-1.5 sm:mt-2">
+                        主催：ルイルーム（Louis-room）
+                    </p>
+                </div>
+                <div>
+                    <a href="https://www.form-mailer.jp/" target="_blank" rel="noopener noreferrer" class="inline-flex items-center justify-center gap-2.5 px-8 py-3.5 bg-ink text-paper text-xs font-mincho tracking-[0.25em] hover:bg-ink-label transition-colors duration-300">
+                        <span>ご予約はこちら</span>
+                        <svg class="w-3.5 h-3.5 stroke-current opacity-80" fill="none" viewBox="0 0 24 24">
+                            <path d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                        </svg>
+                    </a>
+                </div>
+            </div>
+        </section>
+
+        <section id="definition" class="max-w-xl mx-auto space-y-4 font-dict text-xs sm:text-sm text-ink-charcoal leading-relaxed text-justify px-2 sm:px-4">
+            <div class="space-y-1">
+                <p class="font-garamond text-sm sm:text-base text-ink font-semibold tracking-wide">Lexicon:</p>
+                <div class="pl-3 sm:pl-4 space-y-0.5 text-ink-charcoal">
+                    <p>① (特にギリシア語・ヘブライ語などの)辞典。</p>
+                    <p>② (特定の作家・作品などの)語彙。語彙集。</p>
+                </div>
+            </div>
+            <div class="space-y-1 pt-1">
+                <p class="font-garamond text-sm sm:text-base text-ink font-semibold tracking-wide">Archaic:</p>
+                <p class="pl-3 sm:pl-4 text-ink-charcoal">古風で素朴なさま。特に若々しさと原始性の残る芸術様式をいう。「辞書は<span class="dash-line-horiz"></span>である」。</p>
+            </div>
+        </section>
+
+        <div class="my-14 sm:my-18 text-center text-ink/70 text-[10px] sm:text-xs font-mincho select-none tracking-[0.45em] sm:tracking-[0.6em] pl-[0.45em]">
+            ・・・・・・・・・・・・・・・
+        </div>
+
+        <section class="max-w-xl mx-auto font-shippori text-sm sm:text-base text-ink-charcoal leading-relaxed sm:leading-loose text-justify px-2 sm:px-4 tracking-wide">
+            <div class="space-y-6">
+                <p>コミュニケーションにおける親密さというのは、互いがそこに懐かしさを見出すような本源的な信念や規律に対して、致命的でなく、ともすると幼いいたずらっぽさとともに、揺さぶりをかけるよう働きかける傾向として見ることができる。揺さぶられることによって変質し、再編成された新たな懐かしさには、互いの存在が避けられない仕方で編み込まれるがゆえに、その仕方で親密さは新たな形を迎え入れることになる。戯曲『Lexicon』において展開される風吟と飴玉の間の師弟関係は、ある視点から世界を確定的に記述したものとしての辞書/Lexiconとの関わり合いを通して、そのような親密さに接近する。</p>
+                <p>戯曲『Lexicon』（作・髙野皓太）は40分の上演時間を予定する現代口語の短編作品であり、本公演にて初めて上演される創作脚本である。</p>
+            </div>
+        </section>
+
+        <div class="my-14 sm:my-18 text-center text-ink/70 text-[10px] sm:text-xs font-mincho select-none tracking-[0.45em] sm:tracking-[0.6em] pl-[0.45em]">
+            ・・・・・・・・・・・・・・・
+        </div>
+
+        <section class="max-w-xl mx-auto px-2 sm:px-4">
+            <blockquote class="italic font-shippori text-[13px] sm:text-sm text-ink leading-relaxed sm:leading-loose space-y-1.5 text-left tracking-[0.2em] sm:tracking-[0.25em] mx-auto w-fit">
+                <p>エルサレム旧市街の夜は早いという。</p>
+                <p>元より聖なる土地が、ただ足早に夜を迎え、</p>
+                <p>聖夜の名を冠する。</p>
+                <p>ここは地中海性気候 (Csa) より涼しく、</p>
+                <p>しかし同じく多宗教の聖地である。</p>
+            </blockquote>
+        </section>
+
+        <!-- ========================================================
+             脚本試し読みセクション
+             ======================================================== -->
+        <section id="read-script" class="max-w-3xl mx-auto mt-28 sm:mt-36 scroll-mt-20 px-2 sm:px-4">
+            <!-- 開閉トグルボタン -->
+            <div class="text-center">
+                <button id="toggle-script-btn" class="inline-flex items-center justify-center gap-3 px-9 py-3.5 sm:px-10 sm:py-4 border border-ink/15 text-ink text-sm sm:text-base font-mincho tracking-[0.25em] rounded-lg transition-all duration-300 cursor-pointer shadow-sm" style="background-color: var(--btn-bg);" onmouseover="this.style.backgroundColor='var(--btn-bg-hover)'" onmouseout="this.style.backgroundColor='var(--btn-bg)'">
+                    <span class="btn-label">脚本試し読み</span>
+                    <svg class="btn-icon w-4 h-4 stroke-current transition-transform duration-300" fill="none" viewBox="0 0 24 24">
+                        <path d="M19 9l-7 7-7-7" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                    </svg>
+                </button>
+            </div>
+
+            <!-- 縦書きビューアーエリア -->
+            <div id="script-viewer" class="hidden script-section">
+                <div class="scroll-outer-frame">
+                    <!-- 上部操作案内バー（元の生成り背景色・下部に右から左へ伸びる全幅プログレスバー線） -->
+                    <div class="script-guide-bar">
+                        <div class="guide-left">
+                            <span>← スクロールして読む</span>
+                        </div>
+                        <div class="guide-right"></div>
+                        <!-- 下線に沿って配置された進行バー（右端から左へ進む） -->
+                        <div class="script-progress-track">
+                            <div id="script-progress-fill" class="script-progress-bar-fill"></div>
+                        </div>
+                    </div>
+                    <div id="script-scroll-container" class="scroll-container">
+                        <div class="script-content">
+                            
+                            <!-- 戯曲表紙・タイトル -->
+                            <div class="script-title font-mincho">
+                                Lexicon
+                            </div>
+
+                            <!-- 登場人物 & 辞書解説（上端高さをすべて綺麗に揃える） -->
+                            <div class="script-char-box">
+                                <div class="script-char-group">
+                                    <div class="script-char-name"><ruby>風吟<rt>ふぎん</rt></ruby></div>
+                                    <div class="script-char-desc">若くない女。Archaic な語り。読誦を天職とする。</div>
+
+                                    <div class="script-char-name">飴玉</div>
+                                    <div class="script-char-desc">棒付きの飴。</div>
+                                </div>
+
+                                <div class="script-dict-notes">
+                                    Lexicon：①（特にギリシア語・ヘブライ語などの）辞典。②（特定の作家・作品などの）語彙。語彙集。<br>
+                                    Archaic：古風で素朴なさま。特に若々しさと原始性の残る芸術様式をいう。「辞書は<span class="dash-line"></span>である」。
+                                </div>
+
+                                <div class="script-note-col">
+                                    ※ 以下、音読/暗誦する部分を傍線によって示す。
+                                </div>
+                            </div>
+
+                            <div class="script-direction">
+                                エルサレム旧市街の夜は早いという。<br>
+                                元より聖なる土地が、ただ足早に夜を迎え、聖夜の名を冠する。<br>
+                                ここは地中海性気候（Csa）より涼しく、しかし同じく多宗教の聖地である。
+                            </div>
+
+                            <!-- 本文: 1A -->
+                            <div class="script-section-tag">＜１Ａ＞</div>
+
+                            <div class="script-direction">
+                                風吟がいる。螺子と楔に占拠された古い書斎は、シェルターや穴蔵のようでもある。手前に傾斜をもつ。<br>
+                                昔の室内で、人と行灯が対等に向かい合っていたように、素朴な光が一つ落ちている。<br>
+                                風吟が古書（『香蛇』）を満天にひらくと、一気に遠洋にひらける。<br>
+                                エルサレムにとって遠洋は一意に定まらない。
+                            </div>
+
+                            <div class="script-direction">
+                                音楽 Les ailes du temps Lana de la Croix, Lora Klyne
+                            </div>
+
+                            <div class="script-line">
+                                <span class="script-speaker">風吟</span>　[音読] <span class="read-aloud">レチタ、君の治らない喉声に、一箱（<ruby>ひとはこ<rt>・</rt></ruby>）のプールを贈ろう。深くて足はつかないから、君を沈める錨（<ruby>いかり<rt>・</rt></ruby>）の代わり、一杯の土も同封しておく。水底（<ruby>みなそこ<rt>・</rt></ruby>）に張り付くウミエラたちを、同じ澱として慕っておくれ。レチタ、君の使命は、ここで声ばかりを繰り返すことだ。闇雲のなかで、大切なことも、大切でないことも、見境なく覚えたろう。すべて見境なく、繰り返せ。</span>[重い咳]……<span class="read-aloud">レチタ、呼吸は淀みない。あまり暴れない。なんという気立（<ruby>けたたま<rt>・</rt></ruby>）しい夜の澱で、君の声が喉に引っ掛かっているのだろう。</span>[文字から【レチタ】を抜いて繰り返す]
+                            </div>
+
+                            <div class="script-direction">
+                                先の遠洋がカジュアルになり、扱いを受けなくなる。音読はより明確に、覚えるためのものになる。<br>
+                                飴玉が来る。戸口で文言を確認し、それを置き、棒を振り回しながら入室する。長い距離を走ってきたようだ。
+                            </div>
+
+                            <div class="script-line">
+                                <span class="script-speaker">飴玉</span>　[暗誦] <span class="read-aloud">甘い香りは御蔵（<ruby>みくら<rt>・</rt></ruby>）より、琥珀の夢は舌下まで。昔ながらの手練の業、いつかは主の喉の仏へ、ころころと転び入りぬべく、我再びと此処に参った。</span>[小休止]
+                            </div>
+
+                            <div class="script-direction">
+                                寄る辺なく棒術は続く。風吟には何も聞こえていないふうにみえる。そうみえても、共に小休止する。<br>
+                                気合の声と音読と、それだけで互いに高調していく。さながら道場である。<br>
+                                棒術の使い手はやさしく、端から無理をしているのだ。
+                            </div>
+
+                            <!-- 本文: 1B -->
+                            <div class="script-section-tag">＜１Ｂ＞</div>
+
+                            <div class="script-direction">
+                                今の奇矯なコミュニケーションを払うように、普通の言動をとる。
+                            </div>
+
+                            <div class="script-line"><span class="script-speaker">風吟</span>　人外！ 今のエスオーエスは？ 人に食べられてこその本望だ、と言ったな。</div>
+                            <div class="script-line"><span class="script-speaker">飴玉</span>　[棒が突っかえて]うっ。[早口] しかし俺はいつの日かとけん。玉のような命だからな。今晩が命日とは思わんが……</div>
+                            <div class="script-line"><span class="script-speaker">風吟</span>　そんなはずはない、今晩。なんだって言ってくれ。</div>
+                            <div class="script-line"><span class="script-speaker">飴玉</span>　雪が降らないのに、体は震えるいい夜だ。この冷たさを待ちわびて、何やら不測の事態が起こらんとも言い難い、いい夜だ。</div>
+                            <div class="script-line"><span class="script-speaker">風吟</span>　それで？ いっそ喉の奥へ転がってしまいたいというのは、本当か？嘘なのか？</div>
+                            <div class="script-line"><span class="script-speaker">飴玉</span>　落ち着け。俺に似合う掛け声を一つ。それを覚えてみたって……それだけのことだ。このまるまる、そう簡単にとけはせん。</div>
+                            <div class="script-line"><span class="script-speaker">風吟</span>　嘘か。とけないのか、安心した。……あ、もしかして。[十まで指折り]</div>
+                            <div class="script-line"><span class="script-speaker">飴玉</span>　もっとも口上は、述べあげる相手が無くなろうが亡くなろうが残るものだというが。</div>
+                            <div class="script-line"><span class="script-speaker">風吟</span>　今晩は数えたら、よし。キリがいい。</div>
+                            <div class="script-line"><span class="script-speaker">飴玉</span>　ああ、十回目の出会いになる。</div>
+                            <div class="script-line"><span class="script-speaker">風吟</span>　君の手にある細長いのは、記念の、トークン？</div>
+                            <div class="script-line"><span class="script-speaker">飴玉</span>　ん、この棒は、ふつう俺が肌身離さず持っているものだ。</div>
+                            <div class="script-line"><span class="script-speaker">風吟</span>　なぜ？</div>
+                            <div class="script-line"><span class="script-speaker">飴玉</span>　キャンディーは棒付きだと暮らしやすいからだ。</div>
+                            <div class="script-line"><span class="script-speaker">風吟</span>　違う。なぜ？</div>
+                            <div class="script-line"><span class="script-speaker">飴玉</span>　［棒術のジェスチャー］</div>
+                            <div class="script-line"><span class="script-speaker">風吟</span>　［（勘違いして）頷く］</div>
+                            <div class="script-line"><span class="script-speaker">飴玉</span>　食われんようにするためだ。キャンディーだって必死だ。俺が戦闘員として駆り出されていた只中、この棒の尖端についていた返しがへし折れてしまったもんだから、俺は直ちに柄を持って、スティックにして、これと共に戦わんとした。</div>
+                            <div class="script-line"><span class="script-speaker">風吟</span>　それも違う。今までは持っていなかったから訊いているんだ。十回目の今日に限って君が棒付きなのは、なぜ？</div>
+                            <div class="script-line"><span class="script-speaker">飴玉</span>　そんなことは……</div>
+                            <div class="script-line"><span class="script-speaker">風吟</span>　そういうことは？</div>
+                            <div class="script-line"><span class="script-speaker">飴玉</span>　大切でない。</div>
+                            <div class="script-line"><span class="script-speaker">風吟</span>　ふうん。見過ごせないな。……そうか案外に、君は心が深くなったのか。私に言葉を教わって、あげく物を信じるようになるとは……お世話になった人には十回目、ありのままの姿を晒すものと君は誰かに吹き込まれて、大当たり。棒が付いた。</div>
+                            <div class="script-line"><span class="script-speaker">飴玉</span>　からっきし的外れだ。この棒は人間のあの、ステッキと違って格式張ったものでは……</div>
+                            <div class="script-line"><span class="script-speaker">風吟</span>　[被せて] [わざとらしく] うるさい。文句があると聞こえた。</div>
+                            <div class="script-line"><span class="script-speaker">飴玉</span>　当たり外れに文句を言ったまでだ。</div>
+
+                            <div class="script-line"><span class="script-speaker">風吟</span>　[わざとらしく] ふん。決まった。[音読] <span class="read-aloud">破門、だ。私を打ってみろ。</span></div>
+                            <div class="script-line"><span class="script-speaker">飴玉</span>　ん、ハモン。</div>
+                            <div class="script-line"><span class="script-speaker">風吟</span>　その棒で、私の頭を、ぱーんと打ってみろ。ここにおとなしく座っているから。</div>
+                            <div class="script-line"><span class="script-speaker">飴玉</span>　ハモンとはなんだ。[本を奪う] [音読] <span class="read-aloud">師弟の縁（<ruby>えにし<rt>・</rt></ruby>）を絶ち、門徒から除く。ハモン？</span></div>
+                            <div class="script-line"><span class="script-speaker">風吟</span>　命を懸けて私を打ってこそ、正統な伝承が為されるものだ。愛弟子まで一本道を通じようと思えば、かなしいかな、師匠たるもの縁より先に命を絶たなければならない。……嘘だ。そんなストーリーは探しても探しても、東西南北どこにもなかった。</div>
+                            <div class="script-line"><span class="script-speaker">飴玉</span>　……何を言った？</div>
+                            <div class="script-line"><span class="script-speaker">風吟</span>　弟子が命懸けで師匠を打つ物語は、なんと、一つもなかった。</div>
+                            <div class="script-line"><span class="script-speaker">飴玉</span>　わからん。どれだ。[音読] <span class="read-aloud">関連して次々に及んでいく……</span></div>
+                            <div class="script-line"><span class="script-speaker">風吟</span>　見つかるあてのない物語のために、私は君を破門するのか？</div>
+                            <div class="script-line"><span class="script-speaker">飴玉</span>　[音読] <span class="read-aloud">変化や、反応。……その様子だと俺を、破門、してみたいのか。</span></div>
+                            <div class="script-line"><span class="script-speaker">風吟</span>　人外、手が空いたから、ほら、頭のてっぺんが寂しい。早く、ここを思いっきり……</div>
+                            <div class="script-line"><span class="script-speaker">飴玉</span>　[被せて] 打ってみろ。</div>
+                            <div class="script-line"><span class="script-speaker">風吟</span>　あ、うん。そうするといい。話は、それから……</div>
+
+                            <!-- 本文: 2A -->
+                            <div class="script-section-tag">＜２Ａ＞</div>
+
+                            <div class="script-direction">
+                                潮風が上がる。角笛が鳴り、古い書斎の聖地としての側面が、とある陸島をかたどって現れる。<br>
+                                聖性を帯びた書物を、聖書ではないものとして読めるのは人間の特権だろうか。
+                            </div>
+
+                            <div class="script-line"><span class="script-speaker">飴玉</span>　[無線機（本）に] 話は…… [聴取不能] それから、風だ。北東の煽（<ruby>あお<rt>・</rt></ruby>）ち風だ……吹き上げる高さは、千二百メートル。発生源は四十キロメートル先、この方角なら最も標高の低い区民プールだ。その泳ぎやすさで評判がいい。ここは大陸の風下。北東に突き出した丘の縁に立てば、塩味（<ruby>しおあじ<rt>・</rt></ruby>）が少し目に染みる。</div>
+                            <div class="script-line"><span class="script-speaker">風吟</span>　しょっぱい風！ そこのプールの生き物、みんな、塩ふりかかって死んでいるのに。</div>
+                            <div class="script-line"><span class="script-speaker">飴玉</span>　やはり蛞蝓（<ruby>なめくじ<rt>・</rt></ruby>）のように人間はとけたのか。</div>
+                            <div class="script-line"><span class="script-speaker">風吟</span>　わからない。実際は、わからない。君がとけるようにとけた、と言ったらまずいだろうか。空見上げて、雪と思ったら塩だったと、プールサイドの遺言にそう書いてあった。</div>
+                            <div class="script-line"><span class="script-speaker">飴玉</span>　そうか。お前といい、人間は、人間の時代がついた言伝を、なんでも知っているものだな。</div>
+                            <div class="script-line"><span class="script-speaker">風吟</span>　私は知れない。覚えているだけ。やり方が古いのかもしれない。</div>
+                            <div class="script-line"><span class="script-speaker">飴玉</span>　幸か不幸か、風は順行している。今晩、お前の亡骸がここにあっても、プールの方角へは流れないだろう。さすれば打たれることも恐れるな、風吟。[本を置いて構える]</div>
+                            <div class="script-line"><span class="script-speaker">風吟</span>　その遺言の衾（<ruby>ふすま<rt>・</rt></ruby>）、人の思いは果てなく積もる。それでも、思いばかりの目録にもたれる心だ。君は花布をほどくように、たった一ページを以て、遺言のために語彙だけを残せ。あとは誰か覚えて、別の人。</div>
+                            <div class="script-line"><span class="script-speaker">飴玉</span>　[被せて] レチタ。</div>
+                            <div class="script-line"><span class="script-speaker">風吟</span>　[被せて] 記されることが山ほどあるなら、覚えられることも山ほどあるだろう。私の頭にもうゆとりはない。……君、助走もつけて。</div>
+                            <div class="script-line"><span class="script-speaker">飴玉</span>　[後ずさり] レチタ、俺の主（<ruby>あるじ<rt>・</rt></ruby>）……俺はレチタの亡き手に代えて、お前を打つだけだ。</div>
+                            <div class="script-line"><span class="script-speaker">風吟</span>　レチタ……それは、誰だ？ 私じゃないのか？ 私でよければ、そのレチタとやらになってあげようか。……待って。少し近い。</div>
+                            <div class="script-line"><span class="script-speaker">飴玉</span>　人情をかけるのは違反だ、風吟。</div>
+                            <div class="script-line"><span class="script-speaker">風吟</span>　ううん。違う。助走もつけて、もっと離れて、人外。</div>
+                            <div class="script-line"><span class="script-speaker">飴玉</span>　[後ずさり] 三歩下がった。手元はしがなく、まだ震えない。……お前を打ちそうだ。</div>
+                            <div class="script-line"><span class="script-speaker">風吟</span>　助走もつけて。うんと。昔。今。君のいた天幕が近い。上だ。君の鋩（<ruby>きっさき<rt>・</rt></ruby>）に下りてくる。</div>
+
+                            <!-- 本文: 2B -->
+                            <div class="script-section-tag">＜２Ｂ＞</div>
+
+                            <div class="script-direction">
+                                後ずさり。場外でテントが落下する。ベースキャンプに点綴する寂寞の枢を思い起こす。<br>
+                                風吟は、いっとき地蔵のようになる。飴玉が笠を手に徒歩で戻ってくる。罠に掛かった形跡がある。
+                            </div>
+
+                            <div class="script-line"><span class="script-speaker">飴玉</span>　[音読] <span class="read-aloud">一、囲み罠。二、捕縛罠。三、殺戮罠。獲物を新鮮なまま活かしておきたいなら、罠の内部にはおとりが組み込まれる。</span>[捲り戻す] <span class="read-aloud">人情。自然に備わった人間の愛情。広大無辺の慈しみ。情け。……関連して……殺戮罠にはおとりを用いない。終夜（<ruby>しゅうや<rt>・</rt></ruby>）ごっこ遊びに興じていたら、俺がとけるより早く、お前が固まるだけの時間が経ってしまった。</span>[叩いて] なんと凄惨なことか。……だがよかった。俺も、お前も、無傷だ。</div>
+
+                            <div class="script-direction">
+                                風吟の頭に笠をかけ、一拍。肩にそっと棒を添える。一気に潮風が下がる。
+                            </div>
+
+                            <!-- 本文: 3A -->
+                            <div class="script-section-tag">＜３Ａ＞</div>
+
+                            <div class="script-line"><span class="script-speaker">風吟</span>　[勢いよく] 弱い！ [笠に] なにこれ。</div>
+                            <div class="script-line"><span class="script-speaker">飴玉</span>　ひしゃげたテントで拾ってきた、天（<ruby>あま<rt>・</rt></ruby>）の笠だ。[音読] <span class="read-aloud">雪を防いだり、日光を遮ったりする。</span></div>
+                            <div class="script-line"><span class="script-speaker">風吟</span>　なら君が身に付けておくべきだ。</div>
+                            <div class="script-line"><span class="script-speaker">飴玉</span>　いや遠慮しておく。ふさわしく……ない。</div>
+                            <div class="script-line"><span class="script-speaker">風吟</span>　関係ない。私には霜焼けも日焼けも、命に別状ないから。</div>
+
+                            <div class="script-direction">
+                                気持ちを溜めて、思いっきり打つ。
+                            </div>
+
+                            <div class="script-line"><span class="script-speaker">風吟</span>　ん。……ふう。流石のみねうち。そんなふうにするのか。</div>
+                            <div class="script-line"><span class="script-speaker">飴玉</span>　チャンバラはどの向きで打っても峰だ。何度繰り返せば……</div>
+                            <div class="script-line"><span class="script-speaker">風吟</span>　[被せて] 私は、しつこくて、うるさいか？</div>
+                            <div class="script-line"><span class="script-speaker">飴玉</span>　いや、どうだ……お前以外の、他の人間には敵わん。</div>
+                            <div class="script-line"><span class="script-speaker">風吟</span>　嘘だ。別の人が？そんなはずはない。</div>
+                            <div class="script-line"><span class="script-speaker">飴玉</span>　あいつらの地上には近々、俺には到底知られんような禍（<ruby>わざわい<rt>・</rt></ruby>）のいっぱしでも降ってくるとみえる。俺のカマクラにまでやりきれないのへたれ声が轟いてきて敵わん。しつこい声だ。</div>
+                            <div class="script-line"><span class="script-speaker">風吟</span>　君、カマクラに住んでいたのか。カマクラ……[暗誦] <span class="read-aloud">積もる雪をはたいて半球形の室（<ruby>むろ<rt>・</rt></ruby>）を作った子供たちが、水神（<ruby>すいじん<rt>・</rt></ruby>）を祀り、十一回目の朝、天（<ruby>あま<rt>・</rt></ruby>）の筆をとって思いを書き留める。その思いの丈の短さといったら、それを焚き上げる火柱（<ruby>ひばしら<rt>・</rt></ruby>）が、害鳥を追い払うのに足らないほどだ。</span>なんと。……うん。そんな息苦しいところ、引っ越せばよかろう？</div>
+                            <div class="script-line"><span class="script-speaker">飴玉</span>　……蔵（<ruby>くら<rt>・</rt></ruby>）の外は住むには暑い。全身とけだしてしまう。</div>
+                            <div class="script-line"><span class="script-speaker">風吟</span>　なるほど。外側からとろとろとける？</div>
+                            <div class="script-line"><span class="script-speaker">飴玉</span>　ねちねちとける。あまり見栄えよくない。</div>
+                            <div class="script-line"><span class="script-speaker">風吟</span>　ふうん。</div>
+                            <div class="script-line"><span class="script-speaker">飴玉</span>　外はしつこい暑さで、その上、うるさい。</div>
+                            <div class="script-line"><span class="script-speaker">風吟</span>　悔しい、私以外でうるさくして。私だけ仲間から外して、みんなで生き急いでいるのか？</div>
+                            <div class="script-line"><span class="script-speaker">飴玉</span>　ただの直感だ。俺はああいう小競り合いには口挟みしない。</div>
+                            <div class="script-line"><span class="script-speaker">風吟</span>　そうか。すると、君がまた私に会いに来たのは不思議だな。</div>
+                            <div class="script-line"><span class="script-speaker">飴玉</span>　なぜだ。</div>
+                            <div class="script-line"><span class="script-speaker">風吟</span>　私に言葉を教わって、外で口論もしないとなると、いったい誰に披露するんだ？</div>
+                            <div class="script-line"><span class="script-speaker">飴玉</span>　好奇心にすぎん。お前はただ教鞭をとっていればいい。</div>
+                            <div class="script-line"><span class="script-speaker">風吟</span>　人外が言葉を知って、話し相手が人外しかいないのは悲しかろう？まず言葉を知る人外がなかなかなくて、君は、足りない話し相手がバタバタ黙っていくのを見つめて……なぜ？……いや、よく喋るようになってよかった。うん。達者だ。これは八回目の話、君に根気があるとは思わなかった。だから、来てくれて、うれしい。</div>
+                            <div class="script-line"><span class="script-speaker">飴玉</span>　八回目、気に食わんな。</div>
+                            <div class="script-line"><span class="script-speaker">風吟</span>　根気と数えるのは三回目からだ。</div>
+                            <div class="script-line"><span class="script-speaker">飴玉</span>　十ひく三たす一で、八か。</div>
+                            <div class="script-line"><span class="script-speaker">風吟</span>　ありがとう。……君、今日の通学手段は？</div>
+                            <div class="script-line"><span class="script-speaker">飴玉</span>　もちろん [前転] 前回りだ。</div>
+                            <div class="script-line"><span class="script-speaker">風吟</span>　君が飴玉だからか？</div>
+                            <div class="script-line"><span class="script-speaker">飴玉</span>　そうだ。ローリング・キャンディーだ。</div>
+                            <div class="script-line"><span class="script-speaker">風吟</span>　形がまるまるだからか？</div>
+                            <div class="script-line"><span class="script-speaker">飴玉</span>　そうだ。ローリング・キャンディーだ。</div>
+                            <div class="script-line"><span class="script-speaker">風吟</span>　ふうん。……[わざとらしく] あっ！拾って！人外！</div>
+
+                            <!-- 試し読み終了マーカー -->
+                            <div class="script-end-marker">
+                                試し読みはここまでです（続きは劇場にてお楽しみください）
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- 公演情報 -->
+        <section id="info" class="space-y-6 mt-28 sm:mt-36 scroll-mt-20">
+            <div class="text-center sm:text-left">
+                <span class="text-[10px] font-garamond uppercase tracking-[0.35em] text-ink-label block">Information</span>
+                <h2 class="text-xl sm:text-2xl font-mincho tracking-[0.2em] text-ink mt-0.5">公演情報</h2>
+            </div>
+            <div class="font-mincho pt-2 space-y-5">
+                <div class="grid grid-cols-1 sm:grid-cols-4 gap-1.5 sm:gap-4 items-baseline pb-5 border-b border-item-line">
+                    <span class="text-xs sm:text-sm text-ink-label font-medium tracking-wider sm:col-span-1">作品タイトル</span>
+                    <span class="sm:col-span-3 text-base sm:text-lg text-ink font-bold tracking-wider">『Lexicon』</span>
+                </div>
+                <div class="grid grid-cols-1 sm:grid-cols-4 gap-1.5 sm:gap-4 items-baseline pb-5 border-b border-item-line">
+                    <span class="text-xs sm:text-sm text-ink-label font-medium tracking-wider sm:col-span-1">主催</span>
+                    <span class="sm:col-span-3 text-sm sm:text-base text-ink font-medium tracking-wider">ルイルーム（Louis-room）</span>
+                </div>
+
+                <!-- 座組 -->
+                <div class="grid grid-cols-1 sm:grid-cols-4 gap-1.5 sm:gap-4 items-start pb-5 border-b border-item-line">
+                    <span class="text-xs sm:text-sm text-ink-label font-medium tracking-wider sm:col-span-1 pt-0.5">座組</span>
+                    <div class="sm:col-span-3 text-ink">
+                        <div class="space-y-2.5 text-xs sm:text-sm tracking-wider">
+                            <div class="flex items-baseline justify-between gap-4">
+                                <span class="text-ink font-medium">役者・音響</span>
+                                <span class="font-bold text-ink text-left inline-block shrink-0 cast-name-width">平川学</span>
+                            </div>
+                            <div class="flex items-baseline justify-between gap-4">
+                                <span class="text-ink font-medium">役者・照明</span>
+                                <span class="font-bold text-ink text-left inline-block shrink-0 cast-name-width">藤井椿</span>
+                            </div>
+                            <div class="flex items-baseline justify-between gap-4">
+                                <span class="text-ink font-medium">演出・舞台・宣伝美術</span>
+                                <span class="font-bold text-ink text-left inline-block shrink-0 cast-name-width">小沼智佳</span>
+                            </div>
+                            <div class="flex items-baseline justify-between gap-4">
+                                <span class="text-ink font-medium">衣装小道具</span>
+                                <span class="font-bold text-ink text-left inline-block shrink-0 cast-name-width">堺健太朗</span>
+                            </div>
+                            <div class="flex items-baseline justify-between gap-4">
+                                <span class="text-ink font-medium">制作</span>
+                                <span class="font-bold text-ink text-left inline-block shrink-0 cast-name-width">柳澤祐太</span>
+                            </div>
+                            <div class="flex items-baseline justify-between gap-4">
+                                <span class="text-ink font-medium">脚本・演出補佐</span>
+                                <span class="font-bold text-ink text-left inline-block shrink-0 cast-name-width">髙野皓太</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="grid grid-cols-1 sm:grid-cols-4 gap-1.5 sm:gap-4 items-start pb-5 border-b border-item-line">
+                    <span class="text-xs sm:text-sm text-ink-label font-medium tracking-wider sm:col-span-1 pt-0.5">日時</span>
+                    <div class="sm:col-span-3 text-ink space-y-3">
+                        <p class="text-sm sm:text-base font-bold text-ink tracking-wider">2026年 10月11日（日）〜 10月12日（月・祝）</p>
+                        <div class="border-l-2 border-ink-label/30 pl-4 py-1.5 space-y-2 text-xs sm:text-sm">
+                            <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-1">
+                                <span class="text-ink-label font-medium">10月11日（日）</span>
+                                <span class="font-bold">14:00　／18:00</span>
+                            </div>
+                            <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-1">
+                                <span class="text-ink-label font-medium">10月12日（月・祝）</span>
+                                <span class="font-bold">14:00　／18:00</span>
+                            </div>
+                        </div>
+                        <p class="text-xs text-ink-muted leading-relaxed pt-1">・受付開始・開場は、開演の30分前です。<br>・上演時間：約40分</p>
+                    </div>
+                </div>
+                <div class="grid grid-cols-1 sm:grid-cols-4 gap-1.5 sm:gap-4 items-start pb-5 border-b border-item-line">
+                    <span class="text-xs sm:text-sm text-ink-label font-medium tracking-wider sm:col-span-1 pt-0.5">会場</span>
+                    <div class="sm:col-span-3 text-ink space-y-1">
+                        <span class="text-sm sm:text-base font-bold block tracking-wider">京都市立芸術大学 映像スタジオ</span>
+                        <span class="text-xs text-ink-muted block leading-relaxed">〒600-8601 京都市下京区崇仁高瀬町57-1</span>
+                    </div>
+                </div>
+                <div class="grid grid-cols-1 sm:grid-cols-4 gap-1.5 sm:gap-4 items-baseline pb-5 border-b border-item-line">
+                    <span class="text-xs sm:text-sm text-ink-label font-medium tracking-wider sm:col-span-1">料金</span>
+                    <span class="sm:col-span-3 text-sm sm:text-base text-ink font-bold tracking-wider">無料</span>
+                </div>
+            </div>
+        </section>
+
+        <section id="contact" class="max-w-xl mx-auto text-center space-y-3 mt-10 sm:mt-12 scroll-mt-20">
+            <div>
+                <span class="text-[10px] font-garamond uppercase tracking-[0.35em] text-ink-label block">Contact</span>
+                <h2 class="text-xl sm:text-2xl font-mincho tracking-[0.2em] text-ink mt-0.5">お問い合わせ</h2>
+            </div>
+            <div class="space-y-2.5 font-mincho text-xs sm:text-sm text-ink-label pt-1">
+                <div class="flex flex-wrap items-center justify-center gap-1 sm:gap-2">
+                    <span class="font-medium">メール：</span>
+                    <a href="mailto:louisroom.drama@gmail.com" class="font-garamond text-sm sm:text-base text-ink underline underline-offset-4 hover:opacity-75 transition-opacity break-all">louisroom.drama@gmail.com</a>
+                </div>
+                <div class="flex flex-wrap items-center justify-center gap-1 sm:gap-2 pt-0.5">
+                    <span class="font-medium">公式 X：</span>
+                    <span class="text-ink font-medium">準備中（開設後にお知らせいたします）</span>
+                </div>
+            </div>
+        </section>
+
+        <section id="troupe" class="max-w-xl mx-auto mt-16 sm:mt-20 pb-4">
+            <div class="flex flex-row items-center justify-center gap-4 sm:gap-6">
+                <div class="w-16 h-16 sm:w-20 sm:h-20 shrink-0 rounded-full overflow-hidden icon-shadow flex items-center justify-center">
+                    <img src="./icon.JPG" alt="Louis-room Icon" class="w-full h-full object-cover rounded-full block" onerror="handleImageError(this, 'troupe-icon-fallback')">
+                    <div id="troupe-icon-fallback" class="w-full h-full rounded-full bg-paper-sub flex items-center justify-center" style="display: none;">
+                        <span class="font-garamond text-xs text-ink-label">Louis</span>
+                    </div>
+                </div>
+                <p class="text-xs sm:text-sm font-mincho text-ink-label leading-relaxed sm:leading-loose text-left">
+                    演劇脚本『Lexicon』の上演を目的に組織された有志演劇団体。<br class="hidden sm:inline">
+                    京都大学の学生劇団である「劇団ケッペキ」の元/現団員により構成される。
+                </p>
+            </div>
+        </section>
+    </main>
+
+    <footer class="border-t border-item-line py-6 bg-paper">
+    </footer>
+</body>
+</html>
+
