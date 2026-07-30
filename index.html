@@ -302,9 +302,14 @@
 
         /* ---------- 位置 ---------- */
         .sticky { position: sticky; }
+        .fixed { position: fixed; }
         .top-0 { top: 0; }
+        .bottom-5 { bottom: 1.25rem; }
+        .right-5 { right: 1.25rem; }
         .z-30 { z-index: 30; }
+        .z-40 { z-index: 40; }
         .scroll-mt-20 { scroll-margin-top: 5rem; }
+        .pointer-events-none { pointer-events: none; }
 
         /* ---------- gap / space ---------- */
         .gap-1 { gap: 0.25rem; }
@@ -353,10 +358,12 @@
         .pt-2 { padding-top: 0.5rem; }
         .pt-8 { padding-top: 2rem; }
         .px-2 { padding-left: 0.5rem; padding-right: 0.5rem; }
+        .px-5 { padding-left: 1.25rem; padding-right: 1.25rem; }
         .px-6 { padding-left: 1.5rem; padding-right: 1.5rem; }
         .px-8 { padding-left: 2rem; padding-right: 2rem; }
         .px-9 { padding-left: 2.25rem; padding-right: 2.25rem; }
         .py-1\.5 { padding-top: 0.375rem; padding-bottom: 0.375rem; }
+        .py-3 { padding-top: 0.75rem; padding-bottom: 0.75rem; }
         .py-4 { padding-top: 1rem; padding-bottom: 1rem; }
         .py-16 { padding-top: 4rem; padding-bottom: 4rem; }
         .py-3\.5 { padding-top: 0.875rem; padding-bottom: 0.875rem; }
@@ -400,6 +407,7 @@
         .rounded-full { border-radius: 9999px; }
         .rounded-sm { border-radius: 0.125rem; }
         .rounded-lg { border-radius: 0.5rem; }
+        .shadow-lg { box-shadow: 0 10px 15px -3px rgba(26, 25, 24, 0.15), 0 4px 6px -4px rgba(26, 25, 24, 0.1); }
 
         /* ---------- 背景・文字色 ---------- */
         .bg-ink { background-color: var(--text-color); }
@@ -480,7 +488,12 @@
             transition-duration: 150ms;
         }
         .duration-300 { transition-duration: 300ms; }
+        .opacity-0 { opacity: 0; }
         .opacity-80 { opacity: 0.8; }
+        .opacity-90 { opacity: 0.9; }
+        .opacity-100 { opacity: 1; }
+        .translate-y-0 { transform: translateY(0); }
+        .translate-y-3 { transform: translateY(0.75rem); }
         .cursor-pointer { cursor: pointer; }
         .backdrop-blur-sm { backdrop-filter: blur(4px); -webkit-backdrop-filter: blur(4px); }
         .object-contain { object-fit: contain; }
@@ -761,6 +774,8 @@
            レスポンシブ（sm: 640px以上）
            ======================================================== */
         @media (min-width: 640px) {
+            .sm\:bottom-8 { bottom: 2rem; }
+            .sm\:right-8 { right: 2rem; }
             .sm\:col-span-1 { grid-column: span 1 / span 1; }
             .sm\:col-span-3 { grid-column: span 3 / span 3; }
             .sm\:flex-row { flex-direction: row; }
@@ -785,6 +800,8 @@
             .sm\:px-10 { padding-left: 2.5rem; padding-right: 2.5rem; }
             .sm\:px-12 { padding-left: 3rem; padding-right: 3rem; }
             .sm\:px-4 { padding-left: 1rem; padding-right: 1rem; }
+            .sm\:px-6 { padding-left: 1.5rem; padding-right: 1.5rem; }
+            .sm\:py-3\.5 { padding-top: 0.875rem; padding-bottom: 0.875rem; }
             .sm\:py-4\.5 { padding-top: 1.125rem; padding-bottom: 1.125rem; }
             .sm\:space-x-8 > :not([hidden]) ~ :not([hidden]) { margin-left: 2rem; }
             .sm\:text-2xl { font-size: 1.5rem; line-height: 2rem; }
@@ -1072,7 +1089,7 @@
                     </p>
                 </div>
                 <div>
-                    <a href="https://www.quartet-online.net/ticket/lexicon" target="_blank" rel="noopener noreferrer" class="inline-flex items-center justify-center gap-2.5 px-8 py-3.5 bg-ink text-paper text-xs font-mincho tracking-[0.25em] hover:bg-ink-label transition-colors duration-300">
+                    <a id="hero-reserve-btn" href="https://www.quartet-online.net/ticket/lexicon" target="_blank" rel="noopener noreferrer" class="inline-flex items-center justify-center gap-2.5 px-8 py-3.5 bg-ink text-paper text-xs font-mincho tracking-[0.25em] hover:bg-ink-label transition-colors duration-300">
                         <span>ご予約はこちら</span>
                         <svg class="w-3.5 h-3.5 stroke-current opacity-80" fill="none" viewBox="0 0 24 24" aria-hidden="true">
                             <path d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
@@ -1477,6 +1494,55 @@
 
     <footer class="border-t border-item-line py-6 bg-paper">
     </footer>
+
+    <!-- スクロール追従の予約フローティングボタン -->
+    <a id="floating-reserve-btn" href="https://www.quartet-online.net/ticket/lexicon" target="_blank" rel="noopener noreferrer"
+       class="fixed bottom-5 right-5 sm:bottom-8 sm:right-8 z-40 inline-flex items-center gap-2 px-5 py-3 sm:px-6 sm:py-3.5 bg-ink text-paper text-xs font-mincho tracking-[0.2em] rounded-full shadow-lg hover:bg-ink-label transition-all duration-300 opacity-0 translate-y-3 pointer-events-none">
+        <svg class="w-3.5 h-3.5 stroke-current opacity-90 shrink-0" fill="none" viewBox="0 0 24 24" aria-hidden="true">
+            <path d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+        </svg>
+        <span>ご予約はこちら</span>
+    </a>
+
+    <script>
+        (function () {
+            const heroBtn = document.getElementById('hero-reserve-btn');
+            const floatBtn = document.getElementById('floating-reserve-btn');
+            if (!heroBtn || !floatBtn) return;
+
+            function showFloating() {
+                floatBtn.classList.remove('opacity-0', 'translate-y-3', 'pointer-events-none');
+                floatBtn.classList.add('opacity-100', 'translate-y-0');
+            }
+            function hideFloating() {
+                floatBtn.classList.add('opacity-0', 'translate-y-3', 'pointer-events-none');
+                floatBtn.classList.remove('opacity-100', 'translate-y-0');
+            }
+
+            if ('IntersectionObserver' in window) {
+                const observer = new IntersectionObserver(function (entries) {
+                    entries.forEach(function (entry) {
+                        if (entry.isIntersecting) {
+                            hideFloating();
+                        } else {
+                            showFloating();
+                        }
+                    });
+                }, { threshold: 0 });
+                observer.observe(heroBtn);
+            } else {
+                // フォールバック: スクロール量で判定
+                window.addEventListener('scroll', function () {
+                    const rect = heroBtn.getBoundingClientRect();
+                    if (rect.bottom < 0) {
+                        showFloating();
+                    } else {
+                        hideFloating();
+                    }
+                }, { passive: true });
+            }
+        })();
+    </script>
 </body>
 </html>
 
