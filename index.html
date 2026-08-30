@@ -393,6 +393,14 @@
         /* 座組名揃え用 */
         .cast-name-width { width: 4.8em; }
 
+        /* お問い合わせラベル幅揃え用 */
+        .contact-label {
+            display: inline-block;
+            width: 7.6em;
+            text-align: left;
+            white-space: nowrap;
+        }
+
         /* ---------- border ---------- */
         .border { border-width: 1px; }
         .border-b { border-bottom-width: 1px; }
@@ -1121,18 +1129,18 @@
                 <span class="text-[10px] font-garamond uppercase tracking-[0.35em] text-ink-label block">Contact</span>
                 <h2 class="text-xl sm:text-2xl font-mincho tracking-[0.2em] text-ink mt-0.5">お問い合わせ</h2>
             </div>
-            <div class="space-y-2.5 font-mincho text-xs sm:text-sm text-ink-label pt-1">
-                <div class="flex flex-wrap items-center justify-center gap-1 sm:gap-2">
-                    <span class="font-medium">メール：</span>
-                    <a href="mailto:louisroom.drama@gmail.com" class="font-garamond text-sm sm:text-base text-ink underline underline-offset-4 hover:opacity-75 transition-opacity break-all">louisroom.drama@gmail.com</a>
+            <div class="inline-flex flex-col items-start mx-auto space-y-2.5 font-mincho text-xs sm:text-sm text-ink-label pt-1">
+                <div class="flex items-center gap-1 sm:gap-2">
+                    <span class="font-medium contact-label">メール：</span>
+                    <a href="mailto:louisroom.drama@gmail.com" class="font-garamond text-sm sm:text-base text-ink hover:opacity-75 transition-opacity break-all">louisroom.drama@gmail.com</a>
                 </div>
-                <div class="flex flex-wrap items-center justify-center gap-1 sm:gap-2 pt-0.5">
-                    <span class="font-medium">公式 X：</span>
-                    <a href="https://x.com/louisroom_drama" target="_blank" rel="noopener noreferrer" class="font-garamond text-sm sm:text-base text-ink underline underline-offset-4 hover:opacity-75 transition-opacity">@louisroom_drama</a>
+                <div class="flex items-center gap-1 sm:gap-2">
+                    <span class="font-medium contact-label">公式 X：</span>
+                    <a href="https://x.com/louisroom_drama" target="_blank" rel="noopener noreferrer" class="font-garamond text-sm sm:text-base text-ink hover:opacity-75 transition-opacity">@louisroom_drama</a>
                 </div>
-                <div class="flex flex-wrap items-center justify-center gap-1 sm:gap-2 pt-0.5">
-                    <span class="font-medium">公式 Instagram：</span>
-                    <a href="https://www.instagram.com/louisroom_drama/" target="_blank" rel="noopener noreferrer" class="font-garamond text-sm sm:text-base text-ink underline underline-offset-4 hover:opacity-75 transition-opacity">@louisroom_drama</a>
+                <div class="flex items-center gap-1 sm:gap-2 whitespace-nowrap">
+                    <span class="font-medium contact-label">公式 Instagram：</span>
+                    <a href="https://www.instagram.com/louisroom_drama/" target="_blank" rel="noopener noreferrer" class="font-garamond text-sm sm:text-base text-ink hover:opacity-75 transition-opacity">@louisroom_drama</a>
                 </div>
             </div>
         </section>
